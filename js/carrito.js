@@ -22,132 +22,125 @@ document.addEventListener('DOMContentLoaded', function() {
     function actualizarContadorCarrito() {
         const carrito = getCarrito();
         const totalItems = carrito.reduce((sum, item) => sum + (item.cantidad || 1), 0);
-        if (carritoContador) {
+        if (carritoContador) { // Solo actualiza si el elemento contador existe en la página actual
             carritoContador.textContent = totalItems;
         }
     }
 
-    // Función para renderizar los productos en la página del carrito
-    function renderCarrito() {
-        const carrito = getCarrito();
-        itemsCarritoDiv.innerHTML = ''; // Limpiar contenido previo
+    // --- Lógica de renderizado del carrito (solo si estamos en carrito.html) ---
+    // Esta verificación asegura que solo intentamos manipular los elementos del carrito
+    // si el div 'items-carrito' realmente existe en el DOM.
+    if (itemsCarritoDiv) { // Verifica si el contenedor principal del carrito existe
+        // Función para renderizar los productos en la página del carrito
+        function renderCarrito() {
+            const carrito = getCarrito();
+            itemsCarritoDiv.innerHTML = ''; // Limpiar contenido previo
 
-        if (carrito.length === 0) {
-            carritoVacioMensaje.style.display = 'block';
-            document.querySelector('.resumen-carrito').style.display = 'none';
-        } else {
-            carritoVacioMensaje.style.display = 'none';
-            document.querySelector('.resumen-carrito').style.display = 'block';
+            if (carrito.length === 0) {
+                carritoVacioMensaje.style.display = 'block';
+                document.querySelector('.resumen-carrito').style.display = 'none';
+            } else {
+                carritoVacioMensaje.style.display = 'none';
+                document.querySelector('.resumen-carrito').style.display = 'block';
 
-            let subtotal = 0;
-            let costoEnvioTotal = 0;
+                let subtotal = 0;
+                let costoEnvioTotal = 0;
 
-            carrito.forEach(item => {
-                const cantidad = item.cantidad || 1;
-                const precioTotalProducto = item.precio * cantidad;
-                const costoEnvioProducto = (item.costo_envio !== undefined ? item.costo_envio : 0) * cantidad;
+                carrito.forEach(item => {
+                    const cantidad = item.cantidad || 1;
+                    const precioTotalProducto = item.precio * cantidad;
+                    const costoEnvioProducto = (item.costo_envio !== undefined ? item.costo_envio : 0) * cantidad;
 
-                subtotal += precioTotalProducto;
-                costoEnvioTotal += costoEnvioProducto;
+                    subtotal += precioTotalProducto;
+                    costoEnvioTotal += costoEnvioProducto;
 
-                const itemHTML = `
-                    <div class="carrito-item">
-                        <img src="${item.imagenes[0]?.url || 'img/placeholder.jpg'}" alt="${item.nombre}">
-                        <div class="item-info">
-                            <h4>${item.nombre}</h4>
-                            <p>Precio Unitario: $${item.precio.toFixed(2)} MX</p>
-                            <p>Cantidad: ${cantidad}</p>
-                            <p>Envío Unitario: $${(item.costo_envio !== undefined ? item.costo_envio : 0).toFixed(2)} MX</p>
-                            <p>Subtotal Artículo: $${precioTotalProducto.toFixed(2)} MX</p>
-                            <button class="btn-remover-item" data-id="${item.id}">Remover</button>
+                    const itemHTML = `
+                        <div class="carrito-item">
+                            <img src="${item.imagenes[0]?.url || 'img/placeholder.jpg'}" alt="${item.nombre}">
+                            <div class="item-info">
+                                <h4>${item.nombre}</h4>
+                                <p>Precio Unitario: $${item.precio.toFixed(2)} MX</p>
+                                <p>Cantidad: ${cantidad}</p>
+                                <p>Envío Unitario: $${(item.costo_envio !== undefined ? item.costo_envio : 0).toFixed(2)} MX</p>
+                                <p>Subtotal Artículo: $${precioTotalProducto.toFixed(2)} MX</p>
+                                <button class="btn-remover-item" data-id="${item.id}">Remover</button>
+                            </div>
                         </div>
-                    </div>
-                `;
-                itemsCarritoDiv.innerHTML += itemHTML;
-            });
+                    `;
+                    itemsCarritoDiv.innerHTML += itemHTML;
+                });
 
-            const total = subtotal + costoEnvioTotal;
-            subtotalCarritoSpan.textContent = `$${subtotal.toFixed(2)} MX`;
-            envioTotalCarritoSpan.textContent = `$${costoEnvioTotal.toFixed(2)} MX`;
-            totalCarritoSpan.textContent = `$${total.toFixed(2)} MX`;
+                const total = subtotal + costoEnvioTotal;
+                subtotalCarritoSpan.textContent = `$${subtotal.toFixed(2)} MX`;
+                envioTotalCarritoSpan.textContent = `$${costoEnvioTotal.toFixed(2)} MX`;
+                totalCarritoSpan.textContent = `$${total.toFixed(2)} MX`;
 
-            document.querySelectorAll('.btn-remover-item').forEach(button => {
-                button.addEventListener('click', (e) => {
-                    const idToRemove = parseInt(e.target.dataset.id);
-                    let carritoActual = getCarrito();
-                    carritoActual = carritoActual.filter(item => item.id !== idToRemove);
-                    saveCarrito(carritoActual);
+                document.querySelectorAll('.btn-remover-item').forEach(button => {
+                    button.addEventListener('click', (e) => {
+                        const idToRemove = parseInt(e.target.dataset.id);
+                        let carritoActual = getCarrito();
+                        carritoActual = carritoActual.filter(item => item.id !== idToRemove);
+                        saveCarrito(carritoActual);
+                        renderCarrito();
+                        actualizarContadorCarrito();
+                    });
+                });
+            }
+            actualizarContadorCarrito();
+        }
+
+        if (btnVaciarCarrito) {
+            btnVaciarCarrito.addEventListener('click', () => {
+                if (confirm('¿Estás seguro de que quieres vaciar el carrito?')) {
+                    localStorage.removeItem('carrito');
                     renderCarrito();
                     actualizarContadorCarrito();
-                });
+                }
             });
         }
-        actualizarContadorCarrito();
-    }
 
-    if (btnVaciarCarrito) {
-        btnVaciarCarrito.addEventListener('click', () => {
-            if (confirm('¿Estás seguro de que quieres vaciar el carrito?')) {
-                localStorage.removeItem('carrito');
-                renderCarrito();
-                actualizarContadorCarrito();
-            }
-        });
-    }
+        if (btnFinalizarCompra) {
+            btnFinalizarCompra.addEventListener('click', () => {
+                const carrito = getCarrito();
+                if (carrito.length === 0) {
+                    alert('Tu carrito está vacío. Agrega productos antes de finalizar la compra.');
+                    return;
+                }
 
-    if (btnFinalizarCompra) {
-        btnFinalizarCompra.addEventListener('click', () => {
-            const carrito = getCarrito();
-            if (carrito.length === 0) {
-                alert('Tu carrito está vacío. Agrega productos antes de finalizar la compra.');
-                return;
-            }
+                let mensajeWhatsApp = "¡Hola! Me gustaría hacer el siguiente pedido de MiStore22:\n\n";
+                let subtotal = 0;
+                let costoEnvioTotal = 0;
 
-            let mensajeWhatsApp = "¡Hola! Me gustaría hacer el siguiente pedido de MiStore22:\n\n";
-            let subtotal = 0;
-            let costoEnvioTotal = 0;
+                carrito.forEach((item, index) => {
+                    const cantidad = item.cantidad || 1;
+                    const precioTotalProducto = item.precio * cantidad;
+                    const costoEnvioProducto = (item.costo_envio !== undefined ? item.costo_envio : 0) * cantidad;
+                    
+                    subtotal += precioTotalProducto;
+                    costoEnvioTotal += costoEnvioProducto;
 
-            carrito.forEach((item, index) => {
-                const cantidad = item.cantidad || 1;
-                const precioTotalProducto = item.precio * cantidad;
-                const costoEnvioProducto = (item.costo_envio !== undefined ? item.costo_envio : 0) * cantidad;
-                
-                subtotal += precioTotalProducto;
-                costoEnvioTotal += costoEnvioProducto;
+                    mensajeWhatsApp += `${index + 1}. ${item.nombre} (x${cantidad})\n`;
+                    mensajeWhatsApp += `   Precio Unitario: $${item.precio.toFixed(2)} MX\n`;
+                    mensajeWhatsApp += `   Subtotal: $${precioTotalProducto.toFixed(2)} MX\n`;
+                    mensajeWhatsApp += `   Envío por artículo: $${(item.costo_envio !== undefined ? item.costo_envio : 0).toFixed(2)} MX\n\n`;
+                });
 
-                mensajeWhatsApp += `${index + 1}. ${item.nombre} (x${cantidad})\n`;
-                mensajeWhatsApp += `   Precio Unitario: $${item.precio.toFixed(2)} MX\n`;
-                mensajeWhatsApp += `   Subtotal: $${precioTotalProducto.toFixed(2)} MX\n`;
-                mensajeWhatsApp += `   Envío por artículo: $${(item.costo_envio !== undefined ? item.costo_envio : 0).toFixed(2)} MX\n\n`;
+                mensajeWhatsApp += `---\n`;
+                mensajeWhatsApp += `Resumen del Pedido:\n`;
+                mensajeWhatsApp += `Subtotal de productos: $${subtotal.toFixed(2)} MX\n`;
+                mensajeWhatsApp += `Costo total de envío: $${costoEnvioTotal.toFixed(2)} MX\n`;
+                mensajeWhatsApp += `TOTAL A PAGAR: $${(subtotal + costoEnvioTotal).toFixed(2)} MX\n\n`;
+                mensajeWhatsApp += `¡Espero tu confirmación!`;
+
+                // RECUERDA CAMBIAR 'TUNUMERO' POR TU NÚMERO DE WHATSAPP REAL
+                const whatsappUrl = `https://wa.me/521TUNUMERO?text=${encodeURIComponent(mensajeWhatsApp)}`;
+                window.open(whatsappUrl, '_blank');
             });
-
-            mensajeWhatsApp += `---\n`;
-            mensajeWhatsApp += `Resumen del Pedido:\n`;
-            mensajeWhatsApp += `Subtotal de productos: $${subtotal.toFixed(2)} MX\n`;
-            mensajeWhatsApp += `Costo total de envío: $${costoEnvioTotal.toFixed(2)} MX\n`;
-            mensajeWhatsApp += `TOTAL A PAGAR: $${(subtotal + costoEnvioTotal).toFixed(2)} MX\n\n`;
-            mensajeWhatsApp += `¡Espero tu confirmación!`;
-
-            // RECUERDA CAMBIAR 'TUNUMERO' POR TU NÚMERO DE WHATSAPP REAL
-            const whatsappUrl = `https://wa.me/521TUNUMERO?text=${encodeURIComponent(mensajeWhatsApp)}`;
-            window.open(whatsappUrl, '_blank');
-
-            // Opcional: Vaciar el carrito después de enviar el pedido
-            // if (confirm('¿Deseas vaciar tu carrito después de enviar el pedido?')) {
-            //     localStorage.removeItem('carrito');
-            //     renderCarrito();
-            //     actualizarContadorCarrito();
-            // }
-        });
+        }
+        renderCarrito(); // Inicializar el carrito SOLO SI estamos en carrito.html
     }
-
-    // Inicializar el carrito al cargar la página
-    renderCarrito();
+    
+    // Llama a actualizarContadorCarrito SIEMPRE que se cargue el script,
+    // ya que el contador del header sí existe en todas las páginas.
+    actualizarContadorCarrito();
 });
-
-// Nota: La función actualizarContadorCarrito también es global para que pueda ser llamada desde producto-detalle.js
-// La definimos aquí de forma independiente para asegurar que siempre esté disponible para la página de carrito.html
-// y para index.html si se carga este script después de main.js
-// Si ya la tienes en producto-detalle.js y ese script se carga ANTES en index.html, no hay problema.
-// Pero si carrito.js se carga primero, la versión de carrito.js se usará.
-// Para máxima compatibilidad, ambas versiones son válidas.
