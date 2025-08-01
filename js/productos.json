@@ -9,6 +9,9 @@
       "imagenes": [
         {
           "url": "/img/productos/producto1.jpg"
+        },
+        {
+          "url": "/img/productos/producto2.jpg"
         }
       ]
     }
