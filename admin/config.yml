@@ -2,14 +2,16 @@ backend:
   name: git-gateway
   branch: main
 
-media_folder: "img/productos"
+# Carpeta donde se subirán las imágenes
+media_folder: "img/productos" 
+# Ruta pública que se guardará en el JSON para acceder a las imágenes
 public_folder: "/img/productos"
 
 collections:
   - name: "productos"
     label: "Productos"
     label_singular: "Producto"
-    file: "js/productos.json" # <-- El CMS ahora editará este archivo
+    file: "js/productos.json"
     extension: "json"
     format: "json"
     create: true
