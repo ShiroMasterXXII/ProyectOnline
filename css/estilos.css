@@ -350,11 +350,20 @@ header .container {
     font-size: 1.2em;
     font-weight: bold;
     color: #fff;
-    background-color: #25D366;
+    /* --- CAMBIO AQUÍ: ANTES background-color: #25D366; --- */
+    background: linear-gradient(-45deg, #25d366, #128c7e, #075e54, #25d366); /* Mismo gradiente de WhatsApp */
+    background-size: 400% 400%; /* Para la animación */
+    animation: gradient-animation 15s ease infinite; /* Aplica la animación */
+    /* --- FIN CAMBIO --- */
     border: none;
     border-radius: 8px;
     cursor: pointer;
     text-align: center;
+    transition: transform 0.3s ease; /* Añade una transición para el hover */
+}
+
+.btn-anadir-carrito:hover {
+    transform: scale(1.02); /* Efecto de escala ligera al pasar el mouse */
 }
 
 /* ======================================= */
