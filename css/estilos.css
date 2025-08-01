@@ -817,3 +817,14 @@ footer {
 .btn-finalizar-compra:hover {
     transform: scale(1.02);
 }
+
+/* Nuevo estilo para la barra superior de envío */
+.top-bar-envio {
+    background-color: #28a745; /* Un verde vibrante */
+    color: #fff;
+    padding: 10px 0;
+    text-align: center;
+    font-weight: bold;
+    font-size: 1.1em;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
