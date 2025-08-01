@@ -1,45 +1,55 @@
-// js/producto-detalle.js (VERSIÓN FINAL)
-
 document.addEventListener('DOMContentLoaded', async function() {
-    // --- LÓGICA PARA EL BOTÓN DE REGRESAR ---
+    // Lógica del botón de regresar (se queda igual)
     const btnRegresar = document.getElementById('btn-regresar');
     if (btnRegresar) {
-        btnRegresar.addEventListener('click', function(event) {
-            event.preventDefault();
-            history.back();
-        });
+        btnRegresar.addEventListener('click', e => { e.preventDefault(); history.back(); });
     }
 
-    // --- LÓGICA PRINCIPAL ---
     try {
-        // 1. Carga el "índice" de todos los productos generado por Decap CMS.
-        // Netlify Functions se encarga de crearlo si está bien configurado.
-        // O Decap puede generar un archivo JSON con todos los productos.
-        // Asumiremos que tenemos un 'productos.json' en la raíz por simplicidad.
-        const response = await fetch('/productos.json'); // Asumiendo que se genera un JSON
-        if (!response.ok) throw new Error('No se encontró el archivo de productos.');
-        
-        const productos = await response.json();
-        
+        const response = await fetch('js/productos.json');
+        const data = await response.json();
+        const productos = data.lista_productos; // <-- Leemos la lista
+
         const urlParams = new URLSearchParams(window.location.search);
-        const productoSlug = urlParams.get('id'); // Asumiendo que el ID es el slug
-        
-        // Busca el producto por su 'slug' o nombre único
-        const producto = productos.find(p => p.slug === productoSlug);
+        const productoId = parseInt(urlParams.get('id'));
+        const producto = productos.find(p => p.id === productoId);
 
         if (producto) {
-            // Llenar datos del producto
             document.title = `${producto.nombre} - MiStore22`;
-            // ... (resto del código para llenar la página, crear la galería, etc.) ...
-            // Este código funcionará ahora que 'producto' se ha cargado correctamente.
-        } else {
-            throw new Error(`Producto con slug '${productoSlug}' no encontrado.`);
+            document.querySelector('.producto-titulo').textContent = producto.nombre;
+            document.querySelector('.producto-precio').textContent = `$${producto.precio.toFixed(2)} MX`;
+            document.querySelector('.producto-descripcion-corta').textContent = producto.descripcion;
+
+            const imagenPrincipal = document.getElementById('imagen-principal');
+            const galeriaMiniaturas = document.getElementById('galeria-miniaturas');
+
+            if (producto.imagenes && producto.imagenes.length > 0) {
+                imagenPrincipal.src = producto.imagenes[0].url;
+                galeriaMiniaturas.innerHTML = '';
+                producto.imagenes.forEach(img => {
+                    const miniatura = document.createElement('img');
+                    miniatura.src = img.url;
+                    miniatura.classList.add('miniatura');
+                    miniatura.onclick = () => { imagenPrincipal.src = img.url; };
+                    galeriaMiniaturas.appendChild(miniatura);
+                });
+            } else {
+                imagenPrincipal.alt = "Este producto no tiene imagen.";
+            }
+
+            const btnComprar = document.querySelector('.btn-anadir-carrito');
+            btnComprar.addEventListener('click', (e) => {
+                e.preventDefault();
+                const mensaje = `Hola, me interesa comprar el producto: ${producto.nombre}`;
+                const whatsappUrl = `https://wa.me/521TUNUMERO?text=${encodeURIComponent(mensaje)}`;
+                window.open(whatsappUrl, '_blank');
+            });
         }
     } catch (error) {
         console.error("Error al cargar el producto:", error);
         const detalleLayout = document.querySelector('.producto-detalle-layout');
         if (detalleLayout) {
-            detalleLayout.innerHTML = '<h1>Error al cargar el producto.</h1>';
+            detalleLayout.innerHTML = '<h1>Producto no encontrado o error al cargar.</h1>';
         }
     }
 });

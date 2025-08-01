@@ -1,0 +1,16 @@
+{
+  "lista_productos": [
+    {
+      "id": 1,
+      "nombre": "Gorra New Era Azul (Ejemplo)",
+      "precio": 999,
+      "categoria": "Ropa",
+      "descripcion": "Este es un producto de ejemplo. Edítalo o elimínalo desde el panel de administración.",
+      "imagenes": [
+        {
+          "url": "img/productos/placeholder.jpg"
+        }
+      ]
+    }
+  ]
+}
