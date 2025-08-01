@@ -25,8 +25,9 @@
                             <li><a href="categoria.html?cat=Hogar">Hogar</a></li>
                         </ul>
                     </li>
-                    <li><a href="#">Ofertas</a></li>
-                    <li><a href="#">Contacto</a></li>
+                    <li><a href="#destacados">Ofertas</a></li>
+                    <li><a href="contacto.html">Contacto</a></li>
+                    <li><a href="carrito.html">Carrito (<span id="carrito-contador">0</span>)</a></li>
                 </ul>
             </nav>
             <button class="hamburger-menu">
@@ -45,10 +46,10 @@
             </div>
             <div class="producto-detalle-layout">
                 <div class="columna-imagen">
-    <img src="" alt="Cargando imagen principal del producto..." id="imagen-principal">
-    <div class="galeria-miniaturas" id="galeria-miniaturas">
-        </div>
-</div>
+                    <img src="" alt="Cargando imagen principal del producto..." id="imagen-principal">
+                    <div class="galeria-miniaturas" id="galeria-miniaturas">
+                    </div>
+                </div>
                 <div class="columna-info">
                     <h1 class="producto-titulo">Cargando...</h1>
                     <p class="producto-precio">$0.00 MX</p>
@@ -56,7 +57,10 @@
                         Envío: $<span id="costo-envio-display">0.00</span> MX
                     </p>
                     <p class="producto-descripcion-corta"></p>
-                    <a href="#" class="btn-anadir-carrito">Pedir por WhatsApp</a>
+                    
+                    <button class="btn-agregar-carrito" id="btn-agregar-carrito">Agregar al Carrito</button>
+                    <a href="#" class="btn-anadir-carrito" id="btn-pedir-whatsapp-directo">Pedir por WhatsApp (solo este producto)</a>
+
                 </div>
             </div>
         </div>
@@ -68,7 +72,6 @@
         </div>
     </footer>
 
-    <script src="js/productos.js"></script>
     <script src="js/main.js"></script>
     <script src="js/producto-detalle.js"></script>
 </body>

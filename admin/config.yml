@@ -23,9 +23,7 @@ collections:
               - {label: "Categoría", name: "categoria", widget: "select", options: ["Ropa", "Calzado", "Tecnología", "Hogar"]}
               - {label: "Descripción", name: "descripcion", widget: "text"}
               - {label: "Costo de Envío", name: "costo_envio", widget: "number", required: false, default: 0}
-              # --- CAMBIO AQUÍ: Nuevo campo para marcar productos destacados ---
               - {label: "Es Destacado", name: "es_destacado", widget: "boolean", default: false, required: false}
-              # --- FIN CAMBIO ---
               - label: "Imágenes"
                 name: "imagenes"
                 widget: "list"

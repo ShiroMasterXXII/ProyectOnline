@@ -1,5 +1,4 @@
 document.addEventListener('DOMContentLoaded', async function() {
-    // Lógica del botón de regresar (se queda igual)
     const btnRegresar = document.getElementById('btn-regresar');
     if (btnRegresar) {
         btnRegresar.addEventListener('click', e => { e.preventDefault(); history.back(); });
@@ -20,11 +19,8 @@ document.addEventListener('DOMContentLoaded', async function() {
             document.querySelector('.producto-precio').textContent = `$${producto.precio.toFixed(2)} MX`;
             document.querySelector('.producto-descripcion-corta').textContent = producto.descripcion;
 
-            // --- NUEVA LÍNEA PARA EL COSTO DE ENVÍO ---
-            // Verifica si el producto tiene un costo_envio definido, si no, usa 0 por defecto.
             const costoEnvio = producto.costo_envio !== undefined ? producto.costo_envio : 0;
             document.getElementById('costo-envio-display').textContent = costoEnvio.toFixed(2);
-            // --- FIN NUEVA LÍNEA ---
 
             const imagenPrincipal = document.getElementById('imagen-principal');
             const galeriaMiniaturas = document.getElementById('galeria-miniaturas');
@@ -43,16 +39,25 @@ document.addEventListener('DOMContentLoaded', async function() {
                 imagenPrincipal.alt = "Este producto no tiene imagen.";
             }
 
-            const btnComprar = document.querySelector('.btn-anadir-carrito');
-            btnComprar.addEventListener('click', (e) => {
+            const btnPedirWhatsappDirecto = document.getElementById('btn-pedir-whatsapp-directo');
+            btnPedirWhatsappDirecto.addEventListener('click', (e) => {
                 e.preventDefault();
-                // Ahora puedes incluir el costo de envío en el mensaje de WhatsApp si lo deseas
+                // RECUERDA CAMBIAR 'TUNUMERO' POR TU NÚMERO DE WHATSAPP REAL
                 const mensaje = `Hola, me interesa comprar el producto: ${producto.nombre}.\nPrecio: $${producto.precio.toFixed(2)} MX.\nCosto de Envío: $${costoEnvio.toFixed(2)} MX.`;
                 const whatsappUrl = `https://wa.me/521TUNUMERO?text=${encodeURIComponent(mensaje)}`;
                 window.open(whatsappUrl, '_blank');
             });
+
+            const btnAgregarCarrito = document.getElementById('btn-agregar-carrito');
+            if (btnAgregarCarrito) {
+                btnAgregarCarrito.addEventListener('click', () => {
+                    agregarAlCarrito(producto);
+                    alert(`${producto.nombre} ha sido agregado al carrito!`); // Puedes cambiar esto por algo más elegante
+                    actualizarContadorCarrito(); // Llama a esta función para actualizar el contador
+                });
+            }
+
         } else {
-            // Manejo cuando el producto no se encuentra
             const detalleLayout = document.querySelector('.producto-detalle-layout');
             if (detalleLayout) {
                 detalleLayout.innerHTML = '<h1>Producto no encontrado o error al cargar.</h1>';
@@ -65,4 +70,39 @@ document.addEventListener('DOMContentLoaded', async function() {
             detalleLayout.innerHTML = '<h1>Error al cargar la información del producto.</h1>';
         }
     }
+    // Llama a actualizarContadorCarrito al cargar la página de producto para reflejar el estado actual
+    actualizarContadorCarrito();
 });
+
+// --- FUNCIONES GLOBALES PARA EL CARRITO ---
+function getCarrito() {
+    return JSON.parse(localStorage.getItem('carrito')) || [];
+}
+
+function saveCarrito(carrito) {
+    localStorage.setItem('carrito', JSON.stringify(carrito));
+}
+
+function agregarAlCarrito(producto) {
+    let carrito = getCarrito();
+    const productoExistente = carrito.find(item => item.id === producto.id);
+
+    if (productoExistente) {
+        productoExistente.cantidad = (productoExistente.cantidad || 1) + 1;
+    } else {
+        producto.cantidad = 1;
+        carrito.push(producto);
+    }
+    saveCarrito(carrito);
+    console.log("Carrito actualizado:", carrito);
+}
+
+// Función para actualizar el contador del carrito en el header (también presente en carrito.js)
+function actualizarContadorCarrito() {
+    const carritoContador = document.getElementById('carrito-contador');
+    if (carritoContador) {
+        const carrito = getCarrito();
+        const totalItems = carrito.reduce((sum, item) => sum + (item.cantidad || 1), 0);
+        carritoContador.textContent = totalItems;
+    }
+}

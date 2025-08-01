@@ -186,22 +186,18 @@ header .container {
     font-size: 1.3em;
     font-weight: bold;
     color: #e67e22;
-    margin-bottom: 10px; /* Ajustado el margen inferior para dar espacio al envío */
+    margin-bottom: 10px;
 }
 
-/* --- ESTILOS PARA EL COSTO DE ENVÍO EN LAS TARJETAS DE PRODUCTO --- */
 .producto-card .envio-card {
     font-size: 0.95em;
     color: #777;
     margin-bottom: 15px;
     font-weight: normal;
 }
-/* --- FIN ESTILOS --- */
-
 
 /* --- ESTILOS CORREGIDOS PARA LOS BOTONES (CON ANIMACIÓN) --- */
 
-/* 1. Estilos Comunes (Forma, tamaño, espacio para AMBOS botones) */
 .producto-card .btn-ver-detalles,
 .producto-card .btn-pedir-whatsapp {
     display: block;
@@ -217,7 +213,6 @@ header .container {
     cursor: pointer;
 }
 
-/* 2. Estilo Individual: Botón de Detalles (color azul estático) */
 .producto-card .btn-ver-detalles {
     background-color: #007bff;
 }
@@ -226,15 +221,14 @@ header .container {
     background-color: #0056b3;
 }
 
-/* 3. Estilo Individual: Botón de WhatsApp (gradiente animado) */
 .producto-card .btn-pedir-whatsapp {
-    background: linear-gradient(-45deg, #ff0000, #a72828, #bf0000, #ff0000);
+    background: linear-gradient(-45deg, #25d366, #128c7e, #075e54, #25d366);
     background-size: 400% 400%;
     animation: gradient-animation 15s ease infinite;
 }
 
 .producto-card .btn-pedir-whatsapp:hover {
-    transform: scale(1.05); /* Efecto de escala al pasar el mouse */
+    transform: scale(1.05);
 }
 
 /* ======================================= */
@@ -320,30 +314,44 @@ header .container {
     font-size: 2em;
     color: #007bff;
     font-weight: bold;
-    margin: 20px 0 10px 0; /* Ajustado el margen inferior para dar espacio al envío */
+    margin: 20px 0 10px 0;
 }
 
-/* --- ESTILOS PARA EL COSTO DE ENVÍO EN LA PÁGINA DE DETALLE --- */
 .columna-info .producto-envio {
     font-size: 1.1em;
-    color: #666; /* Un color ligeramente más sutil que el precio */
-    margin-bottom: 20px; /* Margen para separar de la descripción */
+    color: #666;
+    margin-bottom: 20px;
     font-weight: 500;
 }
 
 .columna-info .producto-envio span {
-    font-weight: bold; /* Hacer el valor numérico más prominente */
-    color: #333; /* O el color que prefieras para el número del costo */
-}
-/* --- FIN ESTILOS --- */
-
-.columna-info .producto-descripcion-corta {
-    font-size: 1.1em;
-    line-height: 1.7;
-    margin-bottom: 30px;
+    font-weight: bold;
+    color: #333;
 }
 
-/* --- CAMBIO AQUÍ: Botón de WhatsApp degradado en la página de producto --- */
+/* Botón "Agregar al Carrito" en la página de producto */
+.btn-agregar-carrito {
+    display: block;
+    width: 100%;
+    padding: 15px;
+    font-size: 1.2em;
+    font-weight: bold;
+    color: #fff;
+    background-color: #007bff; /* Azul para el botón de agregar */
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    text-align: center;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    margin-bottom: 15px; /* Espacio entre botones */
+}
+
+.btn-agregar-carrito:hover {
+    background-color: #0056b3;
+    transform: translateY(-2px);
+}
+
+/* Botón "Pedir por WhatsApp (solo este producto)" en la página de producto */
 .btn-anadir-carrito {
     display: inline-block;
     width: 100%;
@@ -364,7 +372,6 @@ header .container {
 .btn-anadir-carrito:hover {
     transform: scale(1.02);
 }
-/* --- FIN CAMBIO --- */
 
 
 /* ======================================= */
@@ -484,4 +491,317 @@ footer {
 
 .miniatura:hover {
     border-color: #007bff;
+}
+
+/* ======================================= */
+/* ===         PÁGINA DE CONTACTO      === */
+/* ======================================= */
+
+.contacto-seccion {
+    padding: 40px 0;
+    text-align: center;
+}
+
+.contacto-seccion h2 {
+    font-size: 2.5em;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.intro-contacto {
+    font-size: 1.1em;
+    color: #666;
+    margin-bottom: 40px;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.contacto-grid {
+    display: grid;
+    grid-template-columns: 1fr; /* Una columna por defecto */
+    gap: 40px;
+    margin-bottom: 40px;
+    text-align: left;
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+}
+
+@media (min-width: 768px) {
+    .contacto-grid {
+        grid-template-columns: 1fr 2fr; /* Dos columnas en pantallas más grandes */
+    }
+}
+
+.contacto-info h3, .contacto-formulario h3, .mapa-ubicacion h3 {
+    font-size: 1.8em;
+    margin-bottom: 20px;
+    color: #007bff;
+}
+
+.contacto-info p {
+    margin-bottom: 10px;
+    font-size: 1.05em;
+    line-height: 1.8;
+    color: #555;
+}
+
+.contacto-info a {
+    color: #007bff;
+    text-decoration: underline;
+    transition: color 0.3s ease;
+}
+
+.contacto-info a:hover {
+    color: #0056b3;
+}
+
+.redes-sociales {
+    margin-top: 20px;
+}
+
+.redes-sociales a {
+    display: inline-block;
+    background-color: #f0f0f0;
+    color: #007bff;
+    padding: 10px 15px;
+    margin-right: 10px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.redes-sociales a:hover {
+    background-color: #007bff;
+    color: #fff;
+}
+
+/* Estilos del formulario */
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: #333;
+}
+
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 1em;
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.05);
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.form-group input[type="text"]:focus,
+.form-group input[type="email"]:focus,
+.form-group textarea:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.25);
+    outline: none;
+}
+
+.btn-enviar {
+    display: block;
+    width: 100%;
+    padding: 15px;
+    font-size: 1.2em;
+    font-weight: bold;
+    color: #fff;
+    background-color: #28a745;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    text-align: center;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.btn-enviar:hover {
+    background-color: #218838;
+    transform: translateY(-2px);
+}
+
+/* Estilos del mapa */
+.mapa-ubicacion {
+    margin-top: 40px;
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    text-align: center;
+}
+
+.mapa-ubicacion iframe {
+    border-radius: 8px;
+    margin-top: 20px;
+}
+
+.mapa-ubicacion .mapa-nota {
+    font-size: 0.9em;
+    color: #777;
+    margin-top: 15px;
+}
+
+/* Media Queries para responsividad del contacto */
+@media (max-width: 767px) {
+    .contacto-grid {
+        grid-template-columns: 1fr;
+    }
+    .contacto-info, .contacto-formulario {
+        padding: 0;
+    }
+}
+
+/* ======================================= */
+/* ===         CARRITO DE COMPRAS      === */
+/* ======================================= */
+
+.seccion-carrito {
+    padding: 40px 0;
+    text-align: center;
+}
+
+.seccion-carrito .titulo-pagina {
+    margin-bottom: 30px;
+}
+
+#items-carrito {
+    background-color: #fff;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    margin-bottom: 30px;
+    text-align: left;
+}
+
+#carrito-vacio-mensaje {
+    text-align: center;
+    font-size: 1.2em;
+    color: #777;
+    padding: 30px;
+}
+
+.carrito-item {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 15px 0;
+    border-bottom: 1px solid #eee;
+}
+
+.carrito-item:last-child {
+    border-bottom: none;
+}
+
+.carrito-item img {
+    width: 80px;
+    height: 80px;
+    object-fit: contain;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+}
+
+.carrito-item .item-info {
+    flex-grow: 1;
+}
+
+.carrito-item h4 {
+    font-size: 1.2em;
+    margin-bottom: 5px;
+    color: #333;
+}
+
+.carrito-item p {
+    font-size: 0.95em;
+    color: #555;
+    margin-bottom: 3px;
+}
+
+.btn-remover-item {
+    background-color: #dc3545;
+    color: #fff;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.9em;
+    transition: background-color 0.3s ease;
+}
+
+.btn-remover-item:hover {
+    background-color: #c82333;
+}
+
+.resumen-carrito {
+    background-color: #fff;
+    border-radius: 12px;
+    padding: 30px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    text-align: right;
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+.resumen-carrito p {
+    font-size: 1.1em;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.resumen-carrito h3 {
+    font-size: 1.6em;
+    margin-top: 20px;
+    color: #007bff;
+}
+
+.resumen-carrito span {
+    font-weight: bold;
+    color: #000;
+}
+
+.btn-vaciar-carrito {
+    background-color: #6c757d;
+    color: #fff;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1em;
+    margin-top: 20px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    margin-right: 10px;
+}
+
+.btn-vaciar-carrito:hover {
+    background-color: #5a6268;
+    transform: translateY(-2px);
+}
+
+.btn-finalizar-compra {
+    display: inline-block;
+    background: linear-gradient(-45deg, #25d366, #128c7e, #075e54, #25d366);
+    background-size: 400% 400%;
+    animation: gradient-animation 15s ease infinite;
+    color: #fff;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1em;
+    margin-top: 20px;
+    transition: transform 0.3s ease;
+}
+
+.btn-finalizar-compra:hover {
+    transform: scale(1.02);
 }

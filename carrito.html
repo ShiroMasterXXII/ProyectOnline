@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Carrito de Compras - MiStore22</title>
+    <title>Mi Carrito - MiStore22</title>
     <link rel="stylesheet" href="css/estilos.css">
 </head>
 <body>
@@ -14,25 +14,21 @@
                 <a href="index.html"><h1>MiStore22</h1></a>
             </div>
             <nav class="menu-principal">
-                <ul>
+                 <ul>
                     <li><a href="index.html">Inicio</a></li>
                     <li class="dropdown">
                         <a href="#">Categorías <span class="arrow">▼</span></a>
                         <ul class="dropdown-content">
-                            <li><a href="#">Ropa</a></li>
-                            <li><a href="#">Calzado</a></li>
-                            <li><a href="#">Tecnología</a></li>
-                            <li><a href="#">Hogar</a></li>
+                            <li><a href="categoria.html?cat=Ropa">Ropa</a></li>
+                            <li><a href="categoria.html?cat=Calzado">Calzado</a></li>
+                            <li><a href="categoria.html?cat=Tecnologia">Tecnología</a></li>
+                            <li><a href="categoria.html?cat=Hogar">Hogar</a></li>
                         </ul>
                     </li>
-                    <li><a href="#">Ofertas</a></li>
-                    <li><a href="#">Contacto</a></li>
+                    <li><a href="#destacados">Ofertas</a></li>
+                    <li><a href="contacto.html">Contacto</a></li>
+                    <li><a href="carrito.html">Carrito (<span id="carrito-contador">0</span>)</a></li>
                 </ul>
-                 <div class="iconos-nav">
-                    <div class="icono-carrito">
-                        <a href="carrito.html">🛒</a>
-                    </div>
-                </div>
             </nav>
             <button class="hamburger-menu">
                 <span></span>
@@ -44,23 +40,22 @@
 
     <main>
         <div class="container">
-            <h1 class="titulo-pagina">Carrito de Compras</h1>
-            <div class="carrito-layout">
-                <div class="lista-productos-carrito">
-                    </div>
-                <div class="carrito-resumen">
-                    <h2>Resumen del Pedido</h2>
-                    <div class="resumen-linea">
-                        <span>Subtotal:</span>
-                        <span id="resumen-subtotal">$0.00</span>
-                    </div>
-                    <div class="resumen-linea total">
-                        <span>Total:</span>
-                        <span id="resumen-total">$0.00</span>
-                    </div>
-                    <button class="btn-finalizar-compra">Finalizar Compra</button>
+            <section class="seccion-carrito">
+                <h2 class="titulo-pagina">Mi Carrito de Compras</h2>
+                
+                <div id="items-carrito">
+                    <p id="carrito-vacio-mensaje">Tu carrito está vacío.</p>
                 </div>
-            </div>
+
+                <div class="resumen-carrito">
+                    <p>Subtotal: <span id="subtotal-carrito">$0.00 MX</span></p>
+                    <p>Costo Total de Envío: <span id="envio-total-carrito">$0.00 MX</span></p>
+                    <h3>Total: <span id="total-carrito">$0.00 MX</span></h3>
+                    
+                    <button class="btn-vaciar-carrito" id="btn-vaciar-carrito">Vaciar Carrito</button>
+                    <button class="btn-finalizar-compra" id="btn-finalizar-compra">Finalizar Compra por WhatsApp</button>
+                </div>
+            </section>
         </div>
     </main>
 
@@ -70,7 +65,7 @@
         </div>
     </footer>
 
-    <script src="js/productos.js"></script>
+    <script src="js/main.js"></script>
     <script src="js/carrito.js"></script>
 </body>
 </html>

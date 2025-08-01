@@ -1,74 +1,153 @@
 document.addEventListener('DOMContentLoaded', function() {
-    const listaProductosCarrito = document.querySelector('.lista-productos-carrito');
-    const resumenSubtotal = document.getElementById('resumen-subtotal');
-    const resumenTotal = document.getElementById('resumen-total');
-    let carrito = JSON.parse(localStorage.getItem('carrito')) || [];
+    const itemsCarritoDiv = document.getElementById('items-carrito');
+    const carritoVacioMensaje = document.getElementById('carrito-vacio-mensaje');
+    const subtotalCarritoSpan = document.getElementById('subtotal-carrito');
+    const envioTotalCarritoSpan = document.getElementById('envio-total-carrito');
+    const totalCarritoSpan = document.getElementById('total-carrito');
+    const btnVaciarCarrito = document.getElementById('btn-vaciar-carrito');
+    const btnFinalizarCompra = document.getElementById('btn-finalizar-compra');
+    const carritoContador = document.getElementById('carrito-contador');
 
-    function renderizarCarrito() {
-        listaProductosCarrito.innerHTML = '';
+    // Función para obtener el carrito del localStorage
+    function getCarrito() {
+        return JSON.parse(localStorage.getItem('carrito')) || [];
+    }
+
+    // Función para guardar el carrito en el localStorage
+    function saveCarrito(carrito) {
+        localStorage.setItem('carrito', JSON.stringify(carrito));
+    }
+
+    // Función para actualizar el contador del carrito en el header
+    function actualizarContadorCarrito() {
+        const carrito = getCarrito();
+        const totalItems = carrito.reduce((sum, item) => sum + (item.cantidad || 1), 0);
+        if (carritoContador) {
+            carritoContador.textContent = totalItems;
+        }
+    }
+
+    // Función para renderizar los productos en la página del carrito
+    function renderCarrito() {
+        const carrito = getCarrito();
+        itemsCarritoDiv.innerHTML = ''; // Limpiar contenido previo
+
         if (carrito.length === 0) {
-            listaProductosCarrito.innerHTML = '<p>Tu carrito está vacío.</p>';
-            actualizarResumen(0);
-            return;
-        }
+            carritoVacioMensaje.style.display = 'block';
+            document.querySelector('.resumen-carrito').style.display = 'none';
+        } else {
+            carritoVacioMensaje.style.display = 'none';
+            document.querySelector('.resumen-carrito').style.display = 'block';
 
-        let subtotal = 0;
-        carrito.forEach(producto => {
-            const itemHTML = `
-                <div class="carrito-item" data-id="${producto.id}">
-                    <img src="${producto.img}" alt="${producto.nombre}" class="item-imagen">
-                    <div class="item-info">
-                        <p class="item-nombre">${producto.nombre}</p>
-                        <p class="item-precio">$${producto.precio.toFixed(2)}</p>
+            let subtotal = 0;
+            let costoEnvioTotal = 0;
+
+            carrito.forEach(item => {
+                const cantidad = item.cantidad || 1;
+                const precioTotalProducto = item.precio * cantidad;
+                const costoEnvioProducto = (item.costo_envio !== undefined ? item.costo_envio : 0) * cantidad;
+
+                subtotal += precioTotalProducto;
+                costoEnvioTotal += costoEnvioProducto;
+
+                const itemHTML = `
+                    <div class="carrito-item">
+                        <img src="${item.imagenes[0]?.url || 'img/placeholder.jpg'}" alt="${item.nombre}">
+                        <div class="item-info">
+                            <h4>${item.nombre}</h4>
+                            <p>Precio Unitario: $${item.precio.toFixed(2)} MX</p>
+                            <p>Cantidad: ${cantidad}</p>
+                            <p>Envío Unitario: $${(item.costo_envio !== undefined ? item.costo_envio : 0).toFixed(2)} MX</p>
+                            <p>Subtotal Artículo: $${precioTotalProducto.toFixed(2)} MX</p>
+                            <button class="btn-remover-item" data-id="${item.id}">Remover</button>
+                        </div>
                     </div>
-                    <div class="item-cantidad">
-                        <input type="number" value="${producto.cantidad}" min="1" class="input-cantidad">
-                    </div>
-                    <p class="item-subtotal">$${(producto.precio * producto.cantidad).toFixed(2)}</p>
-                    <button class="item-eliminar">×</button>
-                </div>
-            `;
-            listaProductosCarrito.innerHTML += itemHTML;
-            subtotal += producto.precio * producto.cantidad;
-        });
+                `;
+                itemsCarritoDiv.innerHTML += itemHTML;
+            });
 
-        actualizarResumen(subtotal);
-        agregarListeners();
-    }
+            const total = subtotal + costoEnvioTotal;
+            subtotalCarritoSpan.textContent = `$${subtotal.toFixed(2)} MX`;
+            envioTotalCarritoSpan.textContent = `$${costoEnvioTotal.toFixed(2)} MX`;
+            totalCarritoSpan.textContent = `$${total.toFixed(2)} MX`;
 
-    function actualizarResumen(subtotal) {
-        const total = subtotal; // Puedes añadir lógica de envío aquí
-        resumenSubtotal.textContent = `$${subtotal.toFixed(2)}`;
-        resumenTotal.textContent = `$${total.toFixed(2)}`;
-    }
-
-    function agregarListeners() {
-        document.querySelectorAll('.item-eliminar').forEach(boton => {
-            boton.addEventListener('click', eliminarDelCarrito);
-        });
-        document.querySelectorAll('.input-cantidad').forEach(input => {
-            input.addEventListener('change', actualizarCantidad);
-        });
-    }
-    
-    function eliminarDelCarrito(evento) {
-        const productoId = parseInt(evento.target.closest('.carrito-item').getAttribute('data-id'));
-        carrito = carrito.filter(producto => producto.id !== productoId);
-        localStorage.setItem('carrito', JSON.stringify(carrito));
-        renderizarCarrito();
-    }
-
-    function actualizarCantidad(evento) {
-        const productoId = parseInt(evento.target.closest('.carrito-item').getAttribute('data-id'));
-        const nuevaCantidad = parseInt(evento.target.value);
-        const productoEnCarrito = carrito.find(producto => producto.id === productoId);
-        
-        if (productoEnCarrito && nuevaCantidad > 0) {
-            productoEnCarrito.cantidad = nuevaCantidad;
+            document.querySelectorAll('.btn-remover-item').forEach(button => {
+                button.addEventListener('click', (e) => {
+                    const idToRemove = parseInt(e.target.dataset.id);
+                    let carritoActual = getCarrito();
+                    carritoActual = carritoActual.filter(item => item.id !== idToRemove);
+                    saveCarrito(carritoActual);
+                    renderCarrito();
+                    actualizarContadorCarrito();
+                });
+            });
         }
-        localStorage.setItem('carrito', JSON.stringify(carrito));
-        renderizarCarrito();
+        actualizarContadorCarrito();
     }
 
-    renderizarCarrito();
+    if (btnVaciarCarrito) {
+        btnVaciarCarrito.addEventListener('click', () => {
+            if (confirm('¿Estás seguro de que quieres vaciar el carrito?')) {
+                localStorage.removeItem('carrito');
+                renderCarrito();
+                actualizarContadorCarrito();
+            }
+        });
+    }
+
+    if (btnFinalizarCompra) {
+        btnFinalizarCompra.addEventListener('click', () => {
+            const carrito = getCarrito();
+            if (carrito.length === 0) {
+                alert('Tu carrito está vacío. Agrega productos antes de finalizar la compra.');
+                return;
+            }
+
+            let mensajeWhatsApp = "¡Hola! Me gustaría hacer el siguiente pedido de MiStore22:\n\n";
+            let subtotal = 0;
+            let costoEnvioTotal = 0;
+
+            carrito.forEach((item, index) => {
+                const cantidad = item.cantidad || 1;
+                const precioTotalProducto = item.precio * cantidad;
+                const costoEnvioProducto = (item.costo_envio !== undefined ? item.costo_envio : 0) * cantidad;
+                
+                subtotal += precioTotalProducto;
+                costoEnvioTotal += costoEnvioProducto;
+
+                mensajeWhatsApp += `${index + 1}. ${item.nombre} (x${cantidad})\n`;
+                mensajeWhatsApp += `   Precio Unitario: $${item.precio.toFixed(2)} MX\n`;
+                mensajeWhatsApp += `   Subtotal: $${precioTotalProducto.toFixed(2)} MX\n`;
+                mensajeWhatsApp += `   Envío por artículo: $${(item.costo_envio !== undefined ? item.costo_envio : 0).toFixed(2)} MX\n\n`;
+            });
+
+            mensajeWhatsApp += `---\n`;
+            mensajeWhatsApp += `Resumen del Pedido:\n`;
+            mensajeWhatsApp += `Subtotal de productos: $${subtotal.toFixed(2)} MX\n`;
+            mensajeWhatsApp += `Costo total de envío: $${costoEnvioTotal.toFixed(2)} MX\n`;
+            mensajeWhatsApp += `TOTAL A PAGAR: $${(subtotal + costoEnvioTotal).toFixed(2)} MX\n\n`;
+            mensajeWhatsApp += `¡Espero tu confirmación!`;
+
+            // RECUERDA CAMBIAR 'TUNUMERO' POR TU NÚMERO DE WHATSAPP REAL
+            const whatsappUrl = `https://wa.me/521TUNUMERO?text=${encodeURIComponent(mensajeWhatsApp)}`;
+            window.open(whatsappUrl, '_blank');
+
+            // Opcional: Vaciar el carrito después de enviar el pedido
+            // if (confirm('¿Deseas vaciar tu carrito después de enviar el pedido?')) {
+            //     localStorage.removeItem('carrito');
+            //     renderCarrito();
+            //     actualizarContadorCarrito();
+            // }
+        });
+    }
+
+    // Inicializar el carrito al cargar la página
+    renderCarrito();
 });
+
+// Nota: La función actualizarContadorCarrito también es global para que pueda ser llamada desde producto-detalle.js
+// La definimos aquí de forma independiente para asegurar que siempre esté disponible para la página de carrito.html
+// y para index.html si se carga este script después de main.js
+// Si ya la tienes en producto-detalle.js y ese script se carga ANTES en index.html, no hay problema.
+// Pero si carrito.js se carga primero, la versión de carrito.js se usará.
+// Para máxima compatibilidad, ambas versiones son válidas.

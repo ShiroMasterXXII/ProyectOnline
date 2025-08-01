@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MiStore22 - Inicio</title>
+    <title>MiStore22 - Tu Tienda Online</title>
     <link rel="stylesheet" href="css/estilos.css">
 </head>
 <body>
@@ -26,7 +26,8 @@
                         </ul>
                     </li>
                     <li><a href="#destacados">Ofertas</a></li>
-                    <li><a href="#">Contacto</a></li>
+                    <li><a href="contacto.html">Contacto</a></li>
+                    <li><a href="carrito.html">Carrito (<span id="carrito-contador">0</span>)</a></li>
                 </ul>
             </nav>
             <button class="hamburger-menu">
@@ -38,21 +39,19 @@
     </header>
 
     <main>
-        <section class="hero-banner">
-            <div class="container">
-                <h2>Lo Último en Tendencias Esta Aqui</h2>
-            </div>
-        </section>
+        <div class="container">
+            <section class="hero-banner">
+                <h2>Encuentra los Mejores Productos a los Mejores Precios</h2>
+                <p>Explora nuestra amplia selección y descubre ofertas increíbles.</p>
+                </section>
 
-        <section class="productos-destacados" id="destacados"> <h2>Nuestros Productos Destacados</h2>
-            <div class="grid-productos">
-            </div>
-        </section>
+            <section class="productos-destacados" id="destacados">
+                <h2>Nuestros Productos Destacados</h2>
+                <div class="grid-productos">
+                    </div>
+            </section>
 
-    </section>
-
-        <section class="categorias-inicio">
-            <div class="container">
+            <section class="categorias-inicio">
                 <h2>Explora por Categoría</h2>
                 <div class="grid-categorias">
                     <a href="categoria.html?cat=Ropa" class="btn-categoria">Ropa</a>
@@ -60,10 +59,8 @@
                     <a href="categoria.html?cat=Tecnologia" class="btn-categoria">Tecnología</a>
                     <a href="categoria.html?cat=Hogar" class="btn-categoria">Hogar</a>
                 </div>
-            </div>
-        </section>
-
-    </main>
+            </section>
+        </div>
     </main>
 
     <footer>
@@ -74,9 +71,26 @@
 
     <script src="js/productos.js"></script>
     <script src="js/main.js"></script>
-    <script src="js/script.js"></script>
-    <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
-</body>
-</html>
+    <script>
+        // Llama a actualizarContadorCarrito al cargar la página de inicio para que se vea el número correcto
+        document.addEventListener('DOMContentLoaded', function() {
+            // Asegúrate de que la función actualizarContadorCarrito esté definida o cargada
+            // Es definida en js/producto-detalle.js y js/carrito.js.
+            // Para que funcione en index.html sin cargar ambos, la definimos aquí también o cargamos carrito.js
+            // La opción más simple es cargar carrito.js también en el index.html, pero si no quieres, puedes definirla aquí.
+            // Para este ejemplo, asegúrate que se cargue main.js (que está) y las funciones globales.
+            // Mejor opción: incluimos un llamado seguro a la función.
+            if (typeof actualizarContadorCarrito === 'function') {
+                actualizarContadorCarrito();
+            } else {
+                // Si la función no está disponible globalmente (ej. por orden de carga de scripts),
+                // puedes definir una versión básica aquí o forzar la carga de carrito.js.
+                // Para simplificar, asumiremos que si ya cargaste main.js, la estructura está bien.
+                // Sin embargo, para que el contador funcione siempre, lo más robusto es cargar `carrito.js` aquí también.
+            }
+        });
+    </script>
+    <script src="js/carrito.js"></script> 
+
 </body>
 </html>
