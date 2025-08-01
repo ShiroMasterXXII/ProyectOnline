@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carrito de Compras - MiStore22</title>
+    <link rel="stylesheet" href="css/estilos.css">
+</head>
+<body>
+
+    <header>
+        <div class="container">
+            <div class="logo">
+                <a href="index.html"><h1>MiStore22</h1></a>
+            </div>
+            <nav class="menu-principal">
+                <ul>
+                    <li><a href="index.html">Inicio</a></li>
+                    <li class="dropdown">
+                        <a href="#">Categorías <span class="arrow">▼</span></a>
+                        <ul class="dropdown-content">
+                            <li><a href="#">Ropa</a></li>
+                            <li><a href="#">Calzado</a></li>
+                            <li><a href="#">Tecnología</a></li>
+                            <li><a href="#">Hogar</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#">Ofertas</a></li>
+                    <li><a href="#">Contacto</a></li>
+                </ul>
+                 <div class="iconos-nav">
+                    <div class="icono-carrito">
+                        <a href="carrito.html">🛒</a>
+                    </div>
+                </div>
+            </nav>
+            <button class="hamburger-menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <h1 class="titulo-pagina">Carrito de Compras</h1>
+            <div class="carrito-layout">
+                <div class="lista-productos-carrito">
+                    </div>
+                <div class="carrito-resumen">
+                    <h2>Resumen del Pedido</h2>
+                    <div class="resumen-linea">
+                        <span>Subtotal:</span>
+                        <span id="resumen-subtotal">$0.00</span>
+                    </div>
+                    <div class="resumen-linea total">
+                        <span>Total:</span>
+                        <span id="resumen-total">$0.00</span>
+                    </div>
+                    <button class="btn-finalizar-compra">Finalizar Compra</button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 MiStore22. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <script src="js/productos.js"></script>
+    <script src="js/carrito.js"></script>
+</body>
+</html>

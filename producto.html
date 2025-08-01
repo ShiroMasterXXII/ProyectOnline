@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Producto - MiStore22</title>
+    <link rel="stylesheet" href="css/estilos.css">
+</head>
+<body>
+
+    <header>
+        <div class="container">
+            <div class="logo">
+                <a href="index.html"><h1>MiStore22</h1></a>
+            </div>
+            <nav class="menu-principal">
+                 <ul>
+                    <li><a href="index.html">Inicio</a></li>
+                    <li class="dropdown">
+                        <a href="#">Categorías <span class="arrow">▼</span></a>
+                        <ul class="dropdown-content">
+                            <li><a href="categoria.html?cat=Ropa">Ropa</a></li>
+                            <li><a href="categoria.html?cat=Calzado">Calzado</a></li>
+                            <li><a href="categoria.html?cat=Tecnologia">Tecnología</a></li>
+                            <li><a href="categoria.html?cat=Hogar">Hogar</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#">Ofertas</a></li>
+                    <li><a href="#">Contacto</a></li>
+                </ul>
+            </nav>
+            <button class="hamburger-menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            
+            <div class="navegacion-producto">
+                <a href="#" id="btn-regresar">← Volver</a>
+            </div>
+            <div class="producto-detalle-layout">
+                <div class="columna-imagen">
+                    <img src="" alt="Cargando imagen del producto...">
+                </div>
+                <div class="columna-info">
+                    <h1 class="producto-titulo">Cargando...</h1>
+                    <p class="producto-precio">$0.00 MX</p>
+                    <p class="producto-descripcion-corta"></p>
+                    <a href="#" class="btn-anadir-carrito">Pedir por WhatsApp</a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 MiStore22. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <script src="js/productos.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/producto-detalle.js"></script>
+</body>
+</html>
