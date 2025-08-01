@@ -27,7 +27,7 @@ ul {
 }
 
 /* ======================================= */
-/* ===         HEADER                  === */
+/* ===           HEADER                === */
 /* ======================================= */
 
 header {
@@ -105,7 +105,7 @@ header .container {
 }
 
 /* ======================================= */
-/* ===         HERO BANNER             === */
+/* ===           HERO BANNER           === */
 /* ======================================= */
 
 .hero-banner {
@@ -171,7 +171,7 @@ header .container {
 .producto-card img {
     max-width: 100%;
     height: 200px;
-    object-fit: contain; /* <-- ESTA ES LA LÍNEA MODIFICADA */
+    object-fit: contain;
     border-radius: 8px;
     margin-bottom: 15px;
 }
@@ -186,21 +186,18 @@ header .container {
     font-size: 1.3em;
     font-weight: bold;
     color: #e67e22;
-    margin-bottom: 15px;
+    margin-bottom: 10px; /* Ajustado el margen inferior para dar espacio al envío */
 }
 
-.producto-card .btn-ver-detalles,
-.producto-card .btn-pedir-whatsapp {
-    display: block;
-    padding: 10px 15px;
-    border-radius: 5px;
-    text-align: center;
-    margin-top: 10px;
-    color: #fff;
-    font-weight: bold;
-    text-decoration: none;
-    transition: background-color 0.3s ease;
+/* --- NUEVOS ESTILOS PARA EL COSTO DE ENVÍO EN LAS TARJETAS DE PRODUCTO --- */
+.producto-card .envio-card {
+    font-size: 0.95em;
+    color: #777;
+    margin-bottom: 15px;
+    font-weight: normal;
 }
+/* --- FIN NUEVOS ESTILOS --- */
+
 
 /* --- ESTILOS CORREGIDOS PARA LOS BOTONES (CON ANIMACIÓN) --- */
 
@@ -241,7 +238,7 @@ header .container {
 }
 
 /* ======================================= */
-/* ===    SECCIÓN DE CATEGORÍAS        === */
+/* ===      SECCIÓN DE CATEGORÍAS      === */
 /* ======================================= */
 
 .categorias-inicio {
@@ -323,8 +320,22 @@ header .container {
     font-size: 2em;
     color: #007bff;
     font-weight: bold;
-    margin: 20px 0;
+    margin: 20px 0 10px 0; /* Ajustado el margen inferior para dar espacio al envío */
 }
+
+/* --- NUEVOS ESTILOS PARA EL COSTO DE ENVÍO EN LA PÁGINA DE DETALLE --- */
+.columna-info .producto-envio {
+    font-size: 1.1em;
+    color: #666; /* Un color ligeramente más sutil que el precio */
+    margin-bottom: 20px; /* Margen para separar de la descripción */
+    font-weight: 500;
+}
+
+.columna-info .producto-envio span {
+    font-weight: bold; /* Hacer el valor numérico más prominente */
+    color: #333; /* O el color que prefieras para el número del costo */
+}
+/* --- FIN NUEVOS ESTILOS --- */
 
 .columna-info .producto-descripcion-corta {
     font-size: 1.1em;
@@ -347,7 +358,7 @@ header .container {
 }
 
 /* ======================================= */
-/* ===         FOOTER                  === */
+/* ===           FOOTER                === */
 /* ======================================= */
 
 footer {
@@ -359,7 +370,7 @@ footer {
 }
 
 /* ======================================= */
-/* ===         MENÚ MÓVIL              === */
+/* ===           MENÚ MÓVIL            === */
 /* ======================================= */
 
 .hamburger-menu {
@@ -423,7 +434,7 @@ footer {
         background-color: #f9f9f9;
         display: none;
     }
-     .dropdown-content.show {
+    .dropdown-content.show {
         display: block;
     }
 
