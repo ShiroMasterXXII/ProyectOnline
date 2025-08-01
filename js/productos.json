@@ -10,7 +10,8 @@
         {
           "url": "/img/productos/producto1.jpg"
         }
-      ]
+      ],
+      "costo_envio": 50
     },
     {
       "id": 2,
@@ -22,7 +23,8 @@
         {
           "url": "/img/productos/producto2.jpg"
         }
-      ]
+      ],
+      "costo_envio": 50
     }
   ]
 }
