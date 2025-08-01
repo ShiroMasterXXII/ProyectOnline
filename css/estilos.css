@@ -436,3 +436,31 @@ footer {
         gap: 15px;
     }
 }
+
+/* --- ESTILOS PARA GALERÍA DE IMÁGENES --- */
+#imagen-principal {
+    width: 100%;
+    height: auto;
+    border-radius: 12px;
+    margin-bottom: 15px;
+    border: 1px solid #eee;
+}
+
+.galeria-miniaturas {
+    display: flex;
+    gap: 10px;
+}
+
+.miniatura {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 8px;
+    cursor: pointer;
+    border: 2px solid #eee;
+    transition: border-color 0.3s ease;
+}
+
+.miniatura:hover {
+    border-color: #007bff;
+}

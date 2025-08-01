@@ -16,4 +16,8 @@ collections:
       - {label: "Precio", name: "precio", widget: "number"}
       - {label: "Categoría", name: "categoria", widget: "select", options: ["Ropa", "Calzado", "Tecnología", "Hogar"]}
       - {label: "Descripción", name: "descripcion", widget: "text"}
-      - {label: "Imagen", name: "img", widget: "image"}
+      - label: "Imágenes del Producto"
+        name: "imagenes"
+        widget: "list"
+        fields:
+          - {label: "Imagen", name: "url", widget: "image"}
