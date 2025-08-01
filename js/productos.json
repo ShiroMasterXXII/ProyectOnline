@@ -5,16 +5,10 @@
       "nombre": "Gorra Azul New Era",
       "precio": 999,
       "categoria": "Ropa",
-      "descripcion": "gorra azul de prueba",
+      "descripcion": "Gorra azul snapback original varios modelos y muy comoda",
       "imagenes": [
         {
           "url": "/img/productos/producto1.jpg"
-        },
-        {
-          "url": "/img/productos/producto2.jpg"
-        },
-        {
-          "url": "/img/productos/producto3.jpg"
         }
       ]
     }
