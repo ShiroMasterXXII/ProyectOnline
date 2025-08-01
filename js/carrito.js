@@ -8,6 +8,15 @@ document.addEventListener('DOMContentLoaded', function() {
     const btnFinalizarCompra = document.getElementById('btn-finalizar-compra');
     const carritoContador = document.getElementById('carrito-contador');
 
+    // Lógica para el botón "Regresar" en el carrito
+    const btnRegresarCarrito = document.getElementById('btn-regresar-carrito');
+    if (btnRegresarCarrito) {
+        btnRegresarCarrito.addEventListener('click', e => {
+            e.preventDefault(); // Evita que el enlace recargue la página
+            history.back(); // Regresa a la página anterior en el historial del navegador
+        });
+    }
+
     // Función para obtener el carrito del localStorage
     function getCarrito() {
         return JSON.parse(localStorage.getItem('carrito')) || [];
@@ -22,26 +31,31 @@ document.addEventListener('DOMContentLoaded', function() {
     function actualizarContadorCarrito() {
         const carrito = getCarrito();
         const totalItems = carrito.reduce((sum, item) => sum + (item.cantidad || 1), 0);
-        if (carritoContador) { // Solo actualiza si el elemento contador existe en la página actual
+        if (carritoContador) { 
             carritoContador.textContent = totalItems;
         }
     }
 
-    // --- Lógica de renderizado del carrito (solo si estamos en carrito.html) ---
-    // Esta verificación asegura que solo intentamos manipular los elementos del carrito
-    // si el div 'items-carrito' realmente existe en el DOM.
-    if (itemsCarritoDiv) { // Verifica si el contenedor principal del carrito existe
-        // Función para renderizar los productos en la página del carrito
+    // Lógica de renderizado del carrito (solo si estamos en carrito.html)
+    if (itemsCarritoDiv) { 
         function renderCarrito() {
             const carrito = getCarrito();
             itemsCarritoDiv.innerHTML = ''; // Limpiar contenido previo
 
             if (carrito.length === 0) {
                 carritoVacioMensaje.style.display = 'block';
-                document.querySelector('.resumen-carrito').style.display = 'none';
+                // Asumo que .resumen-carrito ya está oculto por defecto si está vacío en tu CSS o por la lógica inicial.
+                // Si necesitas ocultarlo aquí, asegúrate de que el selector sea correcto.
+                const resumenCarritoDiv = document.querySelector('.resumen-carrito');
+                if (resumenCarritoDiv) {
+                    resumenCarritoDiv.style.display = 'none';
+                }
             } else {
                 carritoVacioMensaje.style.display = 'none';
-                document.querySelector('.resumen-carrito').style.display = 'block';
+                const resumenCarritoDiv = document.querySelector('.resumen-carrito');
+                if (resumenCarritoDiv) {
+                    resumenCarritoDiv.style.display = 'block';
+                }
 
                 let subtotal = 0;
                 let costoEnvioTotal = 0;
@@ -121,6 +135,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
                     mensajeWhatsApp += `${index + 1}. ${item.nombre} (x${cantidad})\n`;
                     mensajeWhatsApp += `   Precio Unitario: $${item.precio.toFixed(2)} MX\n`;
+H
                     mensajeWhatsApp += `   Subtotal: $${precioTotalProducto.toFixed(2)} MX\n`;
                     mensajeWhatsApp += `   Envío por artículo: $${(item.costo_envio !== undefined ? item.costo_envio : 0).toFixed(2)} MX\n\n`;
                 });
@@ -137,10 +152,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 window.open(whatsappUrl, '_blank');
             });
         }
-        renderCarrito(); // Inicializar el carrito SOLO SI estamos en carrito.html
+        renderCarrito(); 
     }
     
-    // Llama a actualizarContadorCarrito SIEMPRE que se cargue el script,
-    // ya que el contador del header sí existe en todas las páginas.
     actualizarContadorCarrito();
 });
