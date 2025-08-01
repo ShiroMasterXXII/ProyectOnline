@@ -2,32 +2,29 @@ backend:
   name: git-gateway
   branch: main
 
-# Carpeta donde se subirán las imágenes
-media_folder: "img/productos" 
-# Ruta pública que se guardará en el JSON para acceder a las imágenes
+media_folder: "img/productos"
 public_folder: "/img/productos"
 
 collections:
-  - name: "productos"
-    label: "Productos"
-    label_singular: "Producto"
-    file: "js/productos.json"
-    extension: "json"
-    format: "json"
-    create: true
-    fields:
+  - name: "configuracion" # Puedes darle el nombre que quieras a la colección
+    label: "Configuración de Productos"
+    files: # Usamos 'files' en lugar de 'folder' para un archivo único
       - label: "Lista de Productos"
-        name: "lista_productos"
-        widget: "list"
+        name: "productos"
+        file: "js/productos.json"
         fields:
-          - {label: "ID", name: "id", widget: "number"}
-          - {label: "Nombre", name: "nombre", widget: "string"}
-          - {label: "Precio", name: "precio", widget: "number"}
-          - {label: "Categoría", name: "categoria", widget: "select", options: ["Ropa", "Calzado", "Tecnología", "Hogar"]}
-          - {label: "Descripción", name: "descripcion", widget: "text"}
-          - label: "Imágenes"
-            name: "imagenes"
+          - label: "Productos"
+            name: "lista_productos"
             widget: "list"
-            summary: "{{fields.url}}"
             fields:
-              - {label: "Imagen", name: "url", widget: "image"}
+              - {label: "ID", name: "id", widget: "number"}
+              - {label: "Nombre", name: "nombre", widget: "string"}
+              - {label: "Precio", name: "precio", widget: "number"}
+              - {label: "Categoría", name: "categoria", widget: "select", options: ["Ropa", "Calzado", "Tecnología", "Hogar"]}
+              - {label: "Descripción", name: "descripcion", widget: "text"}
+              - label: "Imágenes"
+                name: "imagenes"
+                widget: "list"
+                summary: "{{fields.url}}"
+                fields:
+                  - {label: "Imagen", name: "url", widget: "image"}
