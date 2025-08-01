@@ -6,9 +6,9 @@ media_folder: "img/productos"
 public_folder: "/img/productos"
 
 collections:
-  - name: "configuracion" # Puedes darle el nombre que quieras a la colección
+  - name: "configuracion"
     label: "Configuración de Productos"
-    files: # Usamos 'files' en lugar de 'folder' para un archivo único
+    files:
       - label: "Lista de Productos"
         name: "productos"
         file: "js/productos.json"
@@ -22,6 +22,9 @@ collections:
               - {label: "Precio", name: "precio", widget: "number"}
               - {label: "Categoría", name: "categoria", widget: "select", options: ["Ropa", "Calzado", "Tecnología", "Hogar"]}
               - {label: "Descripción", name: "descripcion", widget: "text"}
+              # --- NUEVO CAMPO DE ENVÍO ---
+              - {label: "Costo de Envío", name: "costo_envio", widget: "number", required: false, default: 0}
+              # --- FIN NUEVO CAMPO ---
               - label: "Imágenes"
                 name: "imagenes"
                 widget: "list"
