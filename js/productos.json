@@ -11,6 +11,18 @@
           "url": "/img/productos/producto1.jpg"
         }
       ]
+    },
+    {
+      "id": 2,
+      "nombre": "Gorra Black New Era",
+      "precio": 999,
+      "categoria": "Ropa",
+      "descripcion": "Gorra Black snapback de gran calidad y muy comoda",
+      "imagenes": [
+        {
+          "url": "/img/productos/producto2.jpg"
+        }
+      ]
     }
   ]
 }
