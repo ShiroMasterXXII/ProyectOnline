@@ -228,7 +228,7 @@ header .container {
 
 /* 3. Estilo Individual: Botón de WhatsApp (gradiente animado) */
 .producto-card .btn-pedir-whatsapp {
-    background: linear-gradient(-45deg, #25d366, #128c7e, #075e54, #25d366);
+    background: linear-gradient(-45deg, #ff0000, #a72828, #bf0000, #ff0000);
     background-size: 400% 400%;
     animation: gradient-animation 15s ease infinite;
 }
