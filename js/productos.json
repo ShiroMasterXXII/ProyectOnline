@@ -2,13 +2,25 @@
   "lista_productos": [
     {
       "id": 1,
-      "nombre": "Gorra New Era Azul (Ejemplo)",
+      "nombre": "Gorra Azul New Era",
       "precio": 999,
       "categoria": "Ropa",
-      "descripcion": "Este es un producto de ejemplo. Edítalo o elimínalo desde el panel de administración.",
+      "descripcion": "Gorra azul snapback original varios modelos y muy comoda",
       "imagenes": [
         {
-          "url": "img/productos/placeholder.jpg"
+          "url": "/img/productos/producto1.jpg"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "nombre": "Gorra Black New Era",
+      "precio": 999,
+      "categoria": "Ropa",
+      "descripcion": "Gorra Black snapback de gran calidad y muy comoda",
+      "imagenes": [
+        {
+          "url": "/img/productos/producto2.jpg"
         }
       ]
     }
