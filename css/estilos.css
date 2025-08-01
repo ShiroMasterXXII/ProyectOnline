@@ -747,21 +747,24 @@ footer {
     border-radius: 12px;
     padding: 30px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
-    text-align: right;
+    /* CAMBIO CLAVE AQUÍ: Centrar el texto Y los elementos de bloque */
+    text-align: center; /* Alinea el texto y elementos inline-block/inline */
     max-width: 400px;
-    margin: 0 auto;
+    margin: 0 auto; /* Centrar el bloque resumen-carrito */
 }
 
 .resumen-carrito p {
     font-size: 1.1em;
     margin-bottom: 10px;
     color: #333;
+    text-align: right; /* Esto mantiene el texto a la derecha dentro del resumen */
 }
 
 .resumen-carrito h3 {
     font-size: 1.6em;
     margin-top: 20px;
     color: #007bff;
+    text-align: right; /* Esto mantiene el texto a la derecha dentro del resumen */
 }
 
 .resumen-carrito span {
@@ -769,17 +772,36 @@ footer {
     color: #000;
 }
 
-.btn-vaciar-carrito {
-    background-color: #6c757d;
+/* Nuevos contenedores para agrupar los botones y centrarlos */
+.resumen-carrito .botones-accion-carrito {
+    display: flex; /* Usamos flexbox para centrar y manejar el espacio */
+    flex-direction: column; /* Apilamos los botones verticalmente */
+    align-items: center; /* Centramos los ítems en el eje transversal (horizontalmente en este caso) */
+    gap: 15px; /* Espacio entre los botones */
+    margin-top: 25px; /* Espacio superior para separar de los totales */
+}
+
+/* Estilos para los botones del carrito para que se adapten al ancho */
+.btn-vaciar-carrito,
+.btn-finalizar-compra {
+    display: block; /* Asegura que sean elementos de bloque */
+    width: 90%; /* Ancho para que no sean demasiado pequeños, puedes ajustar */
+    max-width: 300px; /* Limita el ancho máximo para que no se extiendan demasiado */
+    margin: 0 auto; /* Centra los botones individualmente */
+    padding: 12px 20px;
+    font-size: 1em;
+    font-weight: bold;
     color: #fff;
     border: none;
-    padding: 12px 20px;
     border-radius: 8px;
     cursor: pointer;
-    font-size: 1em;
-    margin-top: 20px;
+    text-align: center;
     transition: background-color 0.3s ease, transform 0.3s ease;
-    margin-right: 10px;
+}
+
+
+.btn-vaciar-carrito {
+    background-color: #6c757d;
 }
 
 .btn-vaciar-carrito:hover {
@@ -788,18 +810,9 @@ footer {
 }
 
 .btn-finalizar-compra {
-    display: inline-block;
     background: linear-gradient(-45deg, #25d366, #128c7e, #075e54, #25d366);
     background-size: 400% 400%;
     animation: gradient-animation 15s ease infinite;
-    color: #fff;
-    border: none;
-    padding: 12px 20px;
-    border-radius: 8px;
-    cursor: pointer;
-    font-size: 1em;
-    margin-top: 20px;
-    transition: transform 0.3s ease;
 }
 
 .btn-finalizar-compra:hover {
