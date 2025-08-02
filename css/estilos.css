@@ -125,11 +125,10 @@ header .container {
     /* Elimina max-width y max-height si usas width y height fijos */
 }
 
-/* Si tienes una media query para el logo en móviles, ajusta también ahí */
+/* Si quieres que el logo se haga un poco más pequeño en pantallas pequeñas */
 @media (max-width: 768px) {
     .logo .logo-img {
-        max-height: 40px;
-        max-width: 150px; /* <-- Ajusta también para móviles si es necesario */
+        max-height: 40px; /* Un poco más pequeño en móviles */
     }
 }
 
