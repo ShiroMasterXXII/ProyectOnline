@@ -129,7 +129,7 @@ header .container {
 @media (max-width: 768px) {
     .logo .logo-img {
         max-height: 40px;
-        max-width: 150px; /* <-- Ajusta también para móviles si es necesario */
+        max-width: 100px; /* <-- Ajusta también para móviles si es necesario */
     }
 }
 
