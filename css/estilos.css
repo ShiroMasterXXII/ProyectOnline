@@ -105,6 +105,33 @@ header .container {
 }
 
 /* ======================================= */
+/* ===         HEADER - LOGO           === */
+/* ======================================= */
+
+.logo h1 {
+    /* Puedes mantener estos estilos si quieres que el texto MiStore22 se vea por si el logo no carga,
+       o eliminarlos si solo quieres el logo */
+    font-size: 1.8em;
+    font-weight: bold;
+    color: #007bff;
+    /* Si solo quieres el logo, puedes considerar agregar:
+    display: none; */
+}
+
+.logo .logo-img {
+    max-height: 50px; /* Ajusta la altura máxima de tu logo, por ejemplo 50px */
+    width: auto;     /* Mantiene la proporción de la imagen */
+    display: block;  /* Para eliminar espacios extra por debajo si los hay */
+}
+
+/* Si quieres que el logo se haga un poco más pequeño en pantallas pequeñas */
+@media (max-width: 768px) {
+    .logo .logo-img {
+        max-height: 40px; /* Un poco más pequeño en móviles */
+    }
+}
+
+/* ======================================= */
 /* ===           HERO BANNER           === */
 /* ======================================= */
 
