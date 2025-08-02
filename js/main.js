@@ -4,10 +4,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const dropdown = document.querySelector('.dropdown');
     const dropdownContent = document.querySelector('.dropdown-content');
 
-    // Contadores para las dos versiones del carrito
-    const carritoContadorMobile = document.getElementById('carrito-contador-mobile');
-    const carritoContadorDesktop = document.getElementById('carrito-contador-desktop');
-
+    const carritoContador = document.getElementById('carrito-contador'); // Vuelve a un solo ID
 
     if (hamburgerMenu) {
         hamburgerMenu.addEventListener('click', function() {
@@ -22,16 +19,13 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // Función para actualizar los contadores del carrito
-    window.actualizarContadorCarrito = function() { // Hacerla global para que producto.js y carrito.js puedan llamarla
+    // Función para actualizar el contador del carrito (solo un ID)
+    window.actualizarContadorCarrito = function() { // Hacerla global
         const carrito = JSON.parse(localStorage.getItem('carrito')) || [];
         const totalItems = carrito.reduce((sum, item) => sum + (item.cantidad || 1), 0);
         
-        if (carritoContadorMobile) { 
-            carritoContadorMobile.textContent = totalItems;
-        }
-        if (carritoContadorDesktop) { 
-            carritoContadorDesktop.textContent = totalItems;
+        if (carritoContador) { 
+            carritoContador.textContent = totalItems;
         }
     }
 

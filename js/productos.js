@@ -9,10 +9,10 @@ document.addEventListener('DOMContentLoaded', function() {
     const btnAgregarCarrito = document.getElementById('btn-agregar-carrito');
     const btnRegresar = document.getElementById('btn-regresar');
 
-    // --- NUEVAS CONSTANTES PARA EL ENVÍO GRATIS ---
+    // --- CONSTANTES PARA EL ENVÍO GRATIS ---
     const LIMITE_ENVIO_GRATIS = 300;
     const mensajeEnvioGratisProducto = document.getElementById('mensaje-envio-gratis-producto');
-    // --- FIN NUEVAS CONSTANTES ---
+    // --- FIN CONSTANTES ---
 
     // Función para obtener el carrito del localStorage
     function getCarrito() {
