@@ -119,11 +119,10 @@ header .container {
 }
 
 .logo .logo-img {
-    max-height: 50px; /* Mantén esto para controlar la altura */
-    max-width: 200px; /* <-- Aumenta este valor para hacerlo más ancho */
-    width: auto;     /* Asegura que el ancho se ajuste automáticamente */
-    height: auto;    /* Asegura que la altura se ajuste automáticamente para mantener la proporción */
+    width: 200px; /* <-- Ancho fijo. Si no pones height: auto, podría distorsionarse */
+    height: 50px; /* <-- Altura fija */
     display: block;
+    /* Elimina max-width y max-height si usas width y height fijos */
 }
 
 /* Si tienes una media query para el logo en móviles, ajusta también ahí */
