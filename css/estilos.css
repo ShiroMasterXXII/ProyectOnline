@@ -254,9 +254,10 @@ header .container {
         display: block;
     }
 
-    .producto-detalle-layout {
-        grid-template-columns: 1fr;
-    }
+    /* ESTA LÍNEA ES LA QUE SE ELIMINÓ PARA CORREGIR LA PÁGINA DE DETALLES DEL PRODUCTO EN MÓVIL */
+    /* .producto-detalle-layout {
+        grid-template-columns: 1fr; 
+    } */
     
     .grid-productos {
         grid-template-columns: repeat(2, 1fr);
