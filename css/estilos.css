@@ -119,8 +119,8 @@ header .container {
 }
 
 .logo .logo-img {
-    width: 150px; /* <-- Ancho fijo. Si no pones height: auto, podría distorsionarse */
-    height: 60px; /* <-- Altura fija */
+    width: 100px; /* <-- Ancho fijo. Si no pones height: auto, podría distorsionarse */
+    height: 50px; /* <-- Altura fija */
     display: block;
     /* Elimina max-width y max-height si usas width y height fijos */
 }
