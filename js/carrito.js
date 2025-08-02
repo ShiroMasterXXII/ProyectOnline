@@ -6,9 +6,8 @@ document.addEventListener('DOMContentLoaded', function() {
     const totalCarritoSpan = document.getElementById('total-carrito');
     const btnVaciarCarrito = document.getElementById('btn-vaciar-carrito');
     const btnFinalizarCompra = document.getElementById('btn-finalizar-compra');
-    const carritoContador = document.getElementById('carrito-contador');
-
-    // Lógica para el botón "Regresar" en el carrito
+    
+    // Lógica para el botón "Regresar" en el carrito (si existe en tu HTML)
     const btnRegresarCarrito = document.getElementById('btn-regresar-carrito');
     if (btnRegresarCarrito) {
         btnRegresarCarrito.addEventListener('click', e => {
@@ -17,10 +16,10 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // --- NUEVAS CONSTANTES PARA EL ENVÍO GRATIS ---
+    // --- CONSTANTES PARA EL ENVÍO GRATIS ---
     const LIMITE_ENVIO_GRATIS = 300; // Define tu umbral de envío gratis aquí
     const mensajeEnvioGratis = document.getElementById('mensaje-envio-gratis');
-    // --- FIN NUEVAS CONSTANTES ---
+    // --- FIN CONSTANTES ---
 
     // Función para obtener el carrito del localStorage
     function getCarrito() {
@@ -30,15 +29,6 @@ document.addEventListener('DOMContentLoaded', function() {
     // Función para guardar el carrito en el localStorage
     function saveCarrito(carrito) {
         localStorage.setItem('carrito', JSON.stringify(carrito));
-    }
-
-    // Función para actualizar el contador del carrito en el header
-    function actualizarContadorCarrito() {
-        const carrito = getCarrito();
-        const totalItems = carrito.reduce((sum, item) => sum + (item.cantidad || 1), 0);
-        if (carritoContador) { 
-            carritoContador.textContent = totalItems;
-        }
     }
 
     // Lógica de renderizado del carrito (solo si estamos en carrito.html)
@@ -127,7 +117,6 @@ document.addEventListener('DOMContentLoaded', function() {
                     itemsCarritoDiv.innerHTML += itemHTML;
                 });
 
-
                 document.querySelectorAll('.btn-remover-item').forEach(button => {
                     button.addEventListener('click', (e) => {
                         const idToRemove = parseInt(e.target.dataset.id);
@@ -135,11 +124,17 @@ document.addEventListener('DOMContentLoaded', function() {
                         carritoActual = carritoActual.filter(item => item.id !== idToRemove);
                         saveCarrito(carritoActual);
                         renderCarrito();
-                        actualizarContadorCarrito();
+                        // Llama a la función global para actualizar el contador del carrito
+                        if (window.actualizarContadorCarrito) {
+                            window.actualizarContadorCarrito();
+                        }
                     });
                 });
             }
-            actualizarContadorCarrito();
+            // Llama a la función global para actualizar el contador del carrito al final del renderizado
+            if (window.actualizarContadorCarrito) {
+                window.actualizarContadorCarrito();
+            }
         }
 
         if (btnVaciarCarrito) {
@@ -147,7 +142,10 @@ document.addEventListener('DOMContentLoaded', function() {
                 if (confirm('¿Estás seguro de que quieres vaciar el carrito?')) {
                     localStorage.removeItem('carrito');
                     renderCarrito();
-                    actualizarContadorCarrito();
+                    // Llama a la función global para actualizar el contador del carrito
+                    if (window.actualizarContadorCarrito) {
+                        window.actualizarContadorCarrito();
+                    }
                 }
             });
         }
@@ -184,7 +182,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 mensajeWhatsApp += `---\n`;
                 mensajeWhatsApp += `Resumen del Pedido:\n`;
                 mensajeWhatsApp += `Subtotal de productos: $${subtotal.toFixed(2)} MX\n`;
-                mensajeWhatsApp += `Costo total de envío: $${costoEnvioFinalWhatsApp.toFixed(2)} MX\n`; // Usar costo de envío FINAL
+                mensajeWhatsApp += `Costo total de envío: $${costoEnvioFinalWhatsApp.toFixed(2)} MX\n`; 
                 mensajeWhatsApp += `TOTAL A PAGAR: $${(subtotal + costoEnvioFinalWhatsApp).toFixed(2)} MX\n\n`;
                 mensajeWhatsApp += `¡Espero tu confirmación!`;
 
@@ -193,8 +191,6 @@ document.addEventListener('DOMContentLoaded', function() {
                 window.open(whatsappUrl, '_blank');
             });
         }
-        renderCarrito(); 
+        renderCarrito(); // Llama a la función de renderizado al cargar la página
     }
-    
-    actualizarContadorCarrito();
 });

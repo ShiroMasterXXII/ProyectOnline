@@ -841,3 +841,97 @@ footer {
     border: 1px solid #ffeeba;
 }
 
+/* ======================================= */
+/* ===           HEADER                === */
+/* ======================================= */
+
+/* Asegura el diseño del encabezado */
+header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 70px;
+    padding: 0 20px;
+}
+
+/* Oculta el ícono del carrito móvil por defecto (en escritorio) */
+.cart-icon-mobile {
+    display: none; 
+}
+
+/* Media query para pantallas pequeñas (móvil) */
+@media (max-width: 768px) {
+    /* Oculta el elemento "Carrito" dentro del menú principal en móvil */
+    .cart-item-desktop {
+        display: none; 
+    }
+
+    /* Muestra el ícono del carrito móvil en pantallas pequeñas */
+    .cart-icon-mobile {
+        display: flex; /* Usa flex para alinear el contenido (ícono y número) */
+        align-items: center; /* Centra verticalmente el contenido del carrito */
+        order: 2; /* Para que aparezca antes del botón de hamburguesa */
+        font-size: 1.2em; /* Tamaño del ícono */
+        font-weight: bold;
+        color: #007bff; /* Color para el ícono del carrito */
+        margin-right: 15px; /* Espacio entre el carrito y la hamburguesa */
+    }
+
+    /* Asegura que los elementos del encabezado se ordenen correctamente en móvil */
+    header .container {
+        justify-content: space-between; 
+    }
+
+    .logo {
+        order: 1; /* El logo primero */
+        flex-grow: 1; /* Permite que el logo ocupe el espacio restante a la izquierda */
+        text-align: left; /* Asegura que el logo esté alineado a la izquierda */
+    }
+
+    .hamburger-menu {
+        order: 3; /* El menú de hamburguesa al final */
+    }
+
+    /* Asegúrate de que tu menú principal en móvil se muestre correctamente */
+    .menu-principal {
+        position: absolute;
+        top: 70px;
+        left: 0;
+        width: 100%;
+        background-color: white;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        flex-direction: column;
+        display: none; /* Oculto por defecto, se muestra con 'is-active' */
+    }
+
+    .menu-principal.is-active {
+        display: flex;
+    }
+}
+
+/* ======================================= */
+/* ===         CARRITO Y MENSAJES      === */
+/* ======================================= */
+
+/* Estilos para el mensaje dinámico de envío gratis (usado en carrito.html y producto.html) */
+.mensaje-envio-gratis {
+    margin-top: 15px;
+    padding: 10px;
+    border-radius: 8px;
+    font-weight: bold;
+    font-size: 1.1em;
+    text-align: center; 
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.envio-gratis-exito {
+    background-color: #d4edda; /* Verde claro */
+    color: #155724; /* Verde oscuro */
+    border: 1px solid #c3e6cb;
+}
+
+.envio-gratis-falta {
+    background-color: #fff3cd; /* Amarillo claro */
+    color: #856404; /* Naranja oscuro */
+    border: 1px solid #ffeeba;
+}
