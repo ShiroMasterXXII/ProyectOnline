@@ -841,3 +841,29 @@ footer {
     border: 1px solid #ffeeba;
 }
 
+/* ======================================= */
+/* ===         CARRITO Y MENSAJES      === */
+/* ======================================= */
+
+/* Estilos para el mensaje dinámico de envío gratis (usado en carrito.html y producto.html) */
+.mensaje-envio-gratis {
+    margin-top: 15px;
+    padding: 10px;
+    border-radius: 8px;
+    font-weight: bold;
+    font-size: 1.1em;
+    text-align: center; 
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.envio-gratis-exito {
+    background-color: #d4edda; /* Verde claro */
+    color: #155724; /* Verde oscuro */
+    border: 1px solid #c3e6cb;
+}
+
+.envio-gratis-falta {
+    background-color: #fff3cd; /* Amarillo claro */
+    color: #856404; /* Naranja oscuro */
+    border: 1px solid #ffeeba;
+}
