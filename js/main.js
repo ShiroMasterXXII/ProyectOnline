@@ -1,40 +1,39 @@
 document.addEventListener('DOMContentLoaded', function() {
-    // --- Lógica del Menú Hamburguesa (ya existente, pero reconfirmada) ---
-    const hamburgerBtn = document.querySelector('.hamburger-menu');
-    const mainMenu = document.querySelector('.menu-principal');
+    const hamburgerMenu = document.querySelector('.hamburger-menu');
+    const menuPrincipal = document.querySelector('.menu-principal');
+    const dropdown = document.querySelector('.dropdown');
+    const dropdownContent = document.querySelector('.dropdown-content');
 
-    if (hamburgerBtn && mainMenu) {
-        hamburgerBtn.addEventListener('click', function() {
-            mainMenu.classList.toggle('is-active');
-            // Opcional: Cerrar el dropdown de categorías si el menú principal se cierra
-            const dropdownContent = document.querySelector('.dropdown-content');
-            if (!mainMenu.classList.contains('is-active') && dropdownContent.classList.contains('show')) {
-                dropdownContent.classList.remove('show');
-            }
-        });
-    }
+    // Contadores para las dos versiones del carrito
+    const carritoContadorMobile = document.getElementById('carrito-contador-mobile');
+    const carritoContadorDesktop = document.getElementById('carrito-contador-desktop');
 
-    // --- Lógica para el Dropdown de Categorías (NUEVA O MEJORADA) ---
-    const dropdownToggle = document.querySelector('.dropdown > a'); // El enlace "Categorías"
-    const dropdownContent = document.querySelector('.dropdown-content'); // El submenú real
 
-    if (dropdownToggle && dropdownContent) {
-        // Función para manejar el clic en "Categorías"
-        dropdownToggle.addEventListener('click', function(event) {
-            // Previene la navegación por defecto (ir a #)
-            event.preventDefault(); 
-            
-            // Alterna la clase 'show' para mostrar/ocultar el dropdown
+    hamburgerMenu.addEventListener('click', function() {
+        menuPrincipal.classList.toggle('is-active');
+    });
+
+    if (dropdown && dropdownContent) {
+        dropdown.addEventListener('click', function(e) {
+            e.preventDefault();
             dropdownContent.classList.toggle('show');
         });
-
-        // Opcional: Cerrar el dropdown si el usuario hace clic fuera de él
-        document.addEventListener('click', function(event) {
-            if (!dropdownToggle.contains(event.target) && !dropdownContent.contains(event.target)) {
-                if (dropdownContent.classList.contains('show')) {
-                    dropdownContent.classList.remove('show');
-                }
-            }
-        });
     }
+
+    // Función para actualizar los contadores del carrito
+    function actualizarContadorCarrito() {
+        const carrito = JSON.parse(localStorage.getItem('carrito')) || [];
+        const totalItems = carrito.reduce((sum, item) => sum + (item.cantidad || 1), 0);
+        
+        if (carritoContadorMobile) { 
+            carritoContadorMobile.textContent = totalItems;
+        }
+        if (carritoContadorDesktop) { 
+            carritoContadorDesktop.textContent = totalItems;
+        }
+    }
+
+    // Llama a la función al cargar la página
+    actualizarContadorCarrito();
+    // Esta función será llamada también desde carrito.js cada vez que se modifique el carrito
 });
