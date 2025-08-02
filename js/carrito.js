@@ -12,10 +12,15 @@ document.addEventListener('DOMContentLoaded', function() {
     const btnRegresarCarrito = document.getElementById('btn-regresar-carrito');
     if (btnRegresarCarrito) {
         btnRegresarCarrito.addEventListener('click', e => {
-            e.preventDefault(); // Evita que el enlace recargue la página
-            history.back(); // Regresa a la página anterior en el historial del navegador
+            e.preventDefault(); 
+            history.back(); 
         });
     }
+
+    // --- NUEVAS CONSTANTES PARA EL ENVÍO GRATIS ---
+    const LIMITE_ENVIO_GRATIS = 300; // Define tu umbral de envío gratis aquí
+    const mensajeEnvioGratis = document.getElementById('mensaje-envio-gratis');
+    // --- FIN NUEVAS CONSTANTES ---
 
     // Función para obtener el carrito del localStorage
     function getCarrito() {
@@ -40,16 +45,21 @@ document.addEventListener('DOMContentLoaded', function() {
     if (itemsCarritoDiv) { 
         function renderCarrito() {
             const carrito = getCarrito();
-            itemsCarritoDiv.innerHTML = ''; // Limpiar contenido previo
+            itemsCarritoDiv.innerHTML = ''; 
 
             if (carrito.length === 0) {
                 carritoVacioMensaje.style.display = 'block';
-                // Asumo que .resumen-carrito ya está oculto por defecto si está vacío en tu CSS o por la lógica inicial.
-                // Si necesitas ocultarlo aquí, asegúrate de que el selector sea correcto.
                 const resumenCarritoDiv = document.querySelector('.resumen-carrito');
                 if (resumenCarritoDiv) {
                     resumenCarritoDiv.style.display = 'none';
                 }
+                // --- LIMPIAR MENSAJE DE ENVÍO GRATIS CUANDO EL CARRITO ESTÁ VACÍO ---
+                if (mensajeEnvioGratis) {
+                    mensajeEnvioGratis.textContent = '';
+                    mensajeEnvioGratis.classList.remove('envio-gratis-exito', 'envio-gratis-falta');
+                }
+                // --- FIN LIMPIEZA ---
+
             } else {
                 carritoVacioMensaje.style.display = 'none';
                 const resumenCarritoDiv = document.querySelector('.resumen-carrito');
@@ -58,16 +68,49 @@ document.addEventListener('DOMContentLoaded', function() {
                 }
 
                 let subtotal = 0;
-                let costoEnvioTotal = 0;
+                let costoEnvioNormal = 0; // Suma de envíos individuales si no hay envío gratis
 
                 carrito.forEach(item => {
                     const cantidad = item.cantidad || 1;
                     const precioTotalProducto = item.precio * cantidad;
-                    const costoEnvioProducto = (item.costo_envio !== undefined ? item.costo_envio : 0) * cantidad;
-
                     subtotal += precioTotalProducto;
-                    costoEnvioTotal += costoEnvioProducto;
+                    // Suma el costo de envío individual para cada producto
+                    costoEnvioNormal += (item.costo_envio !== undefined ? item.costo_envio : 0) * cantidad;
+                });
 
+                let costoEnvioFinal = costoEnvioNormal; // Inicialmente es el costo normal
+                let mensajeEnvio = '';
+                let claseMensaje = '';
+
+                // --- LÓGICA DE ENVÍO GRATIS BASADA EN EL SUBTOTAL ---
+                if (subtotal >= LIMITE_ENVIO_GRATIS) {
+                    costoEnvioFinal = 0; // El envío es gratis
+                    mensajeEnvio = '¡Felicidades! Tienes Envío GRATIS en tu pedido. 🎉';
+                    claseMensaje = 'envio-gratis-exito';
+                } else {
+                    const faltaParaEnvioGratis = LIMITE_ENVIO_GRATIS - subtotal;
+                    mensajeEnvio = `¡Te faltan $${faltaParaEnvioGratis.toFixed(2)} MX para Envío GRATIS!`;
+                    claseMensaje = 'envio-gratis-falta';
+                }
+                // --- FIN LÓGICA DE ENVÍO GRATIS ---
+                
+                const total = subtotal + costoEnvioFinal;
+
+                subtotalCarritoSpan.textContent = `$${subtotal.toFixed(2)} MX`;
+                envioTotalCarritoSpan.textContent = `$${costoEnvioFinal.toFixed(2)} MX`; // ¡Usar el costo de envío FINAL!
+                totalCarritoSpan.textContent = `$${total.toFixed(2)} MX`;
+
+                // --- ACTUALIZAR EL MENSAJE DE ENVÍO GRATIS EN EL HTML ---
+                if (mensajeEnvioGratis) {
+                    mensajeEnvioGratis.textContent = mensajeEnvio;
+                    mensajeEnvioGratis.className = 'mensaje-envio-gratis ' + claseMensaje;
+                }
+                // --- FIN ACTUALIZACIÓN MENSAJE ---
+
+                // Generar el HTML para cada item del carrito
+                carrito.forEach(item => {
+                    const cantidad = item.cantidad || 1;
+                    const precioTotalProducto = item.precio * cantidad;
                     const itemHTML = `
                         <div class="carrito-item">
                             <img src="${item.imagenes[0]?.url || 'img/placeholder.jpg'}" alt="${item.nombre}">
@@ -84,10 +127,6 @@ document.addEventListener('DOMContentLoaded', function() {
                     itemsCarritoDiv.innerHTML += itemHTML;
                 });
 
-                const total = subtotal + costoEnvioTotal;
-                subtotalCarritoSpan.textContent = `$${subtotal.toFixed(2)} MX`;
-                envioTotalCarritoSpan.textContent = `$${costoEnvioTotal.toFixed(2)} MX`;
-                totalCarritoSpan.textContent = `$${total.toFixed(2)} MX`;
 
                 document.querySelectorAll('.btn-remover-item').forEach(button => {
                     button.addEventListener('click', (e) => {
@@ -123,28 +162,30 @@ document.addEventListener('DOMContentLoaded', function() {
 
                 let mensajeWhatsApp = "¡Hola! Me gustaría hacer el siguiente pedido de MiStore22:\n\n";
                 let subtotal = 0;
-                let costoEnvioTotal = 0;
+                let costoEnvioNormal = 0; 
 
                 carrito.forEach((item, index) => {
                     const cantidad = item.cantidad || 1;
                     const precioTotalProducto = item.precio * cantidad;
-                    const costoEnvioProducto = (item.costo_envio !== undefined ? item.costo_envio : 0) * cantidad;
-                    
                     subtotal += precioTotalProducto;
-                    costoEnvioTotal += costoEnvioProducto;
+                    costoEnvioNormal += (item.costo_envio !== undefined ? item.costo_envio : 0) * cantidad;
 
                     mensajeWhatsApp += `${index + 1}. ${item.nombre} (x${cantidad})\n`;
                     mensajeWhatsApp += `   Precio Unitario: $${item.precio.toFixed(2)} MX\n`;
-H
                     mensajeWhatsApp += `   Subtotal: $${precioTotalProducto.toFixed(2)} MX\n`;
                     mensajeWhatsApp += `   Envío por artículo: $${(item.costo_envio !== undefined ? item.costo_envio : 0).toFixed(2)} MX\n\n`;
                 });
 
+                let costoEnvioFinalWhatsApp = costoEnvioNormal;
+                if (subtotal >= LIMITE_ENVIO_GRATIS) {
+                    costoEnvioFinalWhatsApp = 0; // Envío gratis para WhatsApp también
+                }
+
                 mensajeWhatsApp += `---\n`;
                 mensajeWhatsApp += `Resumen del Pedido:\n`;
                 mensajeWhatsApp += `Subtotal de productos: $${subtotal.toFixed(2)} MX\n`;
-                mensajeWhatsApp += `Costo total de envío: $${costoEnvioTotal.toFixed(2)} MX\n`;
-                mensajeWhatsApp += `TOTAL A PAGAR: $${(subtotal + costoEnvioTotal).toFixed(2)} MX\n\n`;
+                mensajeWhatsApp += `Costo total de envío: $${costoEnvioFinalWhatsApp.toFixed(2)} MX\n`; // Usar costo de envío FINAL
+                mensajeWhatsApp += `TOTAL A PAGAR: $${(subtotal + costoEnvioFinalWhatsApp).toFixed(2)} MX\n\n`;
                 mensajeWhatsApp += `¡Espero tu confirmación!`;
 
                 // RECUERDA CAMBIAR 'TUNUMERO' POR TU NÚMERO DE WHATSAPP REAL
