@@ -40,43 +40,39 @@
 
     <main>
         <div class="container">
+            
             <div class="navegacion-producto">
                 <a href="#" id="btn-regresar">← Volver</a>
             </div>
-            
-            <section class="producto-detalle">
-                <div class="producto-galeria">
-                    <div class="imagen-principal-container">
-                        <img id="imagen-principal" src="img/placeholder.jpg" alt="Producto">
+            <div class="producto-detalle-layout">
+                <div class="columna-imagen">
+                    <img src="" alt="Cargando imagen principal del producto..." id="imagen-principal">
+                    <div class="galeria-miniaturas" id="galeria-miniaturas">
                     </div>
-                    <div class="miniaturas-container" id="miniaturas-container">
-                        </div>
                 </div>
-                <div class="producto-info">
-                    <h2 id="producto-nombre">Nombre del Producto</h2>
-                    <p class="producto-precio" id="producto-precio">$0.00 MX</p>
-                    <p class="producto-envio">Envío: <span id="producto-costo-envio">$0.00 MX</span></p>
-                    <p id="producto-descripcion">Descripción detallada del producto.</p>
+                <div class="columna-info">
+                    <h1 class="producto-titulo">Cargando...</h1>
+                    <p class="producto-precio">$0.00 MX</p>
+                    <p class="producto-envio">
+                        Envío: $<span id="costo-envio-display">0.00</span> MX
+                    </p>
+                    <p class="producto-descripcion-corta"></p>
                     
-                    <div class="acciones-producto">
-                        <label for="cantidad">Cantidad:</label>
-                        <input type="number" id="cantidad" value="1" min="1">
-                        <button id="btn-agregar-carrito" class="btn-agregar-carrito">Agregar al Carrito</button>
-                    </div>
+                    <button class="btn-agregar-carrito" id="btn-agregar-carrito">Agregar al Carrito</button>
+                    <a href="#" class="btn-anadir-carrito" id="btn-pedir-whatsapp-directo">Pedir por WhatsApp (solo este producto)</a>
 
-                    <p id="mensaje-envio-gratis-producto" class="mensaje-envio-gratis"></p>
                 </div>
-            </section>
+            </div>
         </div>
     </main>
 
     <footer>
         <div class="container">
-            <p>© 2025 MiStore22. Todos los derechos reservados.</p>
+            <p>&copy; 2025 MiStore22. Todos los derechos reservados.</p>
         </div>
     </footer>
 
     <script src="js/main.js"></script>
-    <script src="js/producto.js"></script>
+    <script src="js/producto-detalle.js"></script>
 </body>
 </html>

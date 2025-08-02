@@ -6,10 +6,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const totalCarritoSpan = document.getElementById('total-carrito');
     const btnVaciarCarrito = document.getElementById('btn-vaciar-carrito');
     const btnFinalizarCompra = document.getElementById('btn-finalizar-compra');
-    
-    // Contadores del carrito (ya definidos y manejados en main.js, pero se incluyen para asegurar)
-    const carritoContadorMobile = document.getElementById('carrito-contador-mobile');
-    const carritoContadorDesktop = document.getElementById('carrito-contador-desktop');
+    const carritoContador = document.getElementById('carrito-contador');
 
     // Lógica para el botón "Regresar" en el carrito
     const btnRegresarCarrito = document.getElementById('btn-regresar-carrito');
@@ -20,10 +17,10 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // --- CONSTANTES PARA EL ENVÍO GRATIS ---
+    // --- NUEVAS CONSTANTES PARA EL ENVÍO GRATIS ---
     const LIMITE_ENVIO_GRATIS = 300; // Define tu umbral de envío gratis aquí
     const mensajeEnvioGratis = document.getElementById('mensaje-envio-gratis');
-    // --- FIN CONSTANTES ---
+    // --- FIN NUEVAS CONSTANTES ---
 
     // Función para obtener el carrito del localStorage
     function getCarrito() {
@@ -35,16 +32,12 @@ document.addEventListener('DOMContentLoaded', function() {
         localStorage.setItem('carrito', JSON.stringify(carrito));
     }
 
-    // Función para actualizar los contadores del carrito (duplicada de main.js para redundancia, idealmente solo en main.js)
+    // Función para actualizar el contador del carrito en el header
     function actualizarContadorCarrito() {
         const carrito = getCarrito();
         const totalItems = carrito.reduce((sum, item) => sum + (item.cantidad || 1), 0);
-        
-        if (carritoContadorMobile) { 
-            carritoContadorMobile.textContent = totalItems;
-        }
-        if (carritoContadorDesktop) { 
-            carritoContadorDesktop.textContent = totalItems;
+        if (carritoContador) { 
+            carritoContador.textContent = totalItems;
         }
     }
 
@@ -142,11 +135,11 @@ document.addEventListener('DOMContentLoaded', function() {
                         carritoActual = carritoActual.filter(item => item.id !== idToRemove);
                         saveCarrito(carritoActual);
                         renderCarrito();
-                        actualizarContadorCarrito(); // Llama a la función de actualización
+                        actualizarContadorCarrito();
                     });
                 });
             }
-            actualizarContadorCarrito(); // Llama a la función de actualización al final de renderizado
+            actualizarContadorCarrito();
         }
 
         if (btnVaciarCarrito) {
@@ -154,7 +147,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 if (confirm('¿Estás seguro de que quieres vaciar el carrito?')) {
                     localStorage.removeItem('carrito');
                     renderCarrito();
-                    actualizarContadorCarrito(); // Llama a la función de actualización
+                    actualizarContadorCarrito();
                 }
             });
         }
@@ -191,7 +184,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 mensajeWhatsApp += `---\n`;
                 mensajeWhatsApp += `Resumen del Pedido:\n`;
                 mensajeWhatsApp += `Subtotal de productos: $${subtotal.toFixed(2)} MX\n`;
-                mensajeWhatsApp += `Costo total de envío: $${costoEnvioFinalWhatsApp.toFixed(2)} MX\n`; 
+                mensajeWhatsApp += `Costo total de envío: $${costoEnvioFinalWhatsApp.toFixed(2)} MX\n`; // Usar costo de envío FINAL
                 mensajeWhatsApp += `TOTAL A PAGAR: $${(subtotal + costoEnvioFinalWhatsApp).toFixed(2)} MX\n\n`;
                 mensajeWhatsApp += `¡Espero tu confirmación!`;
 
@@ -203,5 +196,5 @@ document.addEventListener('DOMContentLoaded', function() {
         renderCarrito(); 
     }
     
-    actualizarContadorCarrito(); // Llamada inicial al cargar la página
+    actualizarContadorCarrito();
 });
