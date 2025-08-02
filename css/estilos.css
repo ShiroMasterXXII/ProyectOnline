@@ -120,6 +120,7 @@ header .container {
 
 .logo .logo-img {
     max-height: 50px; /* Ajusta la altura máxima de tu logo, por ejemplo 50px */
+    max-width: 200px;
     width: auto;     /* Mantiene la proporción de la imagen */
     display: block;  /* Para eliminar espacios extra por debajo si los hay */
 }
@@ -128,6 +129,7 @@ header .container {
 @media (max-width: 768px) {
     .logo .logo-img {
         max-height: 40px; /* Un poco más pequeño en móviles */
+        max-width: 150px;
     }
 }
 
