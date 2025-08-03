@@ -251,35 +251,33 @@ header .container {
 /* ======================================= */
 
 .hero-banner {
-    position: relative; /* Esencial para el efecto de superposición */
+    position: relative;
     color: #fff;
     text-align: center;
-    padding: 60px 20px; /* Reducimos el padding para hacerlo más compacto */
+    padding: 60px 20px;
     border-radius: 12px;
     margin: 20px 0;
-    overflow: hidden; /* Asegura que la imagen respete los bordes redondeados */
+    overflow: hidden;
 
-    /* --- La magia para poner la imagen de fondo --- */
-    /* 1. Capa de color oscuro semitransparente para dar contraste */
-    /* 2. Tu imagen de fondo */
+    /* --- RUTA CORREGIDA --- */
+    /* Usamos la ruta local a tu imagen. */
+    /* El ../ significa "subir un nivel" desde la carpeta /css */
     background: 
         linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
-        url('https://unsplash.com/photos/person-in-blue-denim-jeans-holding-white-tote-bag-PENodSVsL1s'); /* <-- ¡CAMBIA ESTA IMAGEN! */
+        url('../img/hero-banner.jpg'); /* <-- ¡RUTA LOCAL CORREGIDA! */
     
-    background-size: cover; /* Hace que la imagen cubra todo el espacio */
-    background-position: center; /* Centra la imagen */
+    background-size: cover;
+    background-position: center;
 }
 
 .hero-banner h2 {
-    font-size: 2.5em; /* Un poco más pequeño para mejor ajuste en móviles */
+    font-size: 2.5em;
     font-weight: 700;
-    margin-bottom: 0; /* Quitamos el margen de abajo ya que el padding da espacio */
-    text-shadow: 0 2px 6px rgba(0, 0, 0, 0.7); /* Hacemos la sombra un poco más fuerte */
-    position: relative; /* Asegura que el texto esté sobre la capa de color */
+    margin-bottom: 0;
+    text-shadow: 0 2px 6px rgba(0, 0, 0, 0.7);
+    position: relative;
     z-index: 2;
 }
-
-/* La animación de gradiente ya no es necesaria, por lo que la eliminamos. */
 
 /* ======================================= */
 /* ===         PRODUCT SECTION         === */
