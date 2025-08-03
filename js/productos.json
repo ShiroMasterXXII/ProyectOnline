@@ -56,6 +56,27 @@
       "costo_envio": 98,
       "es_destacado": false,
       "id": 2
+    },
+    {
+      "imagenes": [
+        {
+          "url": "/img/productos/mochilaspider.jpg"
+        },
+        {
+          "url": "/img/productos/mochilaspider3.jpg"
+        },
+        {
+          "url": "/img/productos/mochilaspider2.jpg"
+        }
+      ],
+      "precio": 230,
+      "nombre": "Mochilas Escolares Superhéroe Para Escuela Primaria, 4-12 Años",
+      "descripcion": "Tamaño perfecto para niños\nEl tamaño es de 30*12*34 cm y pesa 0,29 kg. Es una mochila escolar hombre atractiva para los fanáticos de la película Hero. Obtén tu juego de personajes de película de 1 pieza para traer de regreso a la escuela con tu favorito. Deje que su hijo experimente la sensación de héroe",
+      "categoria": "Hogar",
+      "esFisico": true,
+      "costo_envio": 99,
+      "es_destacado": false,
+      "id": 4
     }
   ]
 }
