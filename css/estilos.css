@@ -581,6 +581,23 @@ header .container {
     border-color: #007bff;
 }
 
+/* --- AJUSTE PARA VISTA DE PC EN PÁGINA DE PRODUCTO --- */
+@media (min-width: 769px) {
+    .producto-detalle-layout {
+        /* Divide el espacio en 2 columnas iguales en pantallas grandes */
+        grid-template-columns: 1fr 1fr; 
+        /* Alinea el contenido de las columnas en la parte superior */
+        align-items: start;
+    }
+
+    .columna-imagen img {
+        /* Establece una altura máxima para la imagen para que no sea exagerada */
+        max-height: 500px;
+        width: 100%;
+        object-fit: contain; /* Asegura que la imagen se vea completa sin deformarse */
+    }
+}
+
 /* ======================================= */
 /* ===           PÁGINA DE CARRITO       === */
 /* ======================================= */
