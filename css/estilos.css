@@ -261,11 +261,6 @@ header .container {
     .dropdown-content.show {
         display: block;
     }
-    
-    .grid-productos {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 15px;
-    }
 }
 
 /* ======================================= */
@@ -310,12 +305,35 @@ header .container {
     margin-bottom: 30px;
 }
 
+/* Estilos base para el grid de productos (para móviles muy pequeños) */
 .grid-productos {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Permitir 1 o más, ajustándose */
     gap: 25px;
     text-align: center;
 }
+
+/* Media query para móviles medianos y tablets (2 columnas) */
+@media (min-width: 480px) {
+    .grid-productos {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* Media query para escritorios (3 columnas) */
+@media (min-width: 769px) {
+    .grid-productos {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+/* Media query para escritorios grandes (4 columnas) */
+@media (min-width: 1024px) {
+    .grid-productos {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
 
 .producto-card {
     background-color: #fff;
@@ -457,10 +475,10 @@ header .container {
 }
 
 .producto-detalle-layout {
-    /* CAMBIO CLAVE: Siempre una sola columna */
+    /* Mantiene una sola columna para la página de detalle de producto */
     display: grid;
-    grid-template-columns: 1fr; /* Una sola columna para todos los tamaños */
-    gap: 40px; /* Espacio entre la imagen y la info */
+    grid-template-columns: 1fr; 
+    gap: 40px; 
     padding: 40px 0;
     text-align: left;
 }
