@@ -27,7 +27,7 @@ ul {
 }
 
 /* ======================================= */
-/* ===         HEADER                  === */
+/* ===           HEADER                === */
 /* ======================================= */
 
 header {
@@ -46,75 +46,73 @@ header .container {
     justify-content: space-between;
     align-items: center;
     height: 70px;
-    padding: 0 20px; /* Padding original para desktop */
+    padding: 0 20px;
 }
 
 /* ======================================= */
-/* ===         HEADER - LOGO           === */
+/* ===           HEADER - LOGO         === */
 /* ======================================= */
 
 .logo h1 {
-    /* Ocultamos el texto "MiStore22" si usas el logo en su lugar */
     display: none; 
 }
 
 .logo .logo-img {
-    max-height: 50px; /* Altura máxima del logo en desktop */
-    max-width: 200px; /* ANCHO MÁXIMO DEL LOGO en desktop. AJUSTA este valor si lo quieres más ancho/estrecho. */
-    width: auto;      /* Mantiene la proporción del logo */
-    height: auto;     /* Mantiene la proporción del logo */
+    max-height: 50px;
+    max-width: 200px;
+    width: auto;
+    height: auto;
     display: block;
 }
 
 /* ======================================= */
-/* ===    HEADER - ÍCONOS MÓVILES    === */
+/* ===        HEADER - ÍCONOS MÓVILES    === */
 /* ======================================= */
 
-/* Por defecto ocultamos estos iconos en desktop y los mostramos en mobile */
 .iconos-header-mobile {
-    display: none; /* Oculto por defecto en desktop */
-    align-items: center; /* Centra verticalmente los elementos */
-    gap: 15px; /* Espacio entre el carrito y la hamburguesa */
+    display: none;
+    align-items: center;
+    gap: 15px;
 }
 
 .cart-icon-mobile {
-    position: relative; /* Para posicionar el contador */
-    display: flex; /* Asegura que la imagen y el contador estén en línea */
+    position: relative;
+    display: flex;
     align-items: center;
     padding: 5px;
 }
 
 .cart-icon-mobile img {
-    height: 30px; /* Tamaño del icono del carrito. AJUSTA según necesites */
+    height: 30px;
     width: auto;
     transition: transform 0.2s ease;
 }
 
 .cart-icon-mobile img:hover {
-    transform: scale(1.1); /* Efecto hover */
+    transform: scale(1.1);
 }
 
 .contador-carrito-mobile {
-    background-color: #dc3545; /* Color de fondo para el contador (rojo) */
+    background-color: #dc3545;
     color: #fff;
-    border-radius: 50%; /* Hace que sea un círculo */
-    padding: 2px 7px; /* Ajusta el padding para el tamaño del número */
-    font-size: 0.8em; /* Tamaño de la fuente del número */
+    border-radius: 50%;
+    padding: 2px 7px;
+    font-size: 0.8em;
     font-weight: bold;
-    position: absolute; /* Posiciona sobre el icono del carrito */
-    top: -5px; /* Ajusta la posición vertical */
-    right: -5px; /* Ajusta la posición horizontal */
-    min-width: 20px; /* Asegura que siempre sea un círculo */
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    min-width: 20px;
     text-align: center;
-    line-height: 1.2; /* Para centrar el número verticalmente */
+    line-height: 1.2;
 }
 
 /* ======================================= */
-/* ===         MENÚ PRINCIPAL          === */
+/* ===           MENÚ PRINCIPAL          === */
 /* ======================================= */
 
 .menu-principal {
-    display: none; /* Oculto por defecto en móvil */
+    display: none;
 }
 
 .menu-principal ul {
@@ -163,12 +161,11 @@ header .container {
 }
 
 /* ======================================= */
-/* ===         MENÚ MÓVIL              === */
+/* ===           MENÚ MÓVIL              === */
 /* ======================================= */
 
-/* Estilos del botón de hamburguesa */
 .hamburger-menu {
-    display: flex; /* Por defecto visible en móviles */
+    display: flex;
     flex-direction: column;
     justify-content: space-around;
     width: 30px;
@@ -186,45 +183,35 @@ header .container {
     border-radius: 5px;
 }
 
-/* Media Queries para responsividad */
 @media (min-width: 769px) {
     .menu-principal {
-        display: flex; /* Muestra el menú principal en desktop */
+        display: flex;
     }
     .hamburger-menu {
-        display: none; /* Oculta el botón de hamburguesa en desktop */
+        display: none;
     }
     .iconos-header-mobile {
-        display: none; /* Oculta los iconos de carrito/hamburguesa en desktop */
+        display: none;
     }
-    /* Muestra el enlace del carrito en desktop */
     .desktop-cart-link {
         display: block;
     }
 }
 
 @media (max-width: 768px) {
-    /* Ajustes para el header.container en móviles */
     header .container {
-        padding: 0 15px; /* Reduce el padding para dar más espacio a los íconos */
+        padding: 0 15px;
     }
-
-    /* Muestra los iconos de carrito y hamburguesa en móviles */
     .iconos-header-mobile {
         display: flex; 
     }
-    /* Oculta el enlace del carrito en móvil */
     .desktop-cart-link {
         display: none;
     }
-
-    /* Ajustes para el logo en móvil */
     .logo .logo-img {
-        max-height: 40px; /* Altura máxima del logo en móvil */
-        max-width: 150px; /* ANCHO MÁXIMO DEL LOGO en móvil. AJUSTA si es necesario. */
+        max-height: 40px;
+        max-width: 150px;
     }
-
-    /* Oculta el menú principal por defecto en móvil (se muestra con JS) */
     .menu-principal {
         position: absolute;
         top: 70px;
@@ -233,24 +220,20 @@ header .container {
         background-color: white;
         box-shadow: 0 4px 8px rgba(0,0,0,0.1);
         flex-direction: column;
-        display: none; /* Asegura que esté oculto por defecto */
+        display: none;
     }
-
     .menu-principal.is-active {
-        display: flex; /* Muestra el menú cuando está activo */
+        display: flex;
     }
-    
     .menu-principal ul {
         flex-direction: column;
         width: 100%;
     }
-
     .menu-principal ul li {
         margin: 0;
         text-align: center;
         border-bottom: 1px solid #f0f0f0;
     }
-    
     .dropdown-content {
         position: static;
         box-shadow: none;
@@ -264,7 +247,7 @@ header .container {
 }
 
 /* ======================================= */
-/* ===         HERO BANNER             === */
+/* ===           HERO BANNER             === */
 /* ======================================= */
 
 .hero-banner {
@@ -305,28 +288,20 @@ header .container {
     margin-bottom: 30px;
 }
 
-/* Estilos base para el grid de productos (1 columna por defecto, para pantallas muy pequeñas) */
+/* CORREGIDO: 2 columnas por defecto para cualquier móvil */
 .grid-productos {
     display: grid;
-    grid-template-columns: 1fr; 
+    grid-template-columns: repeat(2, 1fr); 
     gap: 25px;
     text-align: center;
 }
 
-/* Media query para móviles (a partir de 480px: 2 columnas) */
-@media (min-width: 480px) {
-    .grid-productos {
-        grid-template-columns: repeat(2, 1fr);
-    }
-}
-
-/* Media query para escritorios (a partir de 992px: 4 columnas) */
+/* Media query para escritorios (4 columnas) */
 @media (min-width: 992px) { 
     .grid-productos {
         grid-template-columns: repeat(4, 1fr);
     }
 }
-
 
 .producto-card {
     background-color: #fff;
@@ -371,8 +346,6 @@ header .container {
     font-weight: normal;
 }
 
-/* --- ESTILOS CORREGIDOS PARA LOS BOTONES (CON ANIMACIÓN) --- */
-
 .producto-card .btn-ver-detalles,
 .producto-card .btn-pedir-whatsapp {
     display: block;
@@ -407,7 +380,7 @@ header .container {
 }
 
 /* ======================================= */
-/* ===       SECCIÓN DE CATEGORÍAS       === */
+/* ===       SECCIÓN DE CATEGORÍAS     === */
 /* ======================================= */
 
 .categorias-inicio {
@@ -420,29 +393,24 @@ header .container {
     margin-bottom: 30px;
 }
 
-/* --- ESTA ES LA REGLA MODIFICADA --- */
-/* Le damos el aspecto de "contenedor" y usamos flexbox para centrar los botones */
+/* CORREGIDO: Contenedor visual y flexible para los botones */
 .grid-categorias {
     display: flex;
-    justify-content: center; /* Centra los botones horizontalmente */
-    flex-wrap: wrap; /* Permite que bajen si no caben en una línea */
-    gap: 20px; /* Mantiene el espacio entre botones */
-    
-    /* Estilos del contenedor visual */
-    background-color: #fff; /* O el color que prefieras, ej: #f5f5f5 */
-    padding: 30px 20px; /* Relleno para darle cuerpo */
-    border-radius: 12px; /* Bordes redondeados */
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05); /* Sombra suave */
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
+    background-color: #f0f0f0;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
 }
 
-/* Busca esta regla en tu CSS y reemplázala por la versión de abajo */
-
-/* Diseño mejorado para los botones de categoría (CORREGIDO PARA MÓVIL) */
+/* CORREGIDO: Botones flexibles y con nuevo color azul */
 .btn-categoria,
 .grid-categorias a {
     display: block;
     padding: 25px 20px;
-    background: linear-gradient(-45deg, #6c757d, #5a6268);
+    background: linear-gradient(-45deg, #007bff, #0056b3); /* NUEVO COLOR AZUL */
     background-size: 200% 200%;
     color: #fff;
     font-size: 1.2em;
@@ -453,14 +421,10 @@ header .container {
     transition: all 0.4s ease;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     cursor: pointer;
-    text-align: center; /* Aseguramos que el texto esté centrado */
-    
-    /* --- CAMBIO CLAVE AQUÍ --- */
-    /* Hacemos los botones flexibles en lugar de un ancho mínimo fijo */
-    flex: 1 1 150px;
+    text-align: center;
+    flex: 1 1 150px; /* Diseño flexible */
 }
 
-/* El estilo :hover no necesita cambios, puedes dejarlo como está */
 .btn-categoria:hover,
 .grid-categorias a:hover {
     background-position: 100% 0;
@@ -470,12 +434,12 @@ header .container {
 }
 
 /* ======================================= */
-/* ===         PÁGINA DE PRODUCTO      === */
+/* ===           PÁGINA DE PRODUCTO      === */
 /* ======================================= */
 
 .navegacion-producto {
     padding-top: 20px;
-    margin-bottom: 20px; /* Ajustado para dar espacio después del botón en carrito.html */
+    margin-bottom: 20px;
 }
 
 .navegacion-producto a {
@@ -491,7 +455,6 @@ header .container {
 }
 
 .producto-detalle-layout {
-    /* Mantiene una sola columna para la página de detalle de producto */
     display: grid;
     grid-template-columns: 1fr; 
     gap: 40px; 
@@ -499,10 +462,9 @@ header .container {
     text-align: left;
 }
 
-/* Asegura que la columna de imagen ocupe todo el ancho */
 .producto-detalle-layout .columna-imagen,
 .producto-detalle-layout .columna-info {
-    grid-column: 1 / -1; /* Ocupa todo el ancho de la única columna */
+    grid-column: 1 / -1;
 }
 
 .columna-imagen img {
@@ -534,7 +496,6 @@ header .container {
     color: #333;
 }
 
-/* Botón "Agregar al Carrito" en la página de producto */
 .btn-agregar-carrito {
     display: block;
     width: 100%;
@@ -542,20 +503,19 @@ header .container {
     font-size: 1.2em;
     font-weight: bold;
     color: #fff;
-    background-color: #007bff; /* Azul para el botón de agregar */
+    background-color: #007bff;
     border: none;
     border-radius: 8px;
     cursor: pointer;
     text-align: center;
     transition: background-color 0.3s ease, transform 0.3s ease;
-    margin-bottom: 15px; /* Espacio entre botones */
+    margin-bottom: 15px;
 }
 .btn-agregar-carrito:hover {
     background-color: #0056b3;
     transform: translateY(-2px);
 }
 
-/* Botón "Pedir por WhatsApp" en la página de producto */
 .btn-anadir-carrito {
     display: block;
     width: 100%;
@@ -582,11 +542,11 @@ header .container {
     justify-content: center;
     gap: 10px;
     margin-top: 15px;
-    flex-wrap: wrap; /* Permite que las miniaturas se envuelvan en pantallas pequeñas */
+    flex-wrap: wrap;
 }
 
 .galeria-miniaturas .miniatura {
-    width: 80px; /* Tamaño de las miniaturas. Ajusta si es necesario. */
+    width: 80px;
     height: 80px;
     object-fit: cover;
     border: 2px solid #ddd;
@@ -601,7 +561,7 @@ header .container {
 }
 
 /* ======================================= */
-/* ===         PÁGINA DE CARRITO       === */
+/* ===           PÁGINA DE CARRITO       === */
 /* ======================================= */
 
 .seccion-carrito {
@@ -744,7 +704,6 @@ header .container {
     transform: scale(1.02);
 }
 
-/* Estilos para el mensaje de envío gratis */
 .mensaje-envio-gratis {
     text-align: center;
     padding: 10px;
