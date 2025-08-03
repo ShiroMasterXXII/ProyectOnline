@@ -17,7 +17,9 @@ document.addEventListener('DOMContentLoaded', function() {
 
             if (productosDestacadosParaMostrar.length > 0) {
                 productosDestacadosParaMostrar.forEach(producto => {
-                    const costoEnvio = producto.costo_envio !== undefined ? producto.costo_envio : 0;
+                    
+                    // Maneja costos de envío vacíos o no numéricos, convirtiéndolos en 0
+                    const costoEnvio = Number(producto.costo_envio) || 0;
                     
                     // RECUERDA CAMBIAR 'TUNUMERO' POR TU NÚMERO DE WHATSAPP REAL
                     const mensaje = `Hola, me interesa comprar el producto: ${producto.nombre}.\nPrecio: $${producto.precio.toFixed(2)} MX.\nCosto de Envío: $${costoEnvio.toFixed(2)} MX.`;
@@ -46,5 +48,6 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         }
     }
+
     cargarYRenderizarProductos();
 });
