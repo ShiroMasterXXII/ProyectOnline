@@ -264,7 +264,7 @@ header .container {
     /* El ../ significa "subir un nivel" desde la carpeta /css */
     background: 
         linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
-        url('../img/hero-banner.jpg'); /* <-- ¡RUTA LOCAL CORREGIDA! */
+        url('../img/hero-banner.png'); /* <-- ¡RUTA LOCAL CORREGIDA! */
     
     background-size: cover;
     background-position: center;
