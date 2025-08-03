@@ -14,6 +14,27 @@
       "costo_envio": "",
       "es_destacado": true,
       "id": 1
+    },
+    {
+      "imagenes": [
+        {
+          "url": "/img/productos/blueymochila.jpg"
+        },
+        {
+          "url": "/img/productos/blueymochila3.jpg"
+        },
+        {
+          "url": "/img/productos/blueymochila2.jpg"
+        }
+      ],
+      "precio": 220,
+      "nombre": "Bluey Felpa Estilo Mochila Infantil Elige Modelo Azul",
+      "descripcion": "Lista Estilo 1: 1 mochila azul + 55 pegatinas\nEstilo 2: 1 mochila gris + 55 pegatinas\nBolsa de bingo azul o bolsa gris.\n55 fijo\n\nDimensiones de la bolsa de pegatinas Bluey: 38 x 8 x 23 cm (alto x ancho x largo)\nTamaño de las pegatinas: 5-6 cm cada una.\n\nEXCELENTE CALIDAD: Las bolsas Bluey están hechas de tela de alta calidad y tienen un fondo sellado. Durable y reutilizable. Estas bolsas son lo suficientemente duraderas y resistentes como para guardar juguetes, dulces y cualquier otro regalo",
+      "categoria": "Hogar",
+      "esFisico": true,
+      "costo_envio": 99,
+      "es_destacado": true,
+      "id": 2
     }
   ]
 }
