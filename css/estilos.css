@@ -435,9 +435,11 @@ header .container {
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05); /* Sombra suave */
 }
 
-/* Diseño mejorado para los botones de categoría (este código no cambia) */
+/* Busca esta regla en tu CSS y reemplázala por la versión de abajo */
+
+/* Diseño mejorado para los botones de categoría (CORREGIDO PARA MÓVIL) */
 .btn-categoria,
-.grid-categorias a { /* Aplicamos el estilo a todos los 'a' dentro por si olvidas la clase */
+.grid-categorias a {
     display: block;
     padding: 25px 20px;
     background: linear-gradient(-45deg, #6c757d, #5a6268);
@@ -451,9 +453,14 @@ header .container {
     transition: all 0.4s ease;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     cursor: pointer;
-    min-width: 200px; /* Ancho mínimo para que se vean uniformes */
+    text-align: center; /* Aseguramos que el texto esté centrado */
+    
+    /* --- CAMBIO CLAVE AQUÍ --- */
+    /* Hacemos los botones flexibles en lugar de un ancho mínimo fijo */
+    flex: 1 1 150px;
 }
 
+/* El estilo :hover no necesita cambios, puedes dejarlo como está */
 .btn-categoria:hover,
 .grid-categorias a:hover {
     background-position: 100% 0;
@@ -461,7 +468,6 @@ header .container {
     transform: translateY(-5px);
     color: #fff;
 }
-
 
 /* ======================================= */
 /* ===         PÁGINA DE PRODUCTO      === */
