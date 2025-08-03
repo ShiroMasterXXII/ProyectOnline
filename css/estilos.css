@@ -57,14 +57,21 @@ header .container {
     display: none; 
 }
 
+/* RECOMENDACIÓN PARA EL LOGO */
+
+/* Para Escritorio (PC) */
 .logo .logo-img {
-    max-height: 50px;
-    max-width: 200px;
-    width: auto;
-    height: auto;
+    height: 50px;   /* Define solo la altura */
+    width: auto;    /* Deja que el ancho se ajuste solo para mantener la proporción */
     display: block;
 }
 
+/* Para Móvil */
+@media (max-width: 768px) {
+    .logo .logo-img {
+        height: 40px; /* Simplemente reduce la altura y el ancho se ajustará */
+    }
+}
 /* ======================================= */
 /* ===        HEADER - ÍCONOS MÓVILES    === */
 /* ======================================= */
@@ -209,8 +216,7 @@ header .container {
         display: none;
     }
     .logo .logo-img {
-        max-height: 40px;
-        max-width: 150px;
+        height: 40px; /* Simplemente reduce la altura y el ancho se ajustará */
     }
     .menu-principal {
         position: absolute;
