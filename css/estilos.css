@@ -57,21 +57,13 @@ header .container {
     display: none; 
 }
 
-/* RECOMENDACIÓN PARA EL LOGO */
-
 /* Para Escritorio (PC) */
 .logo .logo-img {
-    height: 50px;   /* Define solo la altura */
-    width: auto;    /* Deja que el ancho se ajuste solo para mantener la proporción */
+    height: 50px;
+    width: auto;
     display: block;
 }
 
-/* Para Móvil */
-@media (max-width: 768px) {
-    .logo .logo-img {
-        height: 40px; /* Simplemente reduce la altura y el ancho se ajustará */
-    }
-}
 /* ======================================= */
 /* ===        HEADER - ÍCONOS MÓVILES    === */
 /* ======================================= */
@@ -190,6 +182,10 @@ header .container {
     border-radius: 5px;
 }
 
+/* ======================================= */
+/* ===        MEDIA QUERIES             === */
+/* ======================================= */
+
 @media (min-width: 769px) {
     .menu-principal {
         display: flex;
@@ -215,9 +211,13 @@ header .container {
     .desktop-cart-link {
         display: none;
     }
+
+    /* --- MODIFICADO --- */
+    /* Se iguala la altura del logo a la del ícono del carrito (30px) */
     .logo .logo-img {
-        height: 40px; /* Simplemente reduce la altura y el ancho se ajustará */
+        height: 30px; 
     }
+
     .menu-principal {
         position: absolute;
         top: 70px;
@@ -253,22 +253,18 @@ header .container {
 }
 
 /* ======================================= */
-/* ===   HERO BANNER (SIN OSCURECIMIENTO)  === */
+/* ===           HERO BANNER             === */
 /* ======================================= */
 
 .hero-banner {
     position: relative;
-    color: #fff; /* Ojo con este color, lo explico abajo */
+    color: #fff;
     text-align: center;
     padding: 60px 20px;
     border-radius: 12px;
     margin: 20px 0;
     overflow: hidden;
-
-    /* --- CAMBIO REALIZADO AQUÍ --- */
-    /* Quitamos la capa de gradiente oscuro y dejamos solo la imagen */
     background-image: url('../img/hero-banner.png');
-    
     background-size: cover;
     background-position: center;
 }
@@ -277,10 +273,24 @@ header .container {
     font-size: 2.5em;
     font-weight: 700;
     margin-bottom: 0;
-    text-shadow: 0 2px 6px rgba(0, 0, 0, 0.7); /* Puede que necesites ajustar esto */
+    text-shadow: 0 2px 6px rgba(0, 0, 0, 0.7);
     position: relative;
     z-index: 2;
 }
+
+/* --- AÑADIDO --- */
+/* Regla para hacer el Hero Banner a pantalla completa solo en PC */
+@media (min-width: 992px) {
+    .hero-banner {
+        height: 100vh;
+        min-height: 600px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding: 0 20px;
+    }
+}
+
 
 /* ======================================= */
 /* ===         PRODUCT SECTION         === */
@@ -296,7 +306,6 @@ header .container {
     margin-bottom: 30px;
 }
 
-/* CORREGIDO: 2 columnas por defecto para cualquier móvil */
 .grid-productos {
     display: grid;
     grid-template-columns: repeat(2, 1fr); 
@@ -304,7 +313,6 @@ header .container {
     text-align: center;
 }
 
-/* Media query para escritorios (4 columnas) */
 @media (min-width: 992px) { 
     .grid-productos {
         grid-template-columns: repeat(4, 1fr);
@@ -383,6 +391,12 @@ header .container {
     animation: gradient-animation 15s ease infinite;
 }
 
+@keyframes gradient-animation {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
 .producto-card .btn-pedir-whatsapp:hover {
     transform: scale(1.05);
 }
@@ -401,7 +415,6 @@ header .container {
     margin-bottom: 30px;
 }
 
-/* CORREGIDO: Contenedor visual y flexible para los botones */
 .grid-categorias {
     display: flex;
     justify-content: center;
@@ -413,12 +426,11 @@ header .container {
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
 }
 
-/* CORREGIDO: Botones flexibles y con nuevo color azul */
 .btn-categoria,
 .grid-categorias a {
     display: block;
     padding: 25px 20px;
-    background: linear-gradient(-45deg, #007bff, #0056b3); /* NUEVO COLOR AZUL */
+    background: linear-gradient(-45deg, #007bff, #0056b3);
     background-size: 200% 200%;
     color: #fff;
     font-size: 1.2em;
@@ -430,7 +442,7 @@ header .container {
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     cursor: pointer;
     text-align: center;
-    flex: 1 1 150px; /* Diseño flexible */
+    flex: 1 1 150px;
 }
 
 .btn-categoria:hover,
@@ -732,3 +744,8 @@ header .container {
     color: #856404;
     border: 1px solid #ffeeba;
 }
+
+/* ======================================= */
+/* ===           PÁGINA DE CONTACTO      === */
+/* ======================================= */
+/* (El resto de tu CSS para Contacto y otras páginas va aquí) */
