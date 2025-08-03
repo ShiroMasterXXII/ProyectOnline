@@ -6,10 +6,9 @@ document.addEventListener('DOMContentLoaded', function() {
     const totalCarritoSpan = document.getElementById('total-carrito');
     const btnVaciarCarrito = document.getElementById('btn-vaciar-carrito');
     const btnFinalizarCompra = document.getElementById('btn-finalizar-compra');
-    const carritoContadorDesktop = document.getElementById('carrito-contador'); // Contador para desktop
-    const carritoContadorMobile = document.getElementById('carrito-contador-mobile'); // Nuevo contador para móvil
+    const carritoContadorDesktop = document.getElementById('carrito-contador');
+    const carritoContadorMobile = document.getElementById('carrito-contador-mobile');
 
-    // Lógica para el botón "Regresar" en el carrito
     const btnRegresarCarrito = document.getElementById('btn-regresar-carrito');
     if (btnRegresarCarrito) {
         btnRegresarCarrito.addEventListener('click', e => {
@@ -18,34 +17,28 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // --- NUEVAS CONSTANTES PARA EL ENVÍO GRATIS ---
-    const LIMITE_ENVIO_GRATIS = 300; // Define tu umbral de envío gratis aquí
+    const LIMITE_ENVIO_GRATIS = 300;
     const mensajeEnvioGratis = document.getElementById('mensaje-envio-gratis');
-    // --- FIN NUEVAS CONSTANTES ---
 
-    // Función para obtener el carrito del localStorage
     function getCarrito() {
         return JSON.parse(localStorage.getItem('carrito')) || [];
     }
 
-    // Función para guardar el carrito en el localStorage
     function saveCarrito(carrito) {
         localStorage.setItem('carrito', JSON.stringify(carrito));
     }
 
-    // Función para actualizar el contador del carrito en el header (¡AHORA PARA AMBOS CONTADORES!)
     function actualizarContadorCarrito() {
         const carrito = getCarrito();
         const totalItems = carrito.reduce((sum, item) => sum + (item.cantidad || 1), 0);
         if (carritoContadorDesktop) { 
             carritoContadorDesktop.textContent = totalItems;
         }
-        if (carritoContadorMobile) { // Actualiza también el contador móvil
+        if (carritoContadorMobile) {
             carritoContadorMobile.textContent = totalItems;
         }
     }
 
-    // Lógica de renderizado del carrito (solo si estamos en carrito.html)
     if (itemsCarritoDiv) { 
         function renderCarrito() {
             const carrito = getCarrito();
@@ -57,13 +50,10 @@ document.addEventListener('DOMContentLoaded', function() {
                 if (resumenCarritoDiv) {
                     resumenCarritoDiv.style.display = 'none';
                 }
-                // --- LIMPIAR MENSAJE DE ENVÍO GRATIS CUANDO EL CARRITO ESTÁ VACÍO ---
                 if (mensajeEnvioGratis) {
                     mensajeEnvioGratis.textContent = '';
                     mensajeEnvioGratis.classList.remove('envio-gratis-exito', 'envio-gratis-falta');
                 }
-                // --- FIN LIMPIEZA ---
-
             } else {
                 carritoVacioMensaje.style.display = 'none';
                 const resumenCarritoDiv = document.querySelector('.resumen-carrito');
@@ -72,46 +62,56 @@ document.addEventListener('DOMContentLoaded', function() {
                 }
 
                 let subtotal = 0;
-                let costoEnvioNormal = 0; // Suma de envíos individuales si no hay envío gratis
+                let costoEnvioNormal = 0;
+                // --- AÑADIDO ---: Nuevo subtotal solo para productos físicos
+                let subtotalParaEnvio = 0;
 
                 carrito.forEach(item => {
                     const cantidad = item.cantidad || 1;
                     const precioTotalProducto = item.precio * cantidad;
                     subtotal += precioTotalProducto;
-                    // Suma el costo de envío individual para cada producto
                     costoEnvioNormal += (item.costo_envio !== undefined ? item.costo_envio : 0) * cantidad;
+
+                    // --- AÑADIDO ---: Sumamos a nuestro nuevo subtotal SOLO si el producto es físico
+                    if (item.esFisico) {
+                        subtotalParaEnvio += precioTotalProducto;
+                    }
                 });
 
-                let costoEnvioFinal = costoEnvioNormal; // Inicialmente es el costo normal
+                let costoEnvioFinal = costoEnvioNormal;
                 let mensajeEnvio = '';
                 let claseMensaje = '';
 
-                // --- LÓGICA DE ENVÍO GRATIS BASADA EN EL SUBTOTAL ---
-                if (subtotal >= LIMITE_ENVIO_GRATIS) {
-                    costoEnvioFinal = 0; // El envío es gratis
-                    mensajeEnvio = '¡Felicidades! Tienes Envío GRATIS en tu pedido. 🎉';
+                // --- MODIFICADO ---: La lógica de envío gratis ahora usa el 'subtotalParaEnvio'
+                // También nos aseguramos de que haya productos físicos en el carrito para ofrecerlo
+                if (subtotalParaEnvio > 0 && subtotalParaEnvio >= LIMITE_ENVIO_GRATIS) {
+                    costoEnvioFinal = 0;
+                    mensajeEnvio = '¡Felicidades! Tienes Envío GRATIS en tus productos. 🎉';
                     claseMensaje = 'envio-gratis-exito';
-                } else {
-                    const faltaParaEnvioGratis = LIMITE_ENVIO_GRATIS - subtotal;
-                    mensajeEnvio = `¡Te faltan $${faltaParaEnvioGratis.toFixed(2)} MX para Envío GRATIS!`;
+                } else if (subtotalParaEnvio > 0) {
+                    const faltaParaEnvioGratis = LIMITE_ENVIO_GRATIS - subtotalParaEnvio;
+                    mensajeEnvio = `¡Te faltan $${faltaParaEnvioGratis.toFixed(2)} MX en productos físicos para Envío GRATIS!`;
                     claseMensaje = 'envio-gratis-falta';
+                } else {
+                    // Si solo hay productos digitales, no mostramos nada.
+                    mensajeEnvio = '';
                 }
-                // --- FIN LÓGICA DE ENVÍO GRATIS ---
                 
                 const total = subtotal + costoEnvioFinal;
 
                 subtotalCarritoSpan.textContent = `$${subtotal.toFixed(2)} MX`;
-                envioTotalCarritoSpan.textContent = `$${costoEnvioFinal.toFixed(2)} MX`; // ¡Usar el costo de envío FINAL!
+                envioTotalCarritoSpan.textContent = `$${costoEnvioFinal.toFixed(2)} MX`;
                 totalCarritoSpan.textContent = `$${total.toFixed(2)} MX`;
 
-                // --- ACTUALIZAR EL MENSAJE DE ENVÍO GRATIS EN EL HTML ---
                 if (mensajeEnvioGratis) {
                     mensajeEnvioGratis.textContent = mensajeEnvio;
-                    mensajeEnvioGratis.className = 'mensaje-envio-gratis ' + claseMensaje;
+                    if(mensajeEnvio) {
+                        mensajeEnvioGratis.className = 'mensaje-envio-gratis ' + claseMensaje;
+                    } else {
+                        mensajeEnvioGratis.className = '';
+                    }
                 }
-                // --- FIN ACTUALIZACIÓN MENSAJE ---
 
-                // Generar el HTML para cada item del carrito
                 carrito.forEach(item => {
                     const cantidad = item.cantidad || 1;
                     const precioTotalProducto = item.precio * cantidad;
@@ -142,7 +142,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     });
                 });
             }
-            actualizarContadorCarrito(); // Llamada inicial al renderizar el carrito
+            actualizarContadorCarrito();
         }
 
         if (btnVaciarCarrito) {
@@ -166,12 +166,19 @@ document.addEventListener('DOMContentLoaded', function() {
                 let mensajeWhatsApp = "¡Hola! Me gustaría hacer el siguiente pedido de MiStore22:\n\n";
                 let subtotal = 0;
                 let costoEnvioNormal = 0; 
+                // --- AÑADIDO ---: Nuevo subtotal para el mensaje de WhatsApp
+                let subtotalParaEnvioWhatsApp = 0;
 
                 carrito.forEach((item, index) => {
                     const cantidad = item.cantidad || 1;
                     const precioTotalProducto = item.precio * cantidad;
                     subtotal += precioTotalProducto;
                     costoEnvioNormal += (item.costo_envio !== undefined ? item.costo_envio : 0) * cantidad;
+
+                    // --- AÑADIDO ---: Sumamos al subtotal de envío SOLO si es físico
+                    if (item.esFisico) {
+                        subtotalParaEnvioWhatsApp += precioTotalProducto;
+                    }
 
                     mensajeWhatsApp += `${index + 1}. ${item.nombre} (x${cantidad})\n`;
                     mensajeWhatsApp += `   Precio Unitario: $${item.precio.toFixed(2)} MX\n`;
@@ -180,24 +187,24 @@ document.addEventListener('DOMContentLoaded', function() {
                 });
 
                 let costoEnvioFinalWhatsApp = costoEnvioNormal;
-                if (subtotal >= LIMITE_ENVIO_GRATIS) {
-                    costoEnvioFinalWhatsApp = 0; // Envío gratis para WhatsApp también
+                // --- MODIFICADO ---: Usamos la nueva variable para la lógica de envío
+                if (subtotalParaEnvioWhatsApp > 0 && subtotalParaEnvioWhatsApp >= LIMITE_ENVIO_GRATIS) {
+                    costoEnvioFinalWhatsApp = 0;
                 }
 
                 mensajeWhatsApp += `---\n`;
                 mensajeWhatsApp += `Resumen del Pedido:\n`;
                 mensajeWhatsApp += `Subtotal de productos: $${subtotal.toFixed(2)} MX\n`;
-                mensajeWhatsApp += `Costo total de envío: $${costoEnvioFinalWhatsApp.toFixed(2)} MX\n`; // Usar costo de envío FINAL
+                mensajeWhatsApp += `Costo total de envío: $${costoEnvioFinalWhatsApp.toFixed(2)} MX\n`;
                 mensajeWhatsApp += `TOTAL A PAGAR: $${(subtotal + costoEnvioFinalWhatsApp).toFixed(2)} MX\n\n`;
                 mensajeWhatsApp += `¡Espero tu confirmación!`;
 
-                // RECUERDA CAMBIAR 'TUNUMERO' POR TU NÚMERO DE WHATSAPP REAL
                 const whatsappUrl = `https://wa.me/521TUNUMERO?text=${encodeURIComponent(mensajeWhatsApp)}`;
                 window.open(whatsappUrl, '_blank');
             });
         }
-        renderCarrito(); // Llamada inicial para cargar el carrito al visitar la página
+        renderCarrito();
     }
     
-    actualizarContadorCarrito(); // Asegura que el contador se actualice en todas las páginas
+    actualizarContadorCarrito();
 });

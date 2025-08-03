@@ -12,7 +12,8 @@
         }
       ],
       "costo_envio": 50,
-      "es_destacado": true
+      "es_destacado": true,
+      "esFisico": true
     },
     {
       "id": 2,
@@ -26,7 +27,9 @@
         }
       ],
       "costo_envio": 50,
-      "es_destacado": true
+      "es_destacado": true,
+      "esFisico": true
     }
+    
   ]
 }
