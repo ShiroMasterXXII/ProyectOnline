@@ -34,3 +34,11 @@ body, [class*="view-cards"] {
     border-color: #007bff !important;
     box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25) !important;
 }
+/* --- CORRECCIÓN PARA EL DOBLE SCROLL --- */
+
+/* Con esta regla, le prohibimos al cuerpo principal del panel tener una barra de scroll.
+   Esto obliga a que los paneles internos (editor y vista previa) sean los únicos
+   que manejen su propio desplazamiento, eliminando el efecto doble. */
+body {
+    overflow: hidden !important;
+}
