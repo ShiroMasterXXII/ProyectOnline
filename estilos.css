@@ -1,0 +1,734 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background-color: #f4f4f4;
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+ul {
+    list-style: none;
+}
+
+/* ======================================= */
+/* ===           HEADER                === */
+/* ======================================= */
+
+header {
+    background-color: #fff;
+    color: #333;
+    min-height: 70px;
+    border-bottom: 1px solid #ddd;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 70px;
+    padding: 0 20px;
+}
+
+/* ======================================= */
+/* ===           HEADER - LOGO         === */
+/* ======================================= */
+
+.logo h1 {
+    display: none; 
+}
+
+/* RECOMENDACIÓN PARA EL LOGO */
+
+/* Para Escritorio (PC) */
+.logo .logo-img {
+    height: 50px;   /* Define solo la altura */
+    width: auto;    /* Deja que el ancho se ajuste solo para mantener la proporción */
+    display: block;
+}
+
+/* Para Móvil */
+@media (max-width: 768px) {
+    .logo .logo-img {
+        height: 40px; /* Simplemente reduce la altura y el ancho se ajustará */
+    }
+}
+/* ======================================= */
+/* ===        HEADER - ÍCONOS MÓVILES    === */
+/* ======================================= */
+
+.iconos-header-mobile {
+    display: none;
+    align-items: center;
+    gap: 15px;
+}
+
+.cart-icon-mobile {
+    position: relative;
+    display: flex;
+    align-items: center;
+    padding: 5px;
+}
+
+.cart-icon-mobile img {
+    height: 30px;
+    width: auto;
+    transition: transform 0.2s ease;
+}
+
+.cart-icon-mobile img:hover {
+    transform: scale(1.1);
+}
+
+.contador-carrito-mobile {
+    background-color: #dc3545;
+    color: #fff;
+    border-radius: 50%;
+    padding: 2px 7px;
+    font-size: 0.8em;
+    font-weight: bold;
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    min-width: 20px;
+    text-align: center;
+    line-height: 1.2;
+}
+
+/* ======================================= */
+/* ===           MENÚ PRINCIPAL          === */
+/* ======================================= */
+
+.menu-principal {
+    display: none;
+}
+
+.menu-principal ul {
+    display: flex;
+    align-items: center;
+}
+
+.menu-principal ul li {
+    position: relative;
+    margin-left: 25px;
+}
+
+.menu-principal ul li a {
+    padding: 10px 0;
+    display: block;
+    font-weight: bold;
+    color: #555;
+    transition: color 0.3s ease;
+}
+
+.menu-principal ul li a:hover {
+    color: #007bff;
+}
+
+.menu-principal .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #fff;
+    min-width: 200px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    border-top: 3px solid #007bff;
+    border-radius: 4px;
+    left: 50%;
+    transform: translateX(-50%);
+    top: calc(100% + 5px);
+}
+
+.dropdown-content.show {
+    display: block;
+}
+
+.dropdown .arrow {
+    margin-left: 5px;
+    font-size: 0.8em;
+}
+
+/* ======================================= */
+/* ===           MENÚ MÓVIL              === */
+/* ======================================= */
+
+.hamburger-menu {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 30px;
+    height: 25px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    z-index: 1001;
+}
+
+.hamburger-menu span {
+    width: 100%;
+    height: 3px;
+    background-color: #333;
+    border-radius: 5px;
+}
+
+@media (min-width: 769px) {
+    .menu-principal {
+        display: flex;
+    }
+    .hamburger-menu {
+        display: none;
+    }
+    .iconos-header-mobile {
+        display: none;
+    }
+    .desktop-cart-link {
+        display: block;
+    }
+}
+
+@media (max-width: 768px) {
+    header .container {
+        padding: 0 15px;
+    }
+    .iconos-header-mobile {
+        display: flex; 
+    }
+    .desktop-cart-link {
+        display: none;
+    }
+    .logo .logo-img {
+        height: 40px; /* Simplemente reduce la altura y el ancho se ajustará */
+    }
+    .menu-principal {
+        position: absolute;
+        top: 70px;
+        left: 0;
+        width: 100%;
+        background-color: white;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        flex-direction: column;
+        display: none;
+    }
+    .menu-principal.is-active {
+        display: flex;
+    }
+    .menu-principal ul {
+        flex-direction: column;
+        width: 100%;
+    }
+    .menu-principal ul li {
+        margin: 0;
+        text-align: center;
+        border-bottom: 1px solid #f0f0f0;
+    }
+    .dropdown-content {
+        position: static;
+        box-shadow: none;
+        border: none;
+        background-color: #f9f9f9;
+        display: none;
+    }
+    .dropdown-content.show {
+        display: block;
+    }
+}
+
+/* ======================================= */
+/* ===   HERO BANNER (SIN OSCURECIMIENTO)  === */
+/* ======================================= */
+
+.hero-banner {
+    position: relative;
+    color: #fff; /* Ojo con este color, lo explico abajo */
+    text-align: center;
+    padding: 60px 20px;
+    border-radius: 12px;
+    margin: 20px 0;
+    overflow: hidden;
+
+    /* --- CAMBIO REALIZADO AQUÍ --- */
+    /* Quitamos la capa de gradiente oscuro y dejamos solo la imagen */
+    background-image: url('../img/hero-banner.png');
+    
+    background-size: cover;
+    background-position: center;
+}
+
+.hero-banner h2 {
+    font-size: 2.5em;
+    font-weight: 700;
+    margin-bottom: 0;
+    text-shadow: 0 2px 6px rgba(0, 0, 0, 0.7); /* Puede que necesites ajustar esto */
+    position: relative;
+    z-index: 2;
+}
+
+/* ======================================= */
+/* ===         PRODUCT SECTION         === */
+/* ======================================= */
+
+.productos-destacados, .titulo-pagina {
+    padding-top: 40px;
+    text-align: center;
+}
+
+.productos-destacados h2, .titulo-pagina {
+    font-size: 2.5em;
+    margin-bottom: 30px;
+}
+
+/* CORREGIDO: 2 columnas por defecto para cualquier móvil */
+.grid-productos {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); 
+    gap: 25px;
+    text-align: center;
+}
+
+/* Media query para escritorios (4 columnas) */
+@media (min-width: 992px) { 
+    .grid-productos {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+.producto-card {
+    background-color: #fff;
+    border-radius: 12px;
+    padding: 15px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.07);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+}
+
+.producto-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.producto-card img {
+    max-width: 100%;
+    height: 200px;
+    object-fit: contain;
+    border-radius: 8px;
+    margin-bottom: 15px;
+}
+
+.producto-card h3 {
+    font-size: 1.1em;
+    margin-bottom: 10px;
+    flex-grow: 1;
+}
+
+.producto-card .precio {
+    font-size: 1.3em;
+    font-weight: bold;
+    color: #e67e22;
+    margin-bottom: 10px;
+}
+
+.producto-card .envio-card {
+    font-size: 0.95em;
+    color: #777;
+    margin-bottom: 15px;
+    font-weight: normal;
+}
+
+.producto-card .btn-ver-detalles,
+.producto-card .btn-pedir-whatsapp {
+    display: block;
+    padding: 10px 15px;
+    border-radius: 5px;
+    text-align: center;
+    margin-top: 10px;
+    color: #fff;
+    font-weight: bold;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    border: none;
+    cursor: pointer;
+}
+
+.producto-card .btn-ver-detalles {
+    background-color: #007bff;
+}
+
+.producto-card .btn-ver-detalles:hover {
+    background-color: #0056b3;
+}
+
+.producto-card .btn-pedir-whatsapp {
+    background: linear-gradient(-45deg, #25d366, #128c7e, #075e54, #25d366);
+    background-size: 400% 400%;
+    animation: gradient-animation 15s ease infinite;
+}
+
+.producto-card .btn-pedir-whatsapp:hover {
+    transform: scale(1.05);
+}
+
+/* ======================================= */
+/* ===       SECCIÓN DE CATEGORÍAS     === */
+/* ======================================= */
+
+.categorias-inicio {
+    padding: 40px 0;
+    text-align: center;
+}
+
+.categorias-inicio h2 {
+    font-size: 2.5em;
+    margin-bottom: 30px;
+}
+
+/* CORREGIDO: Contenedor visual y flexible para los botones */
+.grid-categorias {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
+    background-color: #f0f0f0;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+}
+
+/* CORREGIDO: Botones flexibles y con nuevo color azul */
+.btn-categoria,
+.grid-categorias a {
+    display: block;
+    padding: 25px 20px;
+    background: linear-gradient(-45deg, #007bff, #0056b3); /* NUEVO COLOR AZUL */
+    background-size: 200% 200%;
+    color: #fff;
+    font-size: 1.2em;
+    font-weight: bold;
+    border: none;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: all 0.4s ease;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    text-align: center;
+    flex: 1 1 150px; /* Diseño flexible */
+}
+
+.btn-categoria:hover,
+.grid-categorias a:hover {
+    background-position: 100% 0;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    transform: translateY(-5px);
+    color: #fff;
+}
+
+/* ======================================= */
+/* ===           PÁGINA DE PRODUCTO      === */
+/* ======================================= */
+
+.navegacion-producto {
+    padding-top: 20px;
+    margin-bottom: 20px;
+}
+
+.navegacion-producto a {
+    text-decoration: none;
+    color: #555;
+    font-weight: bold;
+    font-size: 1em;
+    transition: color 0.3s ease;
+}
+
+.navegacion-producto a:hover {
+    color: #007bff;
+}
+
+.producto-detalle-layout {
+    display: grid;
+    grid-template-columns: 1fr; 
+    gap: 40px; 
+    padding: 40px 0;
+    text-align: left;
+}
+
+.producto-detalle-layout .columna-imagen,
+.producto-detalle-layout .columna-info {
+    grid-column: 1 / -1;
+}
+
+.columna-imagen img {
+    width: 100%;
+    border-radius: 12px;
+}
+
+.columna-info .producto-titulo {
+    font-size: 2.5em;
+    font-weight: 700;
+}
+
+.columna-info .producto-precio {
+    font-size: 2em;
+    color: #007bff;
+    font-weight: bold;
+    margin: 20px 0 10px 0;
+}
+
+.columna-info .producto-envio {
+    font-size: 1.1em;
+    color: #666;
+    margin-bottom: 20px;
+    font-weight: 500;
+}
+
+.columna-info .producto-envio span {
+    font-weight: bold;
+    color: #333;
+}
+
+.btn-agregar-carrito {
+    display: block;
+    width: 100%;
+    padding: 15px;
+    font-size: 1.2em;
+    font-weight: bold;
+    color: #fff;
+    background-color: #007bff;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    text-align: center;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    margin-bottom: 15px;
+}
+.btn-agregar-carrito:hover {
+    background-color: #0056b3;
+    transform: translateY(-2px);
+}
+
+.btn-anadir-carrito {
+    display: block;
+    width: 100%;
+    padding: 15px;
+    font-size: 1.2em;
+    font-weight: bold;
+    color: #fff;
+    background: linear-gradient(-45deg, #25d366, #128c7e, #075e54, #25d366);
+    background-size: 400% 400%;
+    animation: gradient-animation 15s ease infinite;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    text-align: center;
+    transition: transform 0.3s ease;
+}
+
+.btn-anadir-carrito:hover {
+    transform: scale(1.02);
+}
+
+.galeria-miniaturas {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 15px;
+    flex-wrap: wrap;
+}
+
+.galeria-miniaturas .miniatura {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: border-color 0.3s ease;
+}
+
+.galeria-miniaturas .miniatura:hover,
+.galeria-miniaturas .miniatura.active {
+    border-color: #007bff;
+}
+
+/* ======================================= */
+/* ===           PÁGINA DE CARRITO       === */
+/* ======================================= */
+
+.seccion-carrito {
+    padding: 40px 0;
+}
+
+.seccion-carrito .titulo-pagina {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+#items-carrito {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.07);
+    margin-bottom: 30px;
+}
+
+#carrito-vacio-mensaje {
+    text-align: center;
+    font-size: 1.2em;
+    color: #777;
+    padding: 40px 0;
+}
+
+.carrito-item {
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid #eee;
+    padding: 15px 0;
+}
+
+.carrito-item:last-child {
+    border-bottom: none;
+}
+
+.carrito-item img {
+    width: 100px;
+    height: 100px;
+    object-fit: contain;
+    border-radius: 8px;
+    margin-right: 20px;
+    flex-shrink: 0;
+}
+
+.carrito-item .item-info {
+    flex-grow: 1;
+}
+
+.carrito-item .item-info h4 {
+    font-size: 1.1em;
+    margin-bottom: 5px;
+}
+
+.carrito-item .item-info p {
+    font-size: 0.9em;
+    color: #666;
+    margin-bottom: 3px;
+}
+
+.carrito-item .btn-remover-item {
+    background-color: #dc3545;
+    color: #fff;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.9em;
+    transition: background-color 0.3s ease;
+    flex-shrink: 0;
+}
+
+.carrito-item .btn-remover-item:hover {
+    background-color: #c82333;
+}
+
+.resumen-carrito {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.07);
+    text-align: right;
+}
+
+.resumen-carrito p {
+    font-size: 1.1em;
+    margin-bottom: 10px;
+    color: #555;
+}
+
+.resumen-carrito h3 {
+    font-size: 1.8em;
+    color: #007bff;
+    margin-top: 15px;
+    margin-bottom: 20px;
+}
+
+.resumen-carrito span {
+    font-weight: bold;
+    color: #333;
+}
+
+.botones-accion-carrito {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.btn-vaciar-carrito,
+.btn-finalizar-compra {
+    padding: 12px 20px;
+    font-size: 1.1em;
+    font-weight: bold;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.btn-vaciar-carrito {
+    background-color: #6c757d;
+    color: #fff;
+}
+
+.btn-vaciar-carrito:hover {
+    background-color: #5a6268;
+    transform: translateY(-2px);
+}
+
+.btn-finalizar-compra {
+    background: linear-gradient(-45deg, #25d366, #128c7e, #075e54, #25d366);
+    background-size: 400% 400%;
+    animation: gradient-animation 15s ease infinite;
+    color: #fff;
+}
+
+.btn-finalizar-compra:hover {
+    transform: scale(1.02);
+}
+
+.mensaje-envio-gratis {
+    text-align: center;
+    padding: 10px;
+    margin-top: 15px;
+    border-radius: 8px;
+    font-weight: bold;
+    font-size: 1em;
+}
+
+.envio-gratis-exito {
+    background-color: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+}
+
+.envio-gratis-falta {
+    background-color: #ffeeba;
+    color: #856404;
+    border: 1px solid #ffeeba;
+}
