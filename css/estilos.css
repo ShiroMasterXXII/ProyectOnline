@@ -247,24 +247,21 @@ header .container {
 }
 
 /* ======================================= */
-/* ===     HERO BANNER (NUEVO DISEÑO)    === */
+/* ===   HERO BANNER (SIN OSCURECIMIENTO)  === */
 /* ======================================= */
 
 .hero-banner {
     position: relative;
-    color: #fff;
+    color: #fff; /* Ojo con este color, lo explico abajo */
     text-align: center;
     padding: 60px 20px;
     border-radius: 12px;
     margin: 20px 0;
     overflow: hidden;
 
-    /* --- RUTA CORREGIDA --- */
-    /* Usamos la ruta local a tu imagen. */
-    /* El ../ significa "subir un nivel" desde la carpeta /css */
-    background: 
-        linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
-        url('../img/hero-banner.png'); /* <-- ¡RUTA LOCAL CORREGIDA! */
+    /* --- CAMBIO REALIZADO AQUÍ --- */
+    /* Quitamos la capa de gradiente oscuro y dejamos solo la imagen */
+    background-image: url('../img/hero-banner.png');
     
     background-size: cover;
     background-position: center;
@@ -274,7 +271,7 @@ header .container {
     font-size: 2.5em;
     font-weight: 700;
     margin-bottom: 0;
-    text-shadow: 0 2px 6px rgba(0, 0, 0, 0.7);
+    text-shadow: 0 2px 6px rgba(0, 0, 0, 0.7); /* Puede que necesites ajustar esto */
     position: relative;
     z-index: 2;
 }
