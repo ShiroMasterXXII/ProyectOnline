@@ -99,10 +99,14 @@ function agregarAlCarrito(producto) {
 
 // Función para actualizar el contador del carrito en el header (también presente en carrito.js)
 function actualizarContadorCarrito() {
-    const carritoContador = document.getElementById('carrito-contador');
-    if (carritoContador) {
-        const carrito = getCarrito();
-        const totalItems = carrito.reduce((sum, item) => sum + (item.cantidad || 1), 0);
-        carritoContador.textContent = totalItems;
+    const carritoContadorDesktop = document.getElementById('carrito-contador');
+    const carritoContadorMobile = document.getElementById('carrito-contador-mobile'); // Nuevo contador para móvil
+    const carrito = getCarrito();
+    const totalItems = carrito.reduce((sum, item) => sum + (item.cantidad || 1), 0);
+    if (carritoContadorDesktop) {
+        carritoContadorDesktop.textContent = totalItems;
+    }
+    if (carritoContadorMobile) { // Actualiza también el contador móvil
+        carritoContadorMobile.textContent = totalItems;
     }
 }

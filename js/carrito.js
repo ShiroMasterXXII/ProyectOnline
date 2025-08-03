@@ -6,7 +6,8 @@ document.addEventListener('DOMContentLoaded', function() {
     const totalCarritoSpan = document.getElementById('total-carrito');
     const btnVaciarCarrito = document.getElementById('btn-vaciar-carrito');
     const btnFinalizarCompra = document.getElementById('btn-finalizar-compra');
-    const carritoContador = document.getElementById('carrito-contador');
+    const carritoContadorDesktop = document.getElementById('carrito-contador'); // Contador para desktop
+    const carritoContadorMobile = document.getElementById('carrito-contador-mobile'); // Nuevo contador para móvil
 
     // Lógica para el botón "Regresar" en el carrito
     const btnRegresarCarrito = document.getElementById('btn-regresar-carrito');
@@ -32,12 +33,15 @@ document.addEventListener('DOMContentLoaded', function() {
         localStorage.setItem('carrito', JSON.stringify(carrito));
     }
 
-    // Función para actualizar el contador del carrito en el header
+    // Función para actualizar el contador del carrito en el header (¡AHORA PARA AMBOS CONTADORES!)
     function actualizarContadorCarrito() {
         const carrito = getCarrito();
         const totalItems = carrito.reduce((sum, item) => sum + (item.cantidad || 1), 0);
-        if (carritoContador) { 
-            carritoContador.textContent = totalItems;
+        if (carritoContadorDesktop) { 
+            carritoContadorDesktop.textContent = totalItems;
+        }
+        if (carritoContadorMobile) { // Actualiza también el contador móvil
+            carritoContadorMobile.textContent = totalItems;
         }
     }
 
@@ -127,7 +131,6 @@ document.addEventListener('DOMContentLoaded', function() {
                     itemsCarritoDiv.innerHTML += itemHTML;
                 });
 
-
                 document.querySelectorAll('.btn-remover-item').forEach(button => {
                     button.addEventListener('click', (e) => {
                         const idToRemove = parseInt(e.target.dataset.id);
@@ -139,7 +142,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     });
                 });
             }
-            actualizarContadorCarrito();
+            actualizarContadorCarrito(); // Llamada inicial al renderizar el carrito
         }
 
         if (btnVaciarCarrito) {
@@ -193,8 +196,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 window.open(whatsappUrl, '_blank');
             });
         }
-        renderCarrito(); 
+        renderCarrito(); // Llamada inicial para cargar el carrito al visitar la página
     }
     
-    actualizarContadorCarrito();
+    actualizarContadorCarrito(); // Asegura que el contador se actualice en todas las páginas
 });

@@ -27,14 +27,20 @@
                     </li>
                     <li><a href="#destacados">Ofertas</a></li>
                     <li><a href="contacto.html">Contacto</a></li>
-                    <li><a href="carrito.html">Carrito (<span id="carrito-contador">0</span>)</a></li>
+                    <li class="desktop-cart-link"><a href="carrito.html">Carrito (<span id="carrito-contador">0</span>)</a></li>
                 </ul>
             </nav>
-            <button class="hamburger-menu">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
+            <div class="iconos-header-mobile">
+                <a href="carrito.html" class="cart-icon-mobile">
+                    <img src="img/icon-cart.png" alt="Carrito">
+                    <span id="carrito-contador-mobile" class="contador-carrito-mobile">0</span>
+                </a>
+                <button class="hamburger-menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
         </div>
     </header>
 
@@ -74,5 +80,6 @@
 
     <script src="js/main.js"></script>
     <script src="js/producto-detalle.js"></script>
+    <script src="js/carrito.js"></script>
 </body>
 </html>

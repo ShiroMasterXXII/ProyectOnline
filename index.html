@@ -10,9 +10,9 @@
 
     <header>
         <div class="container">
-                <div class="logo">
-                  <a href="index.html"> <img src="img/logo.png" alt="MiStore22 Logo" class="logo-img"> </a>
-                </div>
+            <div class="logo">
+              <a href="index.html"> <img src="img/logo.png" alt="MiStore22 Logo" class="logo-img"> </a>
+            </div>
             <nav class="menu-principal">
                  <ul>
                     <li><a href="index.html">Inicio</a></li>
@@ -26,15 +26,21 @@
                         </ul>
                     </li>
                     <li><a href="#destacados">Ofertas</a></li>
-                    <li><a href="#destacados">Contacto</a></li>
-                    <li><a href="carrito.html">Carrito (<span id="carrito-contador">0</span>)</a></li>
+                    <li><a href="contacto.html">Contacto</a></li>
+                    <li class="desktop-cart-link"><a href="carrito.html">Carrito (<span id="carrito-contador">0</span>)</a></li>
                 </ul>
             </nav>
-            <button class="hamburger-menu">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
+            <div class="iconos-header-mobile">
+                <a href="carrito.html" class="cart-icon-mobile">
+                    <img src="img/icon-cart.png" alt="Carrito">
+                    <span id="carrito-contador-mobile" class="contador-carrito-mobile">0</span>
+                </a>
+                <button class="hamburger-menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
         </div>
     </header>
 
@@ -55,8 +61,8 @@
                 <div class="grid-categorias">
                     <a href="categoria.html?cat=Ropa" class="btn-categoria">Ropa</a>
                     <a href="categoria.html?cat=Calzado" class="btn-categoria">Calzado</a>
-                    <a href="categoria.html?cat=Tecnologia" class="btn-categoria">Tecnología</a>
-                    <a href="categoria.html?cat=Hogar" class="btn-categoria">Hogar</a>
+                    <a href="categoria.html?cat=Tecnologia">Tecnología</a>
+                    <a href="categoria.html?cat=Hogar">Hogar</a>
                 </div>
             </section>
         </div>
@@ -70,26 +76,6 @@
 
     <script src="js/productos.js"></script>
     <script src="js/main.js"></script>
-    <script>
-        // Llama a actualizarContadorCarrito al cargar la página de inicio para que se vea el número correcto
-        document.addEventListener('DOMContentLoaded', function() {
-            // Asegúrate de que la función actualizarContadorCarrito esté definida o cargada
-            // Es definida en js/producto-detalle.js y js/carrito.js.
-            // Para que funcione en index.html sin cargar ambos, la definimos aquí también o cargamos carrito.js
-            // La opción más simple es cargar carrito.js también en el index.html, pero si no quieres, puedes definirla aquí.
-            // Para este ejemplo, asegúrate que se cargue main.js (que está) y las funciones globales.
-            // Mejor opción: incluimos un llamado seguro a la función.
-            if (typeof actualizarContadorCarrito === 'function') {
-                actualizarContadorCarrito();
-            } else {
-                // Si la función no está disponible globalmente (ej. por orden de carga de scripts),
-                // puedes definir una versión básica aquí o forzar la carga de carrito.js.
-                // Para simplificar, asumiremos que si ya cargaste main.js, la estructura está bien.
-                // Sin embargo, para que el contador funcione siempre, lo más robusto es cargar `carrito.js` aquí también.
-            }
-        });
-    </script>
     <script src="js/carrito.js"></script> 
-
 </body>
 </html>
