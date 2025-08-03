@@ -35,6 +35,27 @@
       "costo_envio": 99,
       "es_destacado": true,
       "id": 2
+    },
+    {
+      "imagenes": [
+        {
+          "url": "/img/productos/mochilacapibara.jpg"
+        },
+        {
+          "url": "/img/productos/mochilacapibara3.jpg"
+        },
+        {
+          "url": "/img/productos/mochilacapibara2.jpg"
+        }
+      ],
+      "precio": 230,
+      "nombre": "Mochila De Dibujos Animados Para Estudiantes ",
+      "descripcion": "Fabricada en nylon resistente, esta mochila es ligera, pesando solo 0.28 kg, lo que la hace ideal para el uso diario. Sus dimensiones de 31 cm de ancho, 44 cm de alto y 14 cm de profundidad permiten un ajuste cómodo en la espalda de los niños. Además, cuenta con un bolsillo para botella, facilitando la hidratación durante el día escolar.\n",
+      "categoria": "Hogar",
+      "esFisico": true,
+      "costo_envio": 98,
+      "es_destacado": false,
+      "id": 2
     }
   ]
 }
