@@ -247,32 +247,39 @@ header .container {
 }
 
 /* ======================================= */
-/* ===           HERO BANNER             === */
+/* ===     HERO BANNER (NUEVO DISEÑO)    === */
 /* ======================================= */
 
 .hero-banner {
+    position: relative; /* Esencial para el efecto de superposición */
     color: #fff;
     text-align: center;
-    padding: 80px 20px;
+    padding: 60px 20px; /* Reducimos el padding para hacerlo más compacto */
     border-radius: 12px;
     margin: 20px 0;
-    background: linear-gradient(-45deg, #007bff, #28a745, #00bfa5, #007bff);
-    background-size: 400% 400%;
-    animation: gradient-animation 15s ease infinite;
-}
+    overflow: hidden; /* Asegura que la imagen respete los bordes redondeados */
 
-@keyframes gradient-animation {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
+    /* --- La magia para poner la imagen de fondo --- */
+    /* 1. Capa de color oscuro semitransparente para dar contraste */
+    /* 2. Tu imagen de fondo */
+    background: 
+        linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+        url('https://unsplash.com/photos/person-in-blue-denim-jeans-holding-white-tote-bag-PENodSVsL1s'); /* <-- ¡CAMBIA ESTA IMAGEN! */
+    
+    background-size: cover; /* Hace que la imagen cubra todo el espacio */
+    background-position: center; /* Centra la imagen */
 }
 
 .hero-banner h2 {
-    font-size: 2.8em;
+    font-size: 2.5em; /* Un poco más pequeño para mejor ajuste en móviles */
     font-weight: 700;
-    margin-bottom: 15px;
-    text-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
+    margin-bottom: 0; /* Quitamos el margen de abajo ya que el padding da espacio */
+    text-shadow: 0 2px 6px rgba(0, 0, 0, 0.7); /* Hacemos la sombra un poco más fuerte */
+    position: relative; /* Asegura que el texto esté sobre la capa de color */
+    z-index: 2;
 }
+
+/* La animación de gradiente ya no es necesaria, por lo que la eliminamos. */
 
 /* ======================================= */
 /* ===         PRODUCT SECTION         === */
