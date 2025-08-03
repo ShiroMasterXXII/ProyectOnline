@@ -53,6 +53,26 @@
           "url": "/img/productos/mochilacapibara2.jpg"
         }
       ]
+    },
+    {
+      "costo_envio": 100,
+      "es_destacado": false,
+      "id": 4,
+      "nombre": "Mochilas Escolares, Mochila De Superhéroe Para Escuela 4-12 Años",
+      "precio": 229,
+      "categoria": "Hogar",
+      "descripcion": "Mochilas escolares gran capacidad\n5 bolsillos separados de diferentes tamaños con cremalleras de alta calidad. 1 bolsillo principal, 1 bolsillo frontal, 1 bolsillos para refrigerios, 2 bolsillos laterales de malla; Proporciona espacio amplio para el almacenamiento y organización de las necesidades diarias. Comience su hermosa vida en el campus con esta mochila, color adorable, diseño elegante, estampado de araña.",
+      "imagenes": [
+        {
+          "url": "/img/productos/mochilaspider.jpg"
+        },
+        {
+          "url": "/img/productos/mochilaspider3.jpg"
+        },
+        {
+          "url": "/img/productos/mochilaspider2.jpg"
+        }
+      ]
     }
   ]
 }
