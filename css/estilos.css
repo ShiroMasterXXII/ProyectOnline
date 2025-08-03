@@ -261,11 +261,6 @@ header .container {
     .dropdown-content.show {
         display: block;
     }
-
-    /* CORRECCIÓN: Para que la página de producto se vea bien en móvil (columnas se apilen) */
-    .producto-detalle-layout {
-        grid-template-columns: 1fr; 
-    }
     
     .grid-productos {
         grid-template-columns: repeat(2, 1fr);
@@ -462,11 +457,18 @@ header .container {
 }
 
 .producto-detalle-layout {
+    /* CAMBIO CLAVE: Siempre una sola columna */
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 40px;
+    grid-template-columns: 1fr; /* Una sola columna para todos los tamaños */
+    gap: 40px; /* Espacio entre la imagen y la info */
     padding: 40px 0;
     text-align: left;
+}
+
+/* Asegura que la columna de imagen ocupe todo el ancho */
+.producto-detalle-layout .columna-imagen,
+.producto-detalle-layout .columna-info {
+    grid-column: 1 / -1; /* Ocupa todo el ancho de la única columna */
 }
 
 .columna-imagen img {
