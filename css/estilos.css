@@ -305,10 +305,10 @@ header .container {
     margin-bottom: 30px;
 }
 
-/* Estilos base para el grid de productos (para móviles muy pequeños) */
+/* Estilos base para el grid de productos (por defecto 1 columna para pantallas muy pequeñas) */
 .grid-productos {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Permitir 1 o más, ajustándose */
+    grid-template-columns: 1fr; /* Una columna por defecto */
     gap: 25px;
     text-align: center;
 }
@@ -320,15 +320,8 @@ header .container {
     }
 }
 
-/* Media query para escritorios (3 columnas) */
-@media (min-width: 769px) {
-    .grid-productos {
-        grid-template-columns: repeat(3, 1fr);
-    }
-}
-
-/* Media query para escritorios grandes (4 columnas) */
-@media (min-width: 1024px) {
+/* Media query para escritorios (4 columnas) */
+@media (min-width: 992px) { /* Ajustado a 992px para asegurar 4 columnas en escritorios */
     .grid-productos {
         grid-template-columns: repeat(4, 1fr);
     }
@@ -433,25 +426,30 @@ header .container {
     gap: 20px;
 }
 
+/* Diseño mejorado para los botones de categoría */
 .btn-categoria {
     display: block;
     padding: 25px 20px;
-    background-color: #fff;
-    color: #333;
+    background: linear-gradient(-45deg, #6c757d, #5a6268); /* Degradado grisáceo */
+    background-size: 200% 200%; /* Para el efecto de hover con degradado */
+    color: #fff; /* Texto blanco para contraste */
     font-size: 1.2em;
     font-weight: bold;
-    border: 1px solid #ddd;
+    border: none; /* Quitamos el borde para un look más moderno */
     border-radius: 8px;
     text-decoration: none;
-    transition: all 0.3s ease;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.07);
+    transition: all 0.4s ease; /* Transición más suave para todos los efectos */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Sombra más pronunciada */
+    cursor: pointer;
 }
 
 .btn-categoria:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-    color: #007bff;
+    background-position: 100% 0; /* Mueve el degradado en el hover */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2); /* Sombra aún más pronunciada */
+    transform: translateY(-5px); /* Pequeño levantamiento */
+    color: #fff; /* Asegura el texto blanco */
 }
+
 
 /* ======================================= */
 /* ===         PÁGINA DE PRODUCTO      === */
