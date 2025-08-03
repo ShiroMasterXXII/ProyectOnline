@@ -11,7 +11,7 @@
       "descripcion": "tarjeta digital para toda la tienda de playstore y sus aplicaciones y juegos tarjeta canjeable solo en mexico",
       "categoria": "Tecnología",
       "esFisico": false,
-      "costo_envio": "",
+      "costo_envio": 0,
       "es_destacado": true,
       "id": 1
     },
