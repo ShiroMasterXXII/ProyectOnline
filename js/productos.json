@@ -13,6 +13,26 @@
           "url": "/img/productos/tarjetagoogle.png"
         }
       ]
+    },
+    {
+      "costo_envio": 99,
+      "es_destacado": true,
+      "id": 2,
+      "nombre": "Bluey Felpa Estilo Mochila Infantil Elige Modelo Azul",
+      "precio": 220,
+      "categoria": "Hogar",
+      "descripcion": "1 mochila azul + 55 pegatinas dependiendo Existencia\nDimensiones de la bolsa de pegatinas Bluey: 38 x 8 x 23 cm (alto x ancho x largo)\nPerfectas para niños en edad preescolar o citas informales para jugar, nuestras mochilas son suaves al tacto y perfectas para regalos de fiesta de cumpleaños en viajes.\nEsta mochila preescolar cuenta con tiradores de cremallera de fácil apertura y cierre y un bolsillo principal con cremallera.\nAdemás, hay 55 stickers para que puedas compartir tu viaje con más amigos.\n",
+      "imagenes": [
+        {
+          "url": "/img/productos/blueymochila.jpg"
+        },
+        {
+          "url": "/img/productos/blueymochila3.jpg"
+        },
+        {
+          "url": "/img/productos/blueymochila2.jpg"
+        }
+      ]
     }
   ]
 }
