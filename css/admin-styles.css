@@ -42,3 +42,15 @@ body, [class*="view-cards"] {
 body {
     overflow: hidden !important;
 }
+
+/* --- ESTILOS EXTRA PARA MEJORAR LA ESTÉTICA --- */
+
+/* Cambia el color de fondo del panel donde editas los productos */
+[class*="Editor-main-content-wrapper"] {
+    background-color: #f7f9fa !important;
+}
+
+/* Pone un borde sutil para separar la lista de productos del editor */
+[class*="App-main-frame"] {
+    border-right: 1px solid #dee2e6 !important;
+}
