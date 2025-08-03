@@ -1,32 +1,18 @@
 {
   "lista_productos": [
     {
+      "costo_envio": 0,
+      "es_destacado": true,
       "id": 1,
-      "nombre": "Gorra Azul New Era",
-      "precio": 999,
-      "categoria": "Ropa",
-      "descripcion": "Gorra azul snapback original varios modelos y muy comoda",
+      "nombre": "Tarjeta Google Play (Digital)",
+      "precio": 120,
+      "categoria": "Tecnología",
+      "descripcion": "¡Tu acceso a un universo de entretenimiento! Usa tu saldo para los mejores juegos, apps, películas y libros en la Play Store. La forma más fácil de disfrutar tu contenido favorito. Entrega digital inmediata.",
       "imagenes": [
         {
-          "url": "/img/productos/producto1.jpg"
+          "url": "/img/productos/tarjetagoogle.png"
         }
-      ],
-      "costo_envio": 50,
-      "es_destacado": true
-    },
-    {
-      "id": 2,
-      "nombre": "Gorra Black New Era",
-      "precio": 999,
-      "categoria": "Ropa",
-      "descripcion": "Gorra Black snapback de gran calidad y muy comoda",
-      "imagenes": [
-        {
-          "url": "/img/productos/producto2.jpg"
-        }
-      ],
-      "costo_envio": 50,
-      "es_destacado": true
+      ]
     }
   ]
 }
