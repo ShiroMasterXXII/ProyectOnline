@@ -20,7 +20,7 @@ collections:
               - {label: "ID", name: "id", widget: "number"}
               - {label: "Nombre", name: "nombre", widget: "string"}
               - {label: "Precio", name: "precio", widget: "number"}
-              - {label: "Categoría", name: "categoria", widget: "select", options: ["Ropa", "Calzado", "Tecnología", "Hogar"]}
+              - {label: "Categoría", name: "categoria", widget: "select", options: ["Ropa", "Escolar", "Tecnología", "Hogar"]}
               - {label: "Descripción", name: "descripcion", widget: "text"}
               - {label: "Costo de Envío", name: "costo_envio", widget: "number", required: false, default: 0}
               - {label: "Es Destacado", name: "es_destacado", widget: "boolean", default: false, required: false}
