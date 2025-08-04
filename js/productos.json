@@ -77,6 +77,24 @@
       "costo_envio": 99,
       "es_destacado": false,
       "id": 4
+    },
+    {
+      "imagenes": [
+        {
+          "url": "https://akandlrqkbjlyemoloxf.supabase.co/storage/v1/object/public/shopstore.online-products/CategoriaRopa/producto5/calcetines1.jpg"
+        },
+        {
+          "url": "https://akandlrqkbjlyemoloxf.supabase.co/storage/v1/object/public/shopstore.online-products/CategoriaRopa/producto5/calcetines2.jpg"
+        }
+      ],
+      "precio": 149,
+      "nombre": "10 pares Hombre Calcetines Deportiva Poliéster-algodón",
+      "descripcion": "Estos calcetines son asequibles, 10 pares en un paquete de 2 pares de cada color, tienen buena elasticidad y son adecuados para 7MX-8.5MX\n\nEstilo del producto: Calcetines de media caña\nComposición del producto: 10 pares de calcetines deportivos\nMaterial del producto: 70% poliéster + 30% algodón\nApto para hombres\nColor: negro, gris, púrpura, azul y marrón en un paquete aleatorio",
+      "categoria": "Ropa",
+      "esFisico": true,
+      "costo_envio": 99,
+      "es_destacado": false,
+      "id": 5
     }
   ]
 }
