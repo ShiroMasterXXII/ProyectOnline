@@ -3,7 +3,7 @@
     {
       "imagenes": [
         {
-          "url": "/img/productos/tarjetagoogle.png"
+          "url": "https://akandlrqkbjlyemoloxf.supabase.co/storage/v1/object/public/shopstore.online-products/CategoriaTegnologia/producto1/tarjetaGoogle.png"
         }
       ],
       "precio": 120,
@@ -18,13 +18,13 @@
     {
       "imagenes": [
         {
-          "url": "/img/productos/blueymochila.jpg"
+          "url": "https://akandlrqkbjlyemoloxf.supabase.co/storage/v1/object/public/shopstore.online-products/CategoriaEscolar/producto2/blueyMochila.jpg"
         },
         {
-          "url": "/img/productos/blueymochila3.jpg"
+          "url": "https://akandlrqkbjlyemoloxf.supabase.co/storage/v1/object/public/shopstore.online-products/CategoriaEscolar/producto2/blueyMochila3.jpg"
         },
         {
-          "url": "/img/productos/blueymochila2.jpg"
+          "url": "https://akandlrqkbjlyemoloxf.supabase.co/storage/v1/object/public/shopstore.online-products/CategoriaEscolar/producto2/blueyMochila2.jpg"
         }
       ],
       "precio": 220,
@@ -39,13 +39,13 @@
     {
       "imagenes": [
         {
-          "url": "/img/productos/mochilacapibara.jpg"
+          "url": "https://akandlrqkbjlyemoloxf.supabase.co/storage/v1/object/public/shopstore.online-products/CategoriaEscolar/producto3/mochilacapibara.jpg"
         },
         {
-          "url": "/img/productos/mochilacapibara3.jpg"
+          "url": "https://akandlrqkbjlyemoloxf.supabase.co/storage/v1/object/public/shopstore.online-products/CategoriaEscolar/producto3/mochilacapibara3.jpg"
         },
         {
-          "url": "/img/productos/mochilacapibara2.jpg"
+          "url": "https://akandlrqkbjlyemoloxf.supabase.co/storage/v1/object/public/shopstore.online-products/CategoriaEscolar/producto3/mochilacapibara2.jpg"
         }
       ],
       "precio": 230,
@@ -60,13 +60,13 @@
     {
       "imagenes": [
         {
-          "url": "/img/productos/mochilaspider.jpg"
+          "url": "https://akandlrqkbjlyemoloxf.supabase.co/storage/v1/object/public/shopstore.online-products/CategoriaEscolar/producto4/mochilaspider.jpg"
         },
         {
-          "url": "/img/productos/mochilaspider3.jpg"
+          "url": "https://akandlrqkbjlyemoloxf.supabase.co/storage/v1/object/public/shopstore.online-products/CategoriaEscolar/producto4/mochilaspider3.jpg"
         },
         {
-          "url": "/img/productos/mochilaspider2.jpg"
+          "url": "https://akandlrqkbjlyemoloxf.supabase.co/storage/v1/object/public/shopstore.online-products/CategoriaEscolar/producto4/mochilaspider2.jpg"
         }
       ],
       "precio": 230,
