@@ -764,6 +764,21 @@ header .container {
 }
 
 /* ======================================= */
+/* ===      BARRA DE ANUNCIO SUPERIOR    === */
+/* ======================================= */
+.anuncio-bar {
+  background-color: #007bff; /* Color principal de tu tienda */
+  color: #fff;               /* Texto blanco para contraste */
+  text-align: center;         /* Centra el mensaje */
+  padding: 10px 15px;         /* Espacio interno para que no se vea apretado */
+  font-weight: bold;          /* Texto en negritas para que resalte */
+}
+
+.anuncio-bar p {
+  margin: 0; /* Quita cualquier margen por defecto del párrafo */
+}
+
+/* ======================================= */
 /* ===           PÁGINA DE CONTACTO      === */
 /* ======================================= */
 /* (El resto de tu CSS para Contacto y otras páginas va aquí) */
