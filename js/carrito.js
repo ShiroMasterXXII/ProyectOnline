@@ -208,3 +208,14 @@ document.addEventListener('DOMContentLoaded', function() {
     
     actualizarContadorCarrito();
 });
+
+// Agrega este bloque al final de tu archivo js/carrito.js
+
+window.addEventListener('pageshow', function(event) {
+    // La propiedad 'persisted' es true si la página viene de la caché (botón 'regresar')
+    // Esto asegura que actualicemos el contador solo cuando sea necesario.
+    if (event.persisted) {
+        console.log('Página cargada desde caché, actualizando contador de carrito.');
+        actualizarContadorCarrito();
+    }
+});
