@@ -38,24 +38,3 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 });
-
-document.addEventListener('DOMContentLoaded', function() {
-    
-    // --- CÓDIGO PARA EL MENÚ TRANSPARENTE AL HACER SCROLL ---
-    const header = document.querySelector('header');
-
-    if (header) { // Nos aseguramos que el header exista
-        window.addEventListener('scroll', function() {
-            // Si el scroll vertical es mayor a 50 píxeles...
-            if (window.scrollY > 50) {
-                // ...agregamos la clase 'scrolled' al header.
-                header.classList.add('scrolled');
-            } else {
-                // ...si no, la quitamos.
-                header.classList.remove('scrolled');
-            }
-        });
-    }
-
-    // (Aquí puede ir el resto de tu código de main.js, como el de la hamburguesa)
-});

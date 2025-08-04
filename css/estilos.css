@@ -30,24 +30,15 @@ ul {
 /* ===           HEADER                === */
 /* ======================================= */
 
-/* --- HEADER (MODIFICADO PARA SER TRANSPARENTE AL INICIO) --- */
 header {
-  background-color: transparent; /* <-- CAMBIO: Fondo transparente */
+  background-color: #fff; /* Fondo blanco */
   color: #333;
   min-height: 90px;
-  border-bottom: 1px solid transparent; /* <-- CAMBIO: Borde transparente */
-  box-shadow: none; /* <-- CAMBIO: Sin sombra */
+  border-bottom: 1px solid #ddd;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   position: sticky;
   top: 38px;
   z-index: 1000;
-  transition: background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease; /* <-- AÑADIDO: Para una transición suave */
-}
-
-/* --- NUEVA REGLA: ESTILO DEL HEADER CUANDO SE HACE SCROLL --- */
-header.scrolled {
-  background-color: #fff; /* Vuelve a ser blanco */
-  border-bottom: 1px solid #ddd; /* Vuelve el borde */
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Vuelve la sombra */
 }
 
 header .container {
