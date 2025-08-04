@@ -764,25 +764,6 @@ header .container {
 }
 
 /* ======================================= */
-/* ===      BARRA DE ANUNCIO SUPERIOR    === */
-/* ======================================= */
-/* --- BARRA DE ANUNCIO SUPERIOR --- */
-.anuncio-bar {
-  background-color: #007bff;
-  color: #fff;
-  text-align: center;
-  padding: 10px 15px;
-  font-weight: bold;
-  position: sticky; /* <-- AÑADIDO */
-  top: 0;           /* <-- AÑADIDO */
-  z-index: 1001;    /* <-- AÑADIDO (Para que siempre esté encima) */
-}
-
-.anuncio-bar p {
-  margin: 0; /* Quita cualquier margen por defecto del párrafo */
-}
-
-/* ======================================= */
 /* ===           PÁGINA DE CONTACTO      === */
 /* ======================================= */
 /* (El resto de tu CSS para Contacto y otras páginas va aquí) */
