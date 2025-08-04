@@ -199,7 +199,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 mensajeWhatsApp += `TOTAL A PAGAR: $${(subtotal + costoEnvioFinalWhatsApp).toFixed(2)} MX\n\n`;
                 mensajeWhatsApp += `¡Espero tu confirmación!`;
 
-                const whatsappUrl = `https://wa.me/521TUNUMERO?text=${encodeURIComponent(mensajeWhatsApp)}`;
+                const whatsappUrl = `https://wa.me/8146456409?text=${encodeURIComponent(mensajeWhatsApp)}`;
                 window.open(whatsappUrl, '_blank');
             });
         }

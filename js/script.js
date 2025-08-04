@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
             productos.forEach(producto => {
                 const mensaje = `Hola, me interesa comprar el producto: ${producto.nombre}`;
-                const whatsappUrl = `https://wa.me/521TUNUMERO?text=${encodeURIComponent(mensaje)}`;
+                const whatsappUrl = `https://wa.me/8146456409?text=${encodeURIComponent(mensaje)}`;
 
                 const productoHTML = `
                     <div class="producto-card">

@@ -23,7 +23,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     
                     // RECUERDA CAMBIAR 'TUNUMERO' POR TU NÚMERO DE WHATSAPP REAL
                     const mensaje = `Hola, me interesa comprar el producto: ${producto.nombre}.\nPrecio: $${producto.precio.toFixed(2)} MX.\nCosto de Envío: $${costoEnvio.toFixed(2)} MX.`;
-                    const whatsappUrl = `https://wa.me/521TUNUMERO?text=${encodeURIComponent(mensaje)}`;
+                    const whatsappUrl = `https://wa.me/8146456409?text=${encodeURIComponent(mensaje)}`;
 
                     const productoHTML = `
                         <div class="producto-card">
