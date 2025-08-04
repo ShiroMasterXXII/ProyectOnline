@@ -31,14 +31,14 @@ ul {
 /* ======================================= */
 
 header {
-    background-color: #fff;
-    color: #333;
-    min-height: 90px; /* Ajustado para el logo más grande */
-    border-bottom: 1px solid #ddd;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    position: sticky;
-    top: 0;
-    z-index: 1000;
+  background-color: #fff;
+  color: #333;
+  min-height: 90px;
+  border-bottom: 1px solid #ddd;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  position: sticky;
+  top: 38px; /* <-- CAMBIADO DE 0 A 38px (la altura aproximada del anuncio) */
+  z-index: 1000;
 }
 
 header .container {
@@ -766,12 +766,16 @@ header .container {
 /* ======================================= */
 /* ===      BARRA DE ANUNCIO SUPERIOR    === */
 /* ======================================= */
+/* --- BARRA DE ANUNCIO SUPERIOR --- */
 .anuncio-bar {
-  background-color: #007bff; /* Color principal de tu tienda */
-  color: #fff;               /* Texto blanco para contraste */
-  text-align: center;         /* Centra el mensaje */
-  padding: 10px 15px;         /* Espacio interno para que no se vea apretado */
-  font-weight: bold;          /* Texto en negritas para que resalte */
+  background-color: #007bff;
+  color: #fff;
+  text-align: center;
+  padding: 10px 15px;
+  font-weight: bold;
+  position: sticky; /* <-- AÑADIDO */
+  top: 0;           /* <-- AÑADIDO */
+  z-index: 1001;    /* <-- AÑADIDO (Para que siempre esté encima) */
 }
 
 .anuncio-bar p {
