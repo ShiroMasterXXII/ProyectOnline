@@ -763,18 +763,13 @@ header .container {
     border: 1px solid #ffeeba;
 }
 
-/* ======================================= */
-/* ===      BARRA DE ANUNCIO SUPERIOR    === */
-/* ======================================= */
+/* --- BARRA DE ANUNCIO (VERSIÓN BÁSICA) --- */
 .anuncio-bar {
-  background-color: #007bff; /* Color principal de tu tienda */
+  background-color: #007bff;
   color: #fff;
   text-align: center;
   padding: 10px 15px;
   font-weight: bold;
-  position: sticky; /* Se queda fija arriba */
-  top: 0;           /* Se pega en la parte más alta */
-  z-index: 1001;    /* Se asegura de estar por encima de otros elementos */
 }
 
 .anuncio-bar p {
