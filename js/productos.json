@@ -152,6 +152,27 @@
       "costo_envio": 98,
       "es_destacado": true,
       "id": 8
+    },
+    {
+      "imagenes": [
+        {
+          "url": "https://akandlrqkbjlyemoloxf.supabase.co/storage/v1/object/public/shopstore.online-products/CategoriaRopa/producto9/camisacasual.jpg"
+        },
+        {
+          "url": "https://akandlrqkbjlyemoloxf.supabase.co/storage/v1/object/public/shopstore.online-products/CategoriaRopa/producto9/camisacasual3.jpg"
+        },
+        {
+          "url": "https://akandlrqkbjlyemoloxf.supabase.co/storage/v1/object/public/shopstore.online-products/CategoriaRopa/producto9/camisacasual2.jpg"
+        }
+      ],
+      "precio": 140,
+      "nombre": "Playeras Para Hombre Moda Casual Deportivo (2 colores) (talla variada)",
+      "descripcion": "Playeras Para Hombre Moda Casual Deportivo Manga Corta Tenis\n\npregunte por su talla\n\nMaterial: 95% poliéster+5% Spandex\n\nPolíticas\n-Los colores de las prendas pueden variar un poco debido a la iluminación de la fotografía",
+      "categoria": "Ropa",
+      "esFisico": true,
+      "costo_envio": 98,
+      "es_destacado": false,
+      "id": 9
     }
   ]
 }
