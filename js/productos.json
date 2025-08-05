@@ -75,7 +75,7 @@
       "categoria": "Escolar",
       "esFisico": true,
       "costo_envio": 99,
-      "es_destacado": false,
+      "es_destacado": true,
       "id": 3
     },
     {
@@ -93,7 +93,7 @@
       "categoria": "Ropa",
       "esFisico": true,
       "costo_envio": 99,
-      "es_destacado": false,
+      "es_destacado": true,
       "id": 5
     },
     {
@@ -129,7 +129,7 @@
       "categoria": "Escolar",
       "esFisico": true,
       "costo_envio": 0,
-      "es_destacado": false,
+      "es_destacado": true,
       "id": 7
     },
     {
@@ -150,7 +150,7 @@
       "categoria": "Ropa",
       "esFisico": true,
       "costo_envio": 99,
-      "es_destacado": true,
+      "es_destacado": false,
       "id": 8
     },
     {
