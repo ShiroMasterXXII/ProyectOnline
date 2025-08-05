@@ -93,7 +93,7 @@
       "categoria": "Ropa",
       "esFisico": true,
       "costo_envio": 99,
-      "es_destacado": true,
+      "es_destacado": false,
       "id": 5
     },
     {
