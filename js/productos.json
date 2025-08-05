@@ -95,6 +95,24 @@
       "costo_envio": 99,
       "es_destacado": false,
       "id": 5
+    },
+    {
+      "imagenes": [
+        {
+          "url": "https://akandlrqkbjlyemoloxf.supabase.co/storage/v1/object/public/shopstore.online-products/CategoriaRopa/producto6/boverpack.jpg"
+        },
+        {
+          "url": "https://akandlrqkbjlyemoloxf.supabase.co/storage/v1/object/public/shopstore.online-products/CategoriaRopa/producto6/boxertalla.jpg"
+        }
+      ],
+      "precio": 139,
+      "nombre": "5pz Bóxer Caballero Pack Ropa Interior Calzón Algodón",
+      "descripcion": "Paquete: 5 pares de calzoncillos bóxer para hombre\nColor de los calzoncillos: combinación 1 (negro, gris oscuro, amarillo, gris claro, verde), combinación 2 (amarillo*2, negro 2, gris oscuro*1), combinación 3 (negro*3, gris oscuro*2)",
+      "categoria": "Ropa",
+      "esFisico": true,
+      "costo_envio": 97,
+      "es_destacado": false,
+      "id": 6
     }
   ]
 }
