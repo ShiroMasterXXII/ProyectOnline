@@ -131,6 +131,27 @@
       "costo_envio": 0,
       "es_destacado": false,
       "id": 7
+    },
+    {
+      "imagenes": [
+        {
+          "url": "https://akandlrqkbjlyemoloxf.supabase.co/storage/v1/object/public/shopstore.online-products/CategoriaRopa/producto8/camisapolo1.jpg"
+        },
+        {
+          "url": "https://akandlrqkbjlyemoloxf.supabase.co/storage/v1/object/public/shopstore.online-products/CategoriaRopa/producto8/camisapolo2.jpg"
+        },
+        {
+          "url": "https://akandlrqkbjlyemoloxf.supabase.co/storage/v1/object/public/shopstore.online-products/CategoriaRopa/producto8/camisapolo3.jpg"
+        }
+      ],
+      "precio": 150,
+      "nombre": "Playera Polo Hombre Manga Corta Moda Casual Camisa (varios Colores)",
+      "descripcion": "ESPECIFICACIONES:\n\n• Marca: Shendy Vendy\n• Color: Negro, Blanco, Azul Rey ,Rosa, Rojo, Azul Oscuro, Gris , Azul Marino1, Beige1, Blanco1, Rosa1, Negro1\n• Moda Casual, Sport, Diario, Gym\n• Cuello V\n• Compatible con la piel\n• Tela resistente\n• Doble costura\n• Convinable con todo tipo de prenda\n• Tela resistente a las pastillas con alta densidad de puntada para mayor durabilidad\n",
+      "categoria": "Ropa",
+      "esFisico": true,
+      "costo_envio": 98,
+      "es_destacado": true,
+      "id": 8
     }
   ]
 }
