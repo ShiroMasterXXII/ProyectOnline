@@ -176,6 +176,21 @@
       "costo_envio": 99,
       "es_destacado": false,
       "id": 9
+    },
+    {
+      "imagenes": [
+        {
+          "url": "/img/productos/pluamaspack.jpg"
+        }
+      ],
+      "precio": 150,
+      "nombre": "prueba",
+      "descripcion": "blablablablabla",
+      "categoria": "Tecnología",
+      "esFisico": true,
+      "costo_envio": 0,
+      "es_destacado": false,
+      "id": 10
     }
   ]
 }
