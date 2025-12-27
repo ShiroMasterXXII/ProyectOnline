@@ -1,3 +1,19 @@
 {
-  "lista_productos": []
+  "lista_productos": [
+    {
+      "imagenes": [
+        {
+          "url": "/img/productos/nike.jpeg"
+        }
+      ],
+      "precio": 750,
+      "nombre": "Tenia Nike Blancos",
+      "descripcion": "tennis blanco hombre",
+      "categoria": "Escolar",
+      "esFisico": true,
+      "costo_envio": 0,
+      "es_destacado": true,
+      "id": 1
+    }
+  ]
 }
