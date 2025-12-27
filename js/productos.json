@@ -42,7 +42,7 @@
       "categoria": "Ropa",
       "esFisico": true,
       "costo_envio": 0,
-      "es_destacado": false,
+      "es_destacado": true,
       "id": 3
     }
   ]
