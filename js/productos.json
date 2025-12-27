@@ -44,6 +44,21 @@
       "costo_envio": 0,
       "es_destacado": true,
       "id": 3
+    },
+    {
+      "imagenes": [
+        {
+          "url": "/img/productos/nke-white.jpeg"
+        }
+      ],
+      "precio": 750,
+      "nombre": "Nike Blancos Men",
+      "descripcion": "Nike para Hombre con performance y estilo",
+      "categoria": "Ropa",
+      "esFisico": true,
+      "costo_envio": 0,
+      "es_destacado": true,
+      "id": 4
     }
   ]
 }
