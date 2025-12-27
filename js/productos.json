@@ -14,6 +14,21 @@
       "costo_envio": 0,
       "es_destacado": true,
       "id": 1
+    },
+    {
+      "imagenes": [
+        {
+          "url": "/img/productos/nike-botin.jpeg"
+        }
+      ],
+      "precio": 450,
+      "nombre": "Nike Botin Niño",
+      "descripcion": "Nike Botin para niño y niña blanco de gran calidad",
+      "categoria": "Ropa",
+      "esFisico": true,
+      "costo_envio": 0,
+      "es_destacado": true,
+      "id": 2
     }
   ]
 }
